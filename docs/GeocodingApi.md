@@ -1,0 +1,533 @@
+# stadiamaps.GeocodingApi
+
+All URIs are relative to *https://api.stadiamaps.com*
+
+Method | HTTP request | Description
+------------- | ------------- | -------------
+[**autocomplete**](GeocodingApi.md#autocomplete) | **GET** /geocoding/v1/autocomplete | Search and geocode quickly based on partial input.
+[**place**](GeocodingApi.md#place) | **GET** /geocoding/v1/place | Retrieve details of a place using its GID.
+[**reverse**](GeocodingApi.md#reverse) | **GET** /geocoding/v1/reverse | Find places and addresses near geographic coordinates (reverse geocoding).
+[**search**](GeocodingApi.md#search) | **GET** /geocoding/v1/search | Search for location and other info using a place name or address (forward geocoding).
+[**search_structured**](GeocodingApi.md#search_structured) | **GET** /geocoding/v1/search/structured | Find locations matching components (structured forward geocoding).
+
+
+# **autocomplete**
+> PeliasResponse autocomplete(text, focus_point_lat=focus_point_lat, focus_point_lon=focus_point_lon, boundary_rect_min_lat=boundary_rect_min_lat, boundary_rect_max_lat=boundary_rect_max_lat, boundary_rect_min_lon=boundary_rect_min_lon, boundary_rect_max_lon=boundary_rect_max_lon, boundary_circle_lat=boundary_circle_lat, boundary_circle_lon=boundary_circle_lon, boundary_circle_radius=boundary_circle_radius, boundary_country=boundary_country, boundary_gid=boundary_gid, layers=layers, sources=sources, size=size, lang=lang)
+
+Search and geocode quickly based on partial input.
+
+Autocomplete enables interactive search-as-you-type user experiences, suggesting places as you type, along with information that will help your users find the correct place quickly.
+
+### Example
+
+* Api Key Authentication (ApiKeyAuth):
+```python
+import time
+import os
+import stadiamaps
+from stadiamaps.models.pelias_layer import PeliasLayer
+from stadiamaps.models.pelias_response import PeliasResponse
+from stadiamaps.models.pelias_source import PeliasSource
+from stadiamaps.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.stadiamaps.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = stadiamaps.Configuration(
+    host = "https://api.stadiamaps.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKeyAuth
+configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with stadiamaps.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = stadiamaps.GeocodingApi(api_client)
+    text = '1600 Pennsylvania Ave NW' # str | The place name (address, venue name, etc.) to search for.
+    focus_point_lat = 3.4 # float | The latitude of the point to focus the search on. This will bias results toward the focus point. Requires `focus.point.lon`. (optional)
+    focus_point_lon = 3.4 # float | The longitude of the point to focus the search on. This will bias results toward the focus point. Requires `focus.point.lat`. (optional)
+    boundary_rect_min_lat = 3.4 # float | Defines the min latitude component of a bounding box to limit the search to. Requires all other `boundary.rect` parameters to be specified. (optional)
+    boundary_rect_max_lat = 3.4 # float | Defines the max latitude component of a bounding box to limit the search to. Requires all other `boundary.rect` parameters to be specified. (optional)
+    boundary_rect_min_lon = 3.4 # float | Defines the min longitude component of a bounding box to limit the search to. Requires all other `boundary.rect` parameters to be specified. (optional)
+    boundary_rect_max_lon = 3.4 # float | Defines the max longitude component of a bounding box to limit the search to. Requires all other `boundary.rect` parameters to be specified. (optional)
+    boundary_circle_lat = 3.4 # float | The latitude of the center of a circle to limit the search to. Requires `boundary.circle.lon`. (optional)
+    boundary_circle_lon = 3.4 # float | The longitude of the center of a circle to limit the search to. Requires `boundary.circle.lat`. (optional)
+    boundary_circle_radius = 3.4 # float | The radius of the circle (in kilometers) to limit the search to. Defaults to 50km if unspecified. (optional)
+    boundary_country = ['boundary_country_example'] # List[str] | A list of countries to limit the search to. These may be either full names (ex: Canada), or an ISO 3116-1 alpha-2 or alpha-3 code. Prefer ISO codes when possible. (optional)
+    boundary_gid = 'boundary_gid_example' # str | The Pelias GID of an area to limit the search to. (optional)
+    layers = [stadiamaps.PeliasLayer()] # List[PeliasLayer] | A list of layers to limit the search to. (optional)
+    sources = [stadiamaps.PeliasSource()] # List[PeliasSource] | A list of sources to limit the search to. (optional)
+    size = 56 # int | The maximum number of results to return. (optional)
+    lang = 'lang_example' # str | A BCP47 language tag which specifies a preference for localization of results. By default, results are in the default locale of the source data, but specifying a language will attempt to localize the results. Note that while a `langtag` (in RFC 5646 terms) can contain script, region, etc., only the `language` portion, an ISO 639 code, will be considered. So `en-US` and `en-GB` will both be treated as English. (optional)
+
+    try:
+        # Search and geocode quickly based on partial input.
+        api_response = api_instance.autocomplete(text, focus_point_lat=focus_point_lat, focus_point_lon=focus_point_lon, boundary_rect_min_lat=boundary_rect_min_lat, boundary_rect_max_lat=boundary_rect_max_lat, boundary_rect_min_lon=boundary_rect_min_lon, boundary_rect_max_lon=boundary_rect_max_lon, boundary_circle_lat=boundary_circle_lat, boundary_circle_lon=boundary_circle_lon, boundary_circle_radius=boundary_circle_radius, boundary_country=boundary_country, boundary_gid=boundary_gid, layers=layers, sources=sources, size=size, lang=lang)
+        print("The response of GeocodingApi->autocomplete:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling GeocodingApi->autocomplete: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **text** | **str**| The place name (address, venue name, etc.) to search for. | 
+ **focus_point_lat** | **float**| The latitude of the point to focus the search on. This will bias results toward the focus point. Requires &#x60;focus.point.lon&#x60;. | [optional] 
+ **focus_point_lon** | **float**| The longitude of the point to focus the search on. This will bias results toward the focus point. Requires &#x60;focus.point.lat&#x60;. | [optional] 
+ **boundary_rect_min_lat** | **float**| Defines the min latitude component of a bounding box to limit the search to. Requires all other &#x60;boundary.rect&#x60; parameters to be specified. | [optional] 
+ **boundary_rect_max_lat** | **float**| Defines the max latitude component of a bounding box to limit the search to. Requires all other &#x60;boundary.rect&#x60; parameters to be specified. | [optional] 
+ **boundary_rect_min_lon** | **float**| Defines the min longitude component of a bounding box to limit the search to. Requires all other &#x60;boundary.rect&#x60; parameters to be specified. | [optional] 
+ **boundary_rect_max_lon** | **float**| Defines the max longitude component of a bounding box to limit the search to. Requires all other &#x60;boundary.rect&#x60; parameters to be specified. | [optional] 
+ **boundary_circle_lat** | **float**| The latitude of the center of a circle to limit the search to. Requires &#x60;boundary.circle.lon&#x60;. | [optional] 
+ **boundary_circle_lon** | **float**| The longitude of the center of a circle to limit the search to. Requires &#x60;boundary.circle.lat&#x60;. | [optional] 
+ **boundary_circle_radius** | **float**| The radius of the circle (in kilometers) to limit the search to. Defaults to 50km if unspecified. | [optional] 
+ **boundary_country** | [**List[str]**](str.md)| A list of countries to limit the search to. These may be either full names (ex: Canada), or an ISO 3116-1 alpha-2 or alpha-3 code. Prefer ISO codes when possible. | [optional] 
+ **boundary_gid** | **str**| The Pelias GID of an area to limit the search to. | [optional] 
+ **layers** | [**List[PeliasLayer]**](PeliasLayer.md)| A list of layers to limit the search to. | [optional] 
+ **sources** | [**List[PeliasSource]**](PeliasSource.md)| A list of sources to limit the search to. | [optional] 
+ **size** | **int**| The maximum number of results to return. | [optional] 
+ **lang** | **str**| A BCP47 language tag which specifies a preference for localization of results. By default, results are in the default locale of the source data, but specifying a language will attempt to localize the results. Note that while a &#x60;langtag&#x60; (in RFC 5646 terms) can contain script, region, etc., only the &#x60;language&#x60; portion, an ISO 639 code, will be considered. So &#x60;en-US&#x60; and &#x60;en-GB&#x60; will both be treated as English. | [optional] 
+
+### Return type
+
+[**PeliasResponse**](PeliasResponse.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Returns the collection of autocomplete results. |  -  |
+**400** | Bad request |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **place**
+> PeliasResponse place(ids, lang=lang)
+
+Retrieve details of a place using its GID.
+
+Many search result components include an associated GID field (for example, an address may have a `localadmin_gid`). The place endpoint lets you look up these places directly by ID. Note that these IDs are not stable for all sources. See the [online documentation](https://docs.stadiamaps.com/geocoding-search-autocomplete/place-lookup/) for details.
+
+### Example
+
+* Api Key Authentication (ApiKeyAuth):
+```python
+import time
+import os
+import stadiamaps
+from stadiamaps.models.pelias_response import PeliasResponse
+from stadiamaps.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.stadiamaps.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = stadiamaps.Configuration(
+    host = "https://api.stadiamaps.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKeyAuth
+configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with stadiamaps.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = stadiamaps.GeocodingApi(api_client)
+    ids = ['ids_example'] # List[str] | A list of Pelias GIDs to search for.
+    lang = 'lang_example' # str | A BCP47 language tag which specifies a preference for localization of results. By default, results are in the default locale of the source data, but specifying a language will attempt to localize the results. Note that while a `langtag` (in RFC 5646 terms) can contain script, region, etc., only the `language` portion, an ISO 639 code, will be considered. So `en-US` and `en-GB` will both be treated as English. (optional)
+
+    try:
+        # Retrieve details of a place using its GID.
+        api_response = api_instance.place(ids, lang=lang)
+        print("The response of GeocodingApi->place:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling GeocodingApi->place: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ids** | [**List[str]**](str.md)| A list of Pelias GIDs to search for. | 
+ **lang** | **str**| A BCP47 language tag which specifies a preference for localization of results. By default, results are in the default locale of the source data, but specifying a language will attempt to localize the results. Note that while a &#x60;langtag&#x60; (in RFC 5646 terms) can contain script, region, etc., only the &#x60;language&#x60; portion, an ISO 639 code, will be considered. So &#x60;en-US&#x60; and &#x60;en-GB&#x60; will both be treated as English. | [optional] 
+
+### Return type
+
+[**PeliasResponse**](PeliasResponse.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Returns the collection of search results. |  -  |
+**400** | Bad request |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **reverse**
+> PeliasResponse reverse(point_lat, point_lon, boundary_circle_radius=boundary_circle_radius, layers=layers, sources=sources, boundary_country=boundary_country, boundary_gid=boundary_gid, size=size, lang=lang)
+
+Find places and addresses near geographic coordinates (reverse geocoding).
+
+Reverse geocoding and search finds places and addresses near any geographic coordinates.
+
+### Example
+
+* Api Key Authentication (ApiKeyAuth):
+```python
+import time
+import os
+import stadiamaps
+from stadiamaps.models.pelias_layer import PeliasLayer
+from stadiamaps.models.pelias_response import PeliasResponse
+from stadiamaps.models.pelias_source import PeliasSource
+from stadiamaps.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.stadiamaps.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = stadiamaps.Configuration(
+    host = "https://api.stadiamaps.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKeyAuth
+configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with stadiamaps.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = stadiamaps.GeocodingApi(api_client)
+    point_lat = 48.848268 # float | The latitude of the point at which to perform the search.
+    point_lon = 2.294471 # float | The longitude of the point at which to perform the search.
+    boundary_circle_radius = 3.4 # float | The radius of the circle (in kilometers) to limit the search to. Defaults to 50km if unspecified. (optional)
+    layers = [stadiamaps.PeliasLayer()] # List[PeliasLayer] | A list of layers to limit the search to. (optional)
+    sources = [stadiamaps.PeliasSource()] # List[PeliasSource] | A list of sources to limit the search to. (optional)
+    boundary_country = ['boundary_country_example'] # List[str] | A list of countries to limit the search to. These may be either full names (ex: Canada), or an ISO 3116-1 alpha-2 or alpha-3 code. Prefer ISO codes when possible. (optional)
+    boundary_gid = 'boundary_gid_example' # str | The Pelias GID of an area to limit the search to. (optional)
+    size = 56 # int | The maximum number of results to return. (optional)
+    lang = 'lang_example' # str | A BCP47 language tag which specifies a preference for localization of results. By default, results are in the default locale of the source data, but specifying a language will attempt to localize the results. Note that while a `langtag` (in RFC 5646 terms) can contain script, region, etc., only the `language` portion, an ISO 639 code, will be considered. So `en-US` and `en-GB` will both be treated as English. (optional)
+
+    try:
+        # Find places and addresses near geographic coordinates (reverse geocoding).
+        api_response = api_instance.reverse(point_lat, point_lon, boundary_circle_radius=boundary_circle_radius, layers=layers, sources=sources, boundary_country=boundary_country, boundary_gid=boundary_gid, size=size, lang=lang)
+        print("The response of GeocodingApi->reverse:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling GeocodingApi->reverse: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **point_lat** | **float**| The latitude of the point at which to perform the search. | 
+ **point_lon** | **float**| The longitude of the point at which to perform the search. | 
+ **boundary_circle_radius** | **float**| The radius of the circle (in kilometers) to limit the search to. Defaults to 50km if unspecified. | [optional] 
+ **layers** | [**List[PeliasLayer]**](PeliasLayer.md)| A list of layers to limit the search to. | [optional] 
+ **sources** | [**List[PeliasSource]**](PeliasSource.md)| A list of sources to limit the search to. | [optional] 
+ **boundary_country** | [**List[str]**](str.md)| A list of countries to limit the search to. These may be either full names (ex: Canada), or an ISO 3116-1 alpha-2 or alpha-3 code. Prefer ISO codes when possible. | [optional] 
+ **boundary_gid** | **str**| The Pelias GID of an area to limit the search to. | [optional] 
+ **size** | **int**| The maximum number of results to return. | [optional] 
+ **lang** | **str**| A BCP47 language tag which specifies a preference for localization of results. By default, results are in the default locale of the source data, but specifying a language will attempt to localize the results. Note that while a &#x60;langtag&#x60; (in RFC 5646 terms) can contain script, region, etc., only the &#x60;language&#x60; portion, an ISO 639 code, will be considered. So &#x60;en-US&#x60; and &#x60;en-GB&#x60; will both be treated as English. | [optional] 
+
+### Return type
+
+[**PeliasResponse**](PeliasResponse.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Returns the collection of search results. |  -  |
+**400** | Bad request |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **search**
+> PeliasResponse search(text, focus_point_lat=focus_point_lat, focus_point_lon=focus_point_lon, boundary_rect_min_lat=boundary_rect_min_lat, boundary_rect_max_lat=boundary_rect_max_lat, boundary_rect_min_lon=boundary_rect_min_lon, boundary_rect_max_lon=boundary_rect_max_lon, boundary_circle_lat=boundary_circle_lat, boundary_circle_lon=boundary_circle_lon, boundary_circle_radius=boundary_circle_radius, boundary_country=boundary_country, boundary_gid=boundary_gid, layers=layers, sources=sources, size=size, lang=lang)
+
+Search for location and other info using a place name or address (forward geocoding).
+
+The search endpoint lets you search for addresses, points of interest, and administrative areas. This is most commonly used for forward geocoding applications where you need to find the geographic coordinates of an address.
+
+### Example
+
+* Api Key Authentication (ApiKeyAuth):
+```python
+import time
+import os
+import stadiamaps
+from stadiamaps.models.pelias_layer import PeliasLayer
+from stadiamaps.models.pelias_response import PeliasResponse
+from stadiamaps.models.pelias_source import PeliasSource
+from stadiamaps.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.stadiamaps.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = stadiamaps.Configuration(
+    host = "https://api.stadiamaps.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKeyAuth
+configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with stadiamaps.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = stadiamaps.GeocodingApi(api_client)
+    text = '1600 Pennsylvania Ave NW' # str | The place name (address, venue name, etc.) to search for.
+    focus_point_lat = 3.4 # float | The latitude of the point to focus the search on. This will bias results toward the focus point. Requires `focus.point.lon`. (optional)
+    focus_point_lon = 3.4 # float | The longitude of the point to focus the search on. This will bias results toward the focus point. Requires `focus.point.lat`. (optional)
+    boundary_rect_min_lat = 3.4 # float | Defines the min latitude component of a bounding box to limit the search to. Requires all other `boundary.rect` parameters to be specified. (optional)
+    boundary_rect_max_lat = 3.4 # float | Defines the max latitude component of a bounding box to limit the search to. Requires all other `boundary.rect` parameters to be specified. (optional)
+    boundary_rect_min_lon = 3.4 # float | Defines the min longitude component of a bounding box to limit the search to. Requires all other `boundary.rect` parameters to be specified. (optional)
+    boundary_rect_max_lon = 3.4 # float | Defines the max longitude component of a bounding box to limit the search to. Requires all other `boundary.rect` parameters to be specified. (optional)
+    boundary_circle_lat = 3.4 # float | The latitude of the center of a circle to limit the search to. Requires `boundary.circle.lon`. (optional)
+    boundary_circle_lon = 3.4 # float | The longitude of the center of a circle to limit the search to. Requires `boundary.circle.lat`. (optional)
+    boundary_circle_radius = 3.4 # float | The radius of the circle (in kilometers) to limit the search to. Defaults to 50km if unspecified. (optional)
+    boundary_country = ['boundary_country_example'] # List[str] | A list of countries to limit the search to. These may be either full names (ex: Canada), or an ISO 3116-1 alpha-2 or alpha-3 code. Prefer ISO codes when possible. (optional)
+    boundary_gid = 'boundary_gid_example' # str | The Pelias GID of an area to limit the search to. (optional)
+    layers = [stadiamaps.PeliasLayer()] # List[PeliasLayer] | A list of layers to limit the search to. (optional)
+    sources = [stadiamaps.PeliasSource()] # List[PeliasSource] | A list of sources to limit the search to. (optional)
+    size = 56 # int | The maximum number of results to return. (optional)
+    lang = 'lang_example' # str | A BCP47 language tag which specifies a preference for localization of results. By default, results are in the default locale of the source data, but specifying a language will attempt to localize the results. Note that while a `langtag` (in RFC 5646 terms) can contain script, region, etc., only the `language` portion, an ISO 639 code, will be considered. So `en-US` and `en-GB` will both be treated as English. (optional)
+
+    try:
+        # Search for location and other info using a place name or address (forward geocoding).
+        api_response = api_instance.search(text, focus_point_lat=focus_point_lat, focus_point_lon=focus_point_lon, boundary_rect_min_lat=boundary_rect_min_lat, boundary_rect_max_lat=boundary_rect_max_lat, boundary_rect_min_lon=boundary_rect_min_lon, boundary_rect_max_lon=boundary_rect_max_lon, boundary_circle_lat=boundary_circle_lat, boundary_circle_lon=boundary_circle_lon, boundary_circle_radius=boundary_circle_radius, boundary_country=boundary_country, boundary_gid=boundary_gid, layers=layers, sources=sources, size=size, lang=lang)
+        print("The response of GeocodingApi->search:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling GeocodingApi->search: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **text** | **str**| The place name (address, venue name, etc.) to search for. | 
+ **focus_point_lat** | **float**| The latitude of the point to focus the search on. This will bias results toward the focus point. Requires &#x60;focus.point.lon&#x60;. | [optional] 
+ **focus_point_lon** | **float**| The longitude of the point to focus the search on. This will bias results toward the focus point. Requires &#x60;focus.point.lat&#x60;. | [optional] 
+ **boundary_rect_min_lat** | **float**| Defines the min latitude component of a bounding box to limit the search to. Requires all other &#x60;boundary.rect&#x60; parameters to be specified. | [optional] 
+ **boundary_rect_max_lat** | **float**| Defines the max latitude component of a bounding box to limit the search to. Requires all other &#x60;boundary.rect&#x60; parameters to be specified. | [optional] 
+ **boundary_rect_min_lon** | **float**| Defines the min longitude component of a bounding box to limit the search to. Requires all other &#x60;boundary.rect&#x60; parameters to be specified. | [optional] 
+ **boundary_rect_max_lon** | **float**| Defines the max longitude component of a bounding box to limit the search to. Requires all other &#x60;boundary.rect&#x60; parameters to be specified. | [optional] 
+ **boundary_circle_lat** | **float**| The latitude of the center of a circle to limit the search to. Requires &#x60;boundary.circle.lon&#x60;. | [optional] 
+ **boundary_circle_lon** | **float**| The longitude of the center of a circle to limit the search to. Requires &#x60;boundary.circle.lat&#x60;. | [optional] 
+ **boundary_circle_radius** | **float**| The radius of the circle (in kilometers) to limit the search to. Defaults to 50km if unspecified. | [optional] 
+ **boundary_country** | [**List[str]**](str.md)| A list of countries to limit the search to. These may be either full names (ex: Canada), or an ISO 3116-1 alpha-2 or alpha-3 code. Prefer ISO codes when possible. | [optional] 
+ **boundary_gid** | **str**| The Pelias GID of an area to limit the search to. | [optional] 
+ **layers** | [**List[PeliasLayer]**](PeliasLayer.md)| A list of layers to limit the search to. | [optional] 
+ **sources** | [**List[PeliasSource]**](PeliasSource.md)| A list of sources to limit the search to. | [optional] 
+ **size** | **int**| The maximum number of results to return. | [optional] 
+ **lang** | **str**| A BCP47 language tag which specifies a preference for localization of results. By default, results are in the default locale of the source data, but specifying a language will attempt to localize the results. Note that while a &#x60;langtag&#x60; (in RFC 5646 terms) can contain script, region, etc., only the &#x60;language&#x60; portion, an ISO 639 code, will be considered. So &#x60;en-US&#x60; and &#x60;en-GB&#x60; will both be treated as English. | [optional] 
+
+### Return type
+
+[**PeliasResponse**](PeliasResponse.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Returns the collection of search results. |  -  |
+**400** | Bad request |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **search_structured**
+> PeliasResponse search_structured(address=address, neighbourhood=neighbourhood, borough=borough, locality=locality, county=county, region=region, postalcode=postalcode, country=country, focus_point_lat=focus_point_lat, focus_point_lon=focus_point_lon, boundary_rect_min_lat=boundary_rect_min_lat, boundary_rect_max_lat=boundary_rect_max_lat, boundary_rect_min_lon=boundary_rect_min_lon, boundary_rect_max_lon=boundary_rect_max_lon, boundary_circle_lat=boundary_circle_lat, boundary_circle_lon=boundary_circle_lon, boundary_circle_radius=boundary_circle_radius, boundary_country=boundary_country, boundary_gid=boundary_gid, layers=layers, sources=sources, size=size, lang=lang)
+
+Find locations matching components (structured forward geocoding).
+
+The structured search endpoint lets you search for addresses, points of interest, and administrative areas. Rather than a single string which the API must infer meaning from, the structured search endpoint allows you to specify the known components upfront, which is useful in many forward geocoding workflows.
+
+### Example
+
+* Api Key Authentication (ApiKeyAuth):
+```python
+import time
+import os
+import stadiamaps
+from stadiamaps.models.pelias_layer import PeliasLayer
+from stadiamaps.models.pelias_response import PeliasResponse
+from stadiamaps.models.pelias_source import PeliasSource
+from stadiamaps.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.stadiamaps.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = stadiamaps.Configuration(
+    host = "https://api.stadiamaps.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKeyAuth
+configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with stadiamaps.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = stadiamaps.GeocodingApi(api_client)
+    address = '11 Wall Street' # str | A street name, optionally with a house number. (optional)
+    neighbourhood = 'Financial District' # str | Varies by area, but has a locally specific meaning (NOT always an official administrative unit). (optional)
+    borough = 'Manhattan' # str | A unit within a city (not widely used, but present in places like NYC and Mexico City). (optional)
+    locality = 'New York' # str | The city, village, town, etc. that the place/address is part of. (optional)
+    county = 'New York County' # str | Administrative divisions between localities and regions. Not commonly used as input to structured geocoding. (optional)
+    region = 'New York' # str | Typically the first administrative division within a country. For example, a US state or a Canadian province. (optional)
+    postalcode = '10005' # str | A mail sorting code. (optional)
+    country = 'USA' # str | A full name (ex: Canada), or a 2 or 3 character ISO code. Prefer ISO codes when possible. (optional)
+    focus_point_lat = 3.4 # float | The latitude of the point to focus the search on. This will bias results toward the focus point. Requires `focus.point.lon`. (optional)
+    focus_point_lon = 3.4 # float | The longitude of the point to focus the search on. This will bias results toward the focus point. Requires `focus.point.lat`. (optional)
+    boundary_rect_min_lat = 3.4 # float | Defines the min latitude component of a bounding box to limit the search to. Requires all other `boundary.rect` parameters to be specified. (optional)
+    boundary_rect_max_lat = 3.4 # float | Defines the max latitude component of a bounding box to limit the search to. Requires all other `boundary.rect` parameters to be specified. (optional)
+    boundary_rect_min_lon = 3.4 # float | Defines the min longitude component of a bounding box to limit the search to. Requires all other `boundary.rect` parameters to be specified. (optional)
+    boundary_rect_max_lon = 3.4 # float | Defines the max longitude component of a bounding box to limit the search to. Requires all other `boundary.rect` parameters to be specified. (optional)
+    boundary_circle_lat = 3.4 # float | The latitude of the center of a circle to limit the search to. Requires `boundary.circle.lon`. (optional)
+    boundary_circle_lon = 3.4 # float | The longitude of the center of a circle to limit the search to. Requires `boundary.circle.lat`. (optional)
+    boundary_circle_radius = 3.4 # float | The radius of the circle (in kilometers) to limit the search to. Defaults to 50km if unspecified. (optional)
+    boundary_country = ['boundary_country_example'] # List[str] | A list of countries to limit the search to. These may be either full names (ex: Canada), or an ISO 3116-1 alpha-2 or alpha-3 code. Prefer ISO codes when possible. (optional)
+    boundary_gid = 'boundary_gid_example' # str | The Pelias GID of an area to limit the search to. (optional)
+    layers = [stadiamaps.PeliasLayer()] # List[PeliasLayer] | A list of layers to limit the search to. (optional)
+    sources = [stadiamaps.PeliasSource()] # List[PeliasSource] | A list of sources to limit the search to. (optional)
+    size = 56 # int | The maximum number of results to return. (optional)
+    lang = 'lang_example' # str | A BCP47 language tag which specifies a preference for localization of results. By default, results are in the default locale of the source data, but specifying a language will attempt to localize the results. Note that while a `langtag` (in RFC 5646 terms) can contain script, region, etc., only the `language` portion, an ISO 639 code, will be considered. So `en-US` and `en-GB` will both be treated as English. (optional)
+
+    try:
+        # Find locations matching components (structured forward geocoding).
+        api_response = api_instance.search_structured(address=address, neighbourhood=neighbourhood, borough=borough, locality=locality, county=county, region=region, postalcode=postalcode, country=country, focus_point_lat=focus_point_lat, focus_point_lon=focus_point_lon, boundary_rect_min_lat=boundary_rect_min_lat, boundary_rect_max_lat=boundary_rect_max_lat, boundary_rect_min_lon=boundary_rect_min_lon, boundary_rect_max_lon=boundary_rect_max_lon, boundary_circle_lat=boundary_circle_lat, boundary_circle_lon=boundary_circle_lon, boundary_circle_radius=boundary_circle_radius, boundary_country=boundary_country, boundary_gid=boundary_gid, layers=layers, sources=sources, size=size, lang=lang)
+        print("The response of GeocodingApi->search_structured:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling GeocodingApi->search_structured: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **address** | **str**| A street name, optionally with a house number. | [optional] 
+ **neighbourhood** | **str**| Varies by area, but has a locally specific meaning (NOT always an official administrative unit). | [optional] 
+ **borough** | **str**| A unit within a city (not widely used, but present in places like NYC and Mexico City). | [optional] 
+ **locality** | **str**| The city, village, town, etc. that the place/address is part of. | [optional] 
+ **county** | **str**| Administrative divisions between localities and regions. Not commonly used as input to structured geocoding. | [optional] 
+ **region** | **str**| Typically the first administrative division within a country. For example, a US state or a Canadian province. | [optional] 
+ **postalcode** | **str**| A mail sorting code. | [optional] 
+ **country** | **str**| A full name (ex: Canada), or a 2 or 3 character ISO code. Prefer ISO codes when possible. | [optional] 
+ **focus_point_lat** | **float**| The latitude of the point to focus the search on. This will bias results toward the focus point. Requires &#x60;focus.point.lon&#x60;. | [optional] 
+ **focus_point_lon** | **float**| The longitude of the point to focus the search on. This will bias results toward the focus point. Requires &#x60;focus.point.lat&#x60;. | [optional] 
+ **boundary_rect_min_lat** | **float**| Defines the min latitude component of a bounding box to limit the search to. Requires all other &#x60;boundary.rect&#x60; parameters to be specified. | [optional] 
+ **boundary_rect_max_lat** | **float**| Defines the max latitude component of a bounding box to limit the search to. Requires all other &#x60;boundary.rect&#x60; parameters to be specified. | [optional] 
+ **boundary_rect_min_lon** | **float**| Defines the min longitude component of a bounding box to limit the search to. Requires all other &#x60;boundary.rect&#x60; parameters to be specified. | [optional] 
+ **boundary_rect_max_lon** | **float**| Defines the max longitude component of a bounding box to limit the search to. Requires all other &#x60;boundary.rect&#x60; parameters to be specified. | [optional] 
+ **boundary_circle_lat** | **float**| The latitude of the center of a circle to limit the search to. Requires &#x60;boundary.circle.lon&#x60;. | [optional] 
+ **boundary_circle_lon** | **float**| The longitude of the center of a circle to limit the search to. Requires &#x60;boundary.circle.lat&#x60;. | [optional] 
+ **boundary_circle_radius** | **float**| The radius of the circle (in kilometers) to limit the search to. Defaults to 50km if unspecified. | [optional] 
+ **boundary_country** | [**List[str]**](str.md)| A list of countries to limit the search to. These may be either full names (ex: Canada), or an ISO 3116-1 alpha-2 or alpha-3 code. Prefer ISO codes when possible. | [optional] 
+ **boundary_gid** | **str**| The Pelias GID of an area to limit the search to. | [optional] 
+ **layers** | [**List[PeliasLayer]**](PeliasLayer.md)| A list of layers to limit the search to. | [optional] 
+ **sources** | [**List[PeliasSource]**](PeliasSource.md)| A list of sources to limit the search to. | [optional] 
+ **size** | **int**| The maximum number of results to return. | [optional] 
+ **lang** | **str**| A BCP47 language tag which specifies a preference for localization of results. By default, results are in the default locale of the source data, but specifying a language will attempt to localize the results. Note that while a &#x60;langtag&#x60; (in RFC 5646 terms) can contain script, region, etc., only the &#x60;language&#x60; portion, an ISO 639 code, will be considered. So &#x60;en-US&#x60; and &#x60;en-GB&#x60; will both be treated as English. | [optional] 
+
+### Return type
+
+[**PeliasResponse**](PeliasResponse.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Returns the collection of search results. |  -  |
+**400** | Bad request |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
