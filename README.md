@@ -18,6 +18,7 @@ The next release is scheduled to rename `python-nextgen` to `python`.
 ## Installation & Usage
 ### pip install
 
+TODO: PyPi publish
 
 ```shell
 pip install git+https://github.com/GIT_USER_ID/GIT_REPO_ID.git
