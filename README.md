@@ -230,7 +230,7 @@ To regenerate the package with an updated API spec, run the following command (m
 `X.Y.Z` with the new version number!):
 
 ```shell
-openapi-generator generate -i https://api.stadiamaps.com/openapi.yaml -g python-nextgen --strict-spec=true -o . -p disallowAdditionalPropertiesIfNotPresent=false -p packageName=stadiamaps -p packageUrl=https://docs.stadiamaps/ -p packageVersion=X.Y.Z
+openapi-generator generate -i https://api.stadiamaps.com/openapi.yaml -g python-nextgen --strict-spec=true -o . -p disallowAdditionalPropertiesIfNotPresent=false -p packageName=stadiamaps -p packageUrl=https://docs.stadiamaps.com/ -p packageVersion=X.Y.Z
 ```
 
 ### Caveats

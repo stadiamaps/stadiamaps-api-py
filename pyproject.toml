@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "stadiamaps"
-version = "0.1.0"
+version = "0.2.0"
 description = "Stadia Maps Geospatial APIs"
 authors = ["Stadia Maps Support <support@stadiamaps.com>"]
 license = "BSD-3-Clause"
