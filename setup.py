@@ -12,14 +12,8 @@
     Do not edit the class manually.
 """
 
-from os import path
+
 from setuptools import setup, find_packages  # noqa: H301
-
-here = path.abspath(path.dirname(__file__))
-
-# Get the long description from the README file
-with open(path.join(here, "README.md")) as fp:
-    long_description = fp.read()
 
 # To install the library, run the following
 #
@@ -28,7 +22,7 @@ with open(path.join(here, "README.md")) as fp:
 # prerequisite: setuptools
 # http://pypi.python.org/pypi/setuptools
 NAME = "stadiamaps"
-VERSION = "0.3.0"
+VERSION = "0.4.0"
 PYTHON_REQUIRES = ">=3.7"
 REQUIRES = [
     "urllib3 >= 1.25.3",
@@ -49,5 +43,71 @@ setup(
     packages=find_packages(exclude=["test", "tests"]),
     include_package_data=True,
     long_description_content_type='text/markdown',
-    long_description=long_description
+    long_description="""
+# Stadia Maps Python API Client
+
+The Stadia Maps Geospatial APIs provide you with the data you need to build awesome applications.
+
+For more information about the API, please visit [https://docs.stadiamaps.com](https://docs.stadiamaps.com)
+
+## Installation & Usage
+### pip install
+
+```shell
+pip install stadiamaps
+```
+
+### Setuptools
+
+Install via [Setuptools](http://pypi.python.org/pypi/setuptools).
+
+```shell
+python setup.py install --user
+```
+(or `sudo python setup.py install` to install the package for all users)
+
+### Tests
+
+Execute `pytest` to run the tests. These are run automatically via CI.
+
+## Getting Started
+
+Please follow the [installation procedure](#installation--usage) and then run the following:
+
+```python
+import os
+import stadiamaps
+from stadiamaps.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.stadiamaps.com
+# You can also use our EU endpoint to keep traffic within the EU by setting
+# host to https://api-eu.stadiamaps.com.
+# See configuration.py for a list of all supported configuration parameters.
+configuration = stadiamaps.Configuration()
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization. This example assumes it is injected via an environment
+# variable, but you can provide it in other ways as well.
+configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
+
+# Enter a context with an instance of the API client
+with stadiamaps.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = stadiamaps.GeocodingApi(api_client)
+    text = 'Põhja pst 27a' # str | The place name (address, venue name, etc.) to search for.
+
+    try:
+        # Search and geocode quickly based on partial input.
+        api_response = api_instance.autocomplete(text)
+        print("The response of GeocodingApi->autocomplete:\n")
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling GeocodingApi->autocomplete: %s\n" % e)
+```
+    """
 )

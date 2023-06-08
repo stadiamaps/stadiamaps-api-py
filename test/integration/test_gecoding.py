@@ -4,7 +4,7 @@ import unittest
 import stadiamaps
 
 
-class TestEndNode(unittest.TestCase):
+class TestGeocoding(unittest.TestCase):
     def setUp(self):
         self.configuration = stadiamaps.Configuration()
         self.configuration.api_key['ApiKeyAuth'] = os.environ["STADIA_API_KEY"]
