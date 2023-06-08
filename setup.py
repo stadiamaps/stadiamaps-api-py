@@ -45,6 +45,5 @@ setup(
     long_description_content_type='text/markdown',
     long_description="""\
     The Stadia Maps Geospatial APIs provide you with the data you need to build awesome applications.  # noqa: E501
-    """,
-    license="BSD"
+    """
 )
