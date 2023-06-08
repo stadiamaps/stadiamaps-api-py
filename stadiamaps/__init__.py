@@ -15,7 +15,7 @@
 """
 
 
-__version__ = "0.2.0"
+__version__ = "0.3.0"
 
 # import apis into sdk package
 from stadiamaps.api.geocoding_api import GeocodingApi

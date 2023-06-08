@@ -28,7 +28,7 @@ with open(path.join(here, "README.md")) as fp:
 # prerequisite: setuptools
 # http://pypi.python.org/pypi/setuptools
 NAME = "stadiamaps"
-VERSION = "0.2.0"
+VERSION = "0.3.0"
 PYTHON_REQUIRES = ">=3.7"
 REQUIRES = [
     "urllib3 >= 1.25.3",
