@@ -7,15 +7,8 @@ For more information about the API, please visit [https://docs.stadiamaps.com](h
 ## Installation & Usage
 ### pip install
 
-TODO: PyPi publish
-
 ```shell
-pip install git+https://github.com/GIT_USER_ID/GIT_REPO_ID.git
-```
-
-Then import the package:
-```python
-import stadiamaps
+pip install stadiamaps
 ```
 
 ### Setuptools
@@ -26,11 +19,6 @@ Install via [Setuptools](http://pypi.python.org/pypi/setuptools).
 python setup.py install --user
 ```
 (or `sudo python setup.py install` to install the package for all users)
-
-Then import the package:
-```python
-import stadiamaps
-```
 
 ### Tests
 

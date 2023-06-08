@@ -21,5 +21,3 @@ class TestEndNode(unittest.TestCase):
             # Search and geocode quickly based on partial input.
             api_response = api_instance.autocomplete(text)
             self.assertEqual("Estonia", api_response.features[0].properties.country)
-            # print("The response of GeocodingApi->autocomplete:\n")
-            # pprint(api_response)
