@@ -39,6 +39,6 @@ The auto-generated model for time/distance matrix responses is broken. Specifica
 it does not correctly generate parsing code correctly for `sources`, `targets`, or
 `sources_to_targets`. We have gone ahead and applied a quick-and-evil patch to
 the auto-generated code. Be careful that you discard any changes when regenerating
-models until the upstream fixes the issue (not counting on that happening soon).
+models until the upstream fixes the issue ([link](https://github.com/OpenAPITools/openapi-generator/issues/15816)).
 If you accidentally clobber these patches, the oversight should be caught by the
 integration tests.

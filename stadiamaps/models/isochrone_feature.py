@@ -39,8 +39,8 @@ class IsochroneFeature(BaseModel):
         if value is None:
             return value
 
-        if value not in ('LineString', 'Polygon'):
-            raise ValueError("must be one of enum values ('LineString', 'Polygon')")
+        if value not in ('Feature'):
+            raise ValueError("must be one of enum values ('Feature')")
         return value
 
     class Config:

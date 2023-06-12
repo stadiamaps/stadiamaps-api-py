@@ -81,3 +81,66 @@ class TestRouting(unittest.TestCase):
             self.assertEqual([req.targets], res.targets)
             self.assertGreaterEqual(len(res.sources_to_targets), 1)
             self.assertEqual("kilometers", res.units)
+
+    def testNearestRoads(self):
+        with stadiamaps.ApiClient(self.configuration) as api_client:
+            api_instance = stadiamaps.RoutingApi(api_client)
+
+            req = stadiamaps.NearestRoadsRequest(
+                locations=[location_a]
+            )
+            res = api_instance.nearest_roads(req)
+            self.assertGreaterEqual(len(res), 1)
+            self.assertGreaterEqual(len(res[0].edges), 1)
+
+    def testIsochrone(self):
+        with stadiamaps.ApiClient(self.configuration) as api_client:
+            api_instance = stadiamaps.RoutingApi(api_client)
+
+            req = stadiamaps.IsochroneRequest(
+                id="isochrone",
+                locations=[location_a],
+                costing=stadiamaps.IsochroneCostingModel.PEDESTRIAN,
+                contours=[
+                    stadiamaps.Contour(time=5, color="aabbcc")
+                ],
+                polygons=True,
+            )
+            res = api_instance.isochrone(req)
+            self.assertEqual(req.id, res.id)
+            self.assertGreaterEqual(len(res.features), 1)
+
+    def testMapMatch(self):
+        with stadiamaps.ApiClient(self.configuration) as api_client:
+            api_instance = stadiamaps.RoutingApi(api_client)
+
+            req = stadiamaps.MapMatchRequest(
+                id="map_match",
+                encoded_polyline="_grbgAh~{nhF?lBAzBFvBHxBEtBKdB?fB@dBZdBb@hBh@jBb@x@\\|@x@pB\\x@v@hBl@nBPbCXtBn@|@z@ZbAEbAa@~@q@z@QhA]pAUpAVhAPlAWtASpAAdA[dASdAQhAIlARjANnAZhAf@n@`A?lB^nCRbA\\xB`@vBf@tBTbCFbARzBZvBThBRnBNrBP`CHbCF`CNdCb@vBX`ARlAJfADhA@dAFdAP`AR`Ah@hBd@bBl@rBV|B?vB]tBCvBBhAF`CFnBXtAVxAVpAVtAb@|AZ`Bd@~BJfA@fAHdADhADhABjAGzAInAAjAB|BNbCR|BTjBZtB`@lBh@lB\\|Bl@rBXtBN`Al@g@t@?nAA~AKvACvAAlAMdAU`Ac@hAShAI`AJ`AIdAi@bAu@|@k@p@]p@a@bAc@z@g@~@Ot@Bz@f@X`BFtBXdCLbAf@zBh@fBb@xAb@nATjAKjAW`BI|AEpAHjAPdAAfAGdAFjAv@p@XlAVnA?~A?jAInAPtAVxAXnAf@tBDpBJpBXhBJfBDpAZ|Ax@pAz@h@~@lA|@bAnAd@hAj@tAR~AKxAc@xAShA]hAIdAAjA]~A[v@BhB?dBSv@Ct@CvAI~@Oz@Pv@dAz@lAj@~A^`B^|AXvAVpAXdBh@~Ap@fCh@hB\\zBN`Aj@xBFdA@jALbAPbAJdAHdAJbAHbAHfAJhALbA\\lBTvBAdC@bC@jCKjASbC?`CM`CDpB\\xAj@tB\\fA\\bAVfAJdAJbAXz@L|BO`AOdCDdA@~B\\z@l@v@l@v@l@r@j@t@b@x@b@r@z@jBVfCJdAJdANbCPfCF|BRhBS~BS`AYbAe@~BQdA",
+                costing=stadiamaps.MapMatchCostingModel.PEDESTRIAN,
+                directions_options=stadiamaps.DirectionsOptions(units=stadiamaps.DistanceUnit.MI),
+                linear_references=True,
+            )
+            res = api_instance.map_match(req)
+            self.assertEqual(req.id, res.id)
+            self.assertEqual(0, res.trip.status)
+            self.assertEqual("miles", res.trip.units)
+            self.assertEqual(len(res.trip.legs), 1)
+
+    def testTraceAttributes(self):
+        with stadiamaps.ApiClient(self.configuration) as api_client:
+            api_instance = stadiamaps.RoutingApi(api_client)
+
+            req = stadiamaps.TraceAttributesRequest(
+                id="trace",
+                encoded_polyline="_grbgAh~{nhF?lBAzBFvBHxBEtBKdB?fB@dBZdBb@hBh@jBb@x@\\|@x@pB\\x@v@hBl@nBPbCXtBn@|@z@ZbAEbAa@~@q@z@QhA]pAUpAVhAPlAWtASpAAdA[dASdAQhAIlARjANnAZhAf@n@`A?lB^nCRbA\\xB`@vBf@tBTbCFbARzBZvBThBRnBNrBP`CHbCF`CNdCb@vBX`ARlAJfADhA@dAFdAP`AR`Ah@hBd@bBl@rBV|B?vB]tBCvBBhAF`CFnBXtAVxAVpAVtAb@|AZ`Bd@~BJfA@fAHdADhADhABjAGzAInAAjAB|BNbCR|BTjBZtB`@lBh@lB\\|Bl@rBXtBN`Al@g@t@?nAA~AKvACvAAlAMdAU`Ac@hAShAI`AJ`AIdAi@bAu@|@k@p@]p@a@bAc@z@g@~@Ot@Bz@f@X`BFtBXdCLbAf@zBh@fBb@xAb@nATjAKjAW`BI|AEpAHjAPdAAfAGdAFjAv@p@XlAVnA?~A?jAInAPtAVxAXnAf@tBDpBJpBXhBJfBDpAZ|Ax@pAz@h@~@lA|@bAnAd@hAj@tAR~AKxAc@xAShA]hAIdAAjA]~A[v@BhB?dBSv@Ct@CvAI~@Oz@Pv@dAz@lAj@~A^`B^|AXvAVpAXdBh@~Ap@fCh@hB\\zBN`Aj@xBFdA@jALbAPbAJdAHdAJbAHbAHfAJhALbA\\lBTvBAdC@bC@jCKjASbC?`CM`CDpB\\xAj@tB\\fA\\bAVfAJdAJbAXz@L|BO`AOdCDdA@~B\\z@l@v@l@v@l@r@j@t@b@x@b@r@z@jBVfCJdAJdANbCPfCF|BRhBS~BS`AYbAe@~BQdA",
+                costing=stadiamaps.MapMatchCostingModel.PEDESTRIAN,
+                directions_options=stadiamaps.DirectionsOptions(units=stadiamaps.DistanceUnit.MI),
+            )
+            res = api_instance.trace_attributes(req)
+            self.assertEqual(req.id, res.id)
+            self.assertEqual("miles", res.units)
+            self.assertGreaterEqual(len(res.admins), 1)
+            self.assertGreater(len(res.edges), 1)
+            self.assertGreater(len(res.matched_points), 1)
+            self.assertGreater(len(res.shape), 1)
