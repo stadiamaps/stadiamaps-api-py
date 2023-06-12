@@ -44,6 +44,13 @@ class PeliasLayer(str, Enum):
     NEIGHBOURHOOD = 'neighbourhood'
     POSTALCODE = 'postalcode'
     COARSE = 'coarse'
+    DEPENDENCY = 'dependency'
+    MACROHOOD = 'macrohood'
+    MARINEAREA = 'marinearea'
+    DISPUTED = 'disputed'
+    EMPIRE = 'empire'
+    CONTINENT = 'continent'
+    OCEAN = 'ocean'
 
     @classmethod
     def from_json(cls, json_str: str) -> PeliasLayer:

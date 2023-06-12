@@ -35,8 +35,8 @@ from stadiamaps.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.stadiamaps.com
-# You can also use our EU endpoint to keep traffic within the EU by setting
-# host to https://api-eu.stadiamaps.com.
+# You can also use our EU endpoint to keep traffic within the EU like sq:
+# configuration = stadiamaps.Configuration(host="https://api-eu.stadiamaps.com")
 # See configuration.py for a list of all supported configuration parameters.
 configuration = stadiamaps.Configuration()
 
