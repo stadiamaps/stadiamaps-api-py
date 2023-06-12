@@ -7,7 +7,7 @@ openapi-generator via brew. The command invocation will vary for npm, Docker, an
 arguments should remain the same.
 
 ```shell
-openapi-generator generate -i https://api.stadiamaps.com/openapi.yaml -g python-nextgen --strict-spec=true -o . -p disallowAdditionalPropertiesIfNotPresent=false -p packageName=stadiamaps -p packageUrl=https://docs.stadiamaps.com/ -p packageVersion=X.Y.Z
+openapi-generator generate -i https://api.stadiamaps.com/openapi.yaml -g python-nextgen --strict-spec=true -o . -p disallowAdditionalPropertiesIfNotPresent=false -p packageName=stadiamaps -p packageUrl=https://github.com/stadiamaps/stadiamaps-api-py -p packageVersion=X.Y.Z
 ```
 
 ## Tests
