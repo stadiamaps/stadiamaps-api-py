@@ -26,7 +26,19 @@ Sorry, not sorry; the automatic generator doesn't support enough configuration.
 When making schema changes, you may need to temporarily remove [README.md](README.md) from
 [.openapi-generator-ignore](.openapi-generator-ignore) and merge in the updated docs.
 
-The current release (6.6.0) of the generator's `python` generator is broken, but `python-nextgen` works.
-The next release is scheduled to rename `python-nextgen` to `python`. This is reflected in the command above.
+### Generator bugs
 
-The auto-generated code (as of generator 6.6.0) does not pass flake8, so we have disabled the checks.
+The following info is current as of v6.6.0.
+
+The current release of the generator's `python` generator is completely broken, but `python-nextgen` works.
+The next release is scheduled to rename `python-nextgen` to `python`.
+
+The auto-generated code does not pass flake8, so we have disabled the checks.
+
+The auto-generated model for time/distance matrix responses is broken. Specifically,
+it does not correctly generate parsing code correctly for `sources`, `targets`, or
+`sources_to_targets`. We have gone ahead and applied a quick-and-evil patch to
+the auto-generated code. Be careful that you discard any changes when regenerating
+models until the upstream fixes the issue (not counting on that happening soon).
+If you accidentally clobber these patches, the oversight should be caught by the
+integration tests.

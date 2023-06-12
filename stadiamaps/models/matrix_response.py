@@ -110,9 +110,9 @@ class MatrixResponse(BaseModel):
 
         _obj = MatrixResponse.parse_obj({
             "id": obj.get("id"),
-            "sources": [List[Coordinate].from_dict(_item) for _item in obj.get("sources")] if obj.get("sources") is not None else None,
-            "targets": [List[Coordinate].from_dict(_item) for _item in obj.get("targets")] if obj.get("targets") is not None else None,
-            "sources_to_targets": [List[MatrixDistance].from_dict(_item) for _item in obj.get("sources_to_targets")] if obj.get("sources_to_targets") is not None else None,
+            "sources": [[Coordinate.from_dict(_item) for _item in _items] for _items in obj.get("sources")] if obj.get("sources") is not None else None,
+            "targets": [[Coordinate.from_dict(_item) for _item in _items] for _items in obj.get("targets")] if obj.get("targets") is not None else None,
+            "sources_to_targets": [[MatrixDistance.from_dict(_item) for _item in _items] for _items in obj.get("sources_to_targets")] if obj.get("sources_to_targets") is not None else None,
             "warnings": [Warning.from_dict(_item) for _item in obj.get("warnings")] if obj.get("warnings") is not None else None,
             "units": obj.get("units")
         })
