@@ -7,7 +7,7 @@ import stadiamaps
 class TestGeospatial(unittest.TestCase):
     def setUp(self):
         self.configuration = stadiamaps.Configuration()
-        self.configuration.api_key['ApiKeyAuth'] = os.environ["STADIA_API_KEY"]
+        self.configuration.api_key["ApiKeyAuth"] = os.environ["STADIA_API_KEY"]
 
     def tearDown(self):
         pass
