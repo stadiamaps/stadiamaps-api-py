@@ -22,7 +22,7 @@ from setuptools import setup, find_packages  # noqa: H301
 # prerequisite: setuptools
 # http://pypi.python.org/pypi/setuptools
 NAME = "stadiamaps"
-VERSION = "1.0.1"
+VERSION = "1.0.2"
 PYTHON_REQUIRES = ">=3.7"
 REQUIRES = [
     "urllib3 >= 1.25.3",
@@ -81,8 +81,8 @@ from stadiamaps.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.stadiamaps.com
-# You can also use our EU endpoint to keep traffic within the EU by setting
-# host to https://api-eu.stadiamaps.com.
+# You can also use our EU endpoint to keep traffic within the EU like sq:
+# configuration = stadiamaps.Configuration(host="https://api-eu.stadiamaps.com")
 # See configuration.py for a list of all supported configuration parameters.
 configuration = stadiamaps.Configuration()
 
@@ -92,14 +92,14 @@ configuration = stadiamaps.Configuration()
 # satisfies your auth use case.
 
 # Configure API key authorization. This example assumes it is injected via an environment
-# variable, but you can provide it in other ways as well.
+# variable.
 configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 
 # Enter a context with an instance of the API client
 with stadiamaps.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = stadiamaps.GeocodingApi(api_client)
-    text = 'Põhja pst 27a' # str | The place name (address, venue name, etc.) to search for.
+    text = "Põhja pst 27a" # str | The place name (address, venue name, etc.) to search for.
 
     try:
         # Search and geocode quickly based on partial input.

@@ -46,14 +46,14 @@ configuration = stadiamaps.Configuration()
 # satisfies your auth use case.
 
 # Configure API key authorization. This example assumes it is injected via an environment
-# variable, but you can provide it in other ways as well.
+# variable.
 configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 
 # Enter a context with an instance of the API client
 with stadiamaps.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = stadiamaps.GeocodingApi(api_client)
-    text = 'Põhja pst 27a' # str | The place name (address, venue name, etc.) to search for.
+    text = "Põhja pst 27a" # str | The place name (address, venue name, etc.) to search for.
 
     try:
         # Search and geocode quickly based on partial input.
