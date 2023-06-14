@@ -18,7 +18,7 @@ class TestGeocoding(unittest.TestCase):
         with stadiamaps.ApiClient(self.configuration) as api_client:
             api_instance = stadiamaps.GeocodingApi(api_client)
 
-            res = api_instance.autocomplete(address)
+            res = api_instance.autocomplete(text=address)
             self.assertEqual("Estonia", res.features[0].properties.country)
             self.assertEqual("address", res.features[0].properties.layer)
 
@@ -34,7 +34,7 @@ class TestGeocoding(unittest.TestCase):
         with stadiamaps.ApiClient(self.configuration) as api_client:
             api_instance = stadiamaps.GeocodingApi(api_client)
 
-            res = api_instance.search_structured(address, country="Estonia")
+            res = api_instance.search_structured(address=address, country="Estonia")
             self.assertEqual("Estonia", res.features[0].properties.country)
             self.assertEqual("address", res.features[0].properties.layer)
 

@@ -22,7 +22,7 @@ from setuptools import setup, find_packages  # noqa: H301
 # prerequisite: setuptools
 # http://pypi.python.org/pypi/setuptools
 NAME = "stadiamaps"
-VERSION = "1.0.2"
+VERSION = "1.0.3"
 PYTHON_REQUIRES = ">=3.7"
 REQUIRES = [
     "urllib3 >= 1.25.3",
@@ -81,15 +81,10 @@ from stadiamaps.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.stadiamaps.com
-# You can also use our EU endpoint to keep traffic within the EU like sq:
+# You can also use our EU endpoint to keep traffic within the EU like so:
 # configuration = stadiamaps.Configuration(host="https://api-eu.stadiamaps.com")
 # See configuration.py for a list of all supported configuration parameters.
 configuration = stadiamaps.Configuration()
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
 
 # Configure API key authorization. This example assumes it is injected via an environment
 # variable.
