@@ -23,7 +23,7 @@ Name | Type | Description | Notes
 **street** | **str** |  | [optional] 
 **housenumber** | **str** |  | [optional] 
 **locality** | **str** | The city, village, town, etc. that the place / address is part of. Note that values may not always match postal or local conventions perfectly. | [optional] 
-**lecality_gid** | **str** |  | [optional] 
+**locality_gid** | **str** |  | [optional] 
 **county** | **str** | Administrative divisions between localities and regions. Useful for disambiguating nearby results with similar names. | [optional] 
 **region** | **str** | Typically the first administrative division within a country. For example, a US state or a Canadian province. | [optional] 
 **region_a** | **str** | The abbreviation for the region. | [optional] 

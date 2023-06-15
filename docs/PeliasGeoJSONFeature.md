@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **type** | **str** |  | 
 **geometry** | [**GeoJSONPoint**](GeoJSONPoint.md) |  | 
 **properties** | [**PeliasGeoJSONProperties**](PeliasGeoJSONProperties.md) |  | [optional] 
+**bbox** | **List[float]** | An array of 4 floating point numbers representing the (W, S, E, N) extremes of the features found. | [optional] 
 **id** | **str** |  | [optional] 
 
 ## Example
