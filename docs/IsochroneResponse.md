@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** |  | [optional] 
 **features** | [**List[IsochroneFeature]**](IsochroneFeature.md) |  | 
+**type** | **str** |  | 
 
 ## Example
 
