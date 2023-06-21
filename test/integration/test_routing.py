@@ -46,10 +46,11 @@ class TestRouting(unittest.TestCase):
                 locations=[
                     stadiamaps.Coordinate.from_dict(location_a),
                     stadiamaps.Coordinate.from_dict(location_b),
-                    stadiamaps.Coordinate.from_dict(location_c)
+                    stadiamaps.Coordinate.from_dict(location_c),
+                    stadiamaps.Coordinate.from_dict(location_a),
                 ],
                 costing=stadiamaps.CostingModel.AUTO,
-                costing_options=stadiamaps.CostingOptions(auto=stadiamaps.AutoCostingOptions(use_tolls=1)),
+                costing_options=stadiamaps.CostingOptions(auto=stadiamaps.AutoCostingOptions(use_tolls=0.7)),
                 directions_options=stadiamaps.DirectionsOptions(units=stadiamaps.DistanceUnit.MI)
             )
 
