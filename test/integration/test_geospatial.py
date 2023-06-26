@@ -23,9 +23,21 @@ class TestGeospatial(unittest.TestCase):
         with stadiamaps.ApiClient(self.configuration) as api_client:
             api_instance = stadiamaps.GeospatialApi(api_client)
 
-            req = stadiamaps.HeightRequest(id="Seoul", shape=[stadiamaps.Coordinate(lat=37.56, lon=126.99)])
+            req = stadiamaps.HeightRequest(id="Seoul", shape=[stadiamaps.Coordinate(lat=37.56, lon=126.99)], range=False)
             res = api_instance.elevation(req)
             self.assertEqual(req.id, res.id)
             self.assertGreaterEqual(len(res.height), 1)
             self.assertGreaterEqual(res.height[0], 1)
+            self.assertEqual(res.shape, req.shape)
+
+    def testElevationRange(self):
+        with stadiamaps.ApiClient(self.configuration) as api_client:
+            api_instance = stadiamaps.GeospatialApi(api_client)
+
+            req = stadiamaps.HeightRequest(id="Seoul", shape=[stadiamaps.Coordinate(lat=37.56, lon=126.99)], range=True)
+            res = api_instance.elevation(req)
+            self.assertEqual(req.id, res.id)
+            self.assertGreaterEqual(len(res.range_height), 1)
+            self.assertEqual(res.range_height[0][0], 0)  # This is always zero for the first element
+            self.assertGreaterEqual(res.range_height[0][1], 1)
             self.assertEqual(res.shape, req.shape)
