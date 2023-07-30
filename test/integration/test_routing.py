@@ -27,7 +27,7 @@ class TestRouting(unittest.TestCase):
                     stadiamaps.RoutingWaypoint.from_dict(location_b)
                 ],
                 costing=stadiamaps.CostingModel.AUTO,
-                costing_options=stadiamaps.CostingOptions(auto=stadiamaps.AutoCostingOptions(use_tolls=1)),
+                costing_options=stadiamaps.CostingOptions(auto=stadiamaps.AutoCostingOptions(use_tolls=0.7)),
                 directions_options=stadiamaps.DirectionsOptions(units=stadiamaps.DistanceUnit.MI)
             )
 
@@ -35,6 +35,28 @@ class TestRouting(unittest.TestCase):
             self.assertEqual(req.id, res.id)
             self.assertEqual(0, res.trip.status)
             self.assertEqual("miles", res.trip.units)
+            self.assertEqual(len(res.trip.legs), 1)
+
+    def testHybridBicycleRoute(self):
+        # Regression test for user-reported issue
+        with stadiamaps.ApiClient(self.configuration) as api_client:
+            api_instance = stadiamaps.RoutingApi(api_client)
+
+            req = stadiamaps.RouteRequest(
+                id="route",
+                locations=[
+                    stadiamaps.RoutingWaypoint.from_dict(location_a),
+                    stadiamaps.RoutingWaypoint.from_dict(location_b)
+                ],
+                costing=stadiamaps.CostingModel.BICYCLE,
+                costing_options=stadiamaps.CostingOptions(bicycle=stadiamaps.BicycleCostingOptions(bicycle_type='Hybrid', use_roads=0.4, use_hills=0.6)),
+                directions_options=stadiamaps.DirectionsOptions(units=stadiamaps.DistanceUnit.KM)
+            )
+
+            res = api_instance.route(req)
+            self.assertEqual(req.id, res.id)
+            self.assertEqual(0, res.trip.status)
+            self.assertEqual("kilometers", res.trip.units)
             self.assertEqual(len(res.trip.legs), 1)
 
     def testOptimizedRoute(self):
@@ -80,7 +102,7 @@ class TestRouting(unittest.TestCase):
             self.assertEqual(req.id, res.id)
             self.assertEqual([req.sources], res.sources)
             self.assertEqual([req.targets], res.targets)
-            self.assertGreaterEqual(len(res.sources_to_targets), 1)
+            self.assertGreater(len(res.sources_to_targets[0]), 1)
             self.assertEqual("kilometers", res.units)
 
     def testNearestRoads(self):

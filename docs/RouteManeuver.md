@@ -28,7 +28,7 @@ Name | Type | Description | Notes
 **transit_info** | **Dict[str, object]** | Public transit info (not currently supported). | [optional] 
 **verbal_multi_cue** | **bool** | True if the &#x60;verbal_pre_transition_instruction&#x60; has been appended with the verbal instruction of the next maneuver. | [optional] [default to False]
 **travel_mode** | [**TravelMode**](TravelMode.md) |  | 
-**travel_type** | **str** |  | 
+**travel_type** | **str** | The type of travel over the maneuver. This can be thought of as a specialization of the travel mode. For example, vehicular travel may be via car, motorcycle, etc.; and travel via bicycle may be via a road bike, mountain bike, etc. | 
 **bss_maneuver_type** | **str** | Describes a bike share action when using bikeshare routing. | [optional] 
 
 ## Example
