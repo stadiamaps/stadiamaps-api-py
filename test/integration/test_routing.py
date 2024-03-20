@@ -36,6 +36,30 @@ class TestRouting(unittest.TestCase):
             self.assertEqual(0, res.trip.status)
             self.assertEqual("miles", res.trip.units)
             self.assertEqual(len(res.trip.legs), 1)
+            self.assertEqual(len(res.alternates or []), 0)
+
+    def testRouteWithAlternates(self):
+        with stadiamaps.ApiClient(self.configuration) as api_client:
+            api_instance = stadiamaps.RoutingApi(api_client)
+
+            req = stadiamaps.RouteRequest(
+                id="route",
+                locations=[
+                    stadiamaps.RoutingWaypoint.from_dict(location_a),
+                    stadiamaps.RoutingWaypoint.from_dict(location_b)
+                ],
+                costing=stadiamaps.CostingModel.AUTO,
+                costing_options=stadiamaps.CostingOptions(auto=stadiamaps.AutoCostingOptions(use_tolls=0.7)),
+                units=stadiamaps.DistanceUnit.MI,
+                alternates=1,
+            )
+
+            res = api_instance.route(req)
+            self.assertEqual(req.id, res.id)
+            self.assertEqual(0, res.trip.status)
+            self.assertEqual("miles", res.trip.units)
+            self.assertEqual(len(res.trip.legs), 1)
+            self.assertEqual(len(res.alternates), 1)
 
     def testHybridBicycleRoute(self):
         # Regression test for user-reported issue
