@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **attributes** | [**List[TraceAttributeKey]**](TraceAttributeKey.md) |  | 
@@ -17,7 +18,7 @@ json = "{}"
 # create an instance of TraceAttributeFilterOptions from a JSON string
 trace_attribute_filter_options_instance = TraceAttributeFilterOptions.from_json(json)
 # print the JSON string representation of the object
-print TraceAttributeFilterOptions.to_json()
+print(TraceAttributeFilterOptions.to_json())
 
 # convert the object into a dict
 trace_attribute_filter_options_dict = trace_attribute_filter_options_instance.to_dict()

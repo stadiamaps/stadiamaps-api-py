@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **units** | [**DistanceUnit**](DistanceUnit.md) |  | [optional] 
@@ -18,7 +19,7 @@ json = "{}"
 # create an instance of DirectionsOptions from a JSON string
 directions_options_instance = DirectionsOptions.from_json(json)
 # print the JSON string representation of the object
-print DirectionsOptions.to_json()
+print(DirectionsOptions.to_json())
 
 # convert the object into a dict
 directions_options_dict = directions_options_instance.to_dict()

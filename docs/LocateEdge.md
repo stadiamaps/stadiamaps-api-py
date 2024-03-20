@@ -2,13 +2,15 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **edge_id** | [**NodeId**](NodeId.md) |  | [optional] 
-**correlated_lat** | **float** |  | [optional] 
-**correlated_lon** | **float** |  | [optional] 
-**percent_along** | **float** |  | [optional] 
-**side_of_street** | **str** |  | [optional] 
+**way_id** | **int** | The OSM way ID associated with this edge (absent in verbose response; see the edge info). | [optional] 
+**correlated_lat** | **float** |  | 
+**correlated_lon** | **float** |  | 
+**percent_along** | **float** |  | 
+**side_of_street** | **str** |  | 
 **linear_reference** | **str** | A base64-encoded [OpenLR location reference](https://www.openlr-association.com/fileadmin/user_upload/openlr-whitepaper_v1.5.pdf), for a graph edge of the road network matched by the query. | [optional] 
 **outbound_reach** | **int** |  | [optional] 
 **heading** | **float** |  | [optional] 
@@ -29,7 +31,7 @@ json = "{}"
 # create an instance of LocateEdge from a JSON string
 locate_edge_instance = LocateEdge.from_json(json)
 # print the JSON string representation of the object
-print LocateEdge.to_json()
+print(LocateEdge.to_json())
 
 # convert the object into a dict
 locate_edge_dict = locate_edge_instance.to_dict()

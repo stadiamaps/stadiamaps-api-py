@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **exit_number_elements** | [**List[ManeuverSignElement]**](ManeuverSignElement.md) | A list of exit number elements. This is typically just a single value. | [optional] 
@@ -19,7 +20,7 @@ json = "{}"
 # create an instance of ManeuverSign from a JSON string
 maneuver_sign_instance = ManeuverSign.from_json(json)
 # print the JSON string representation of the object
-print ManeuverSign.to_json()
+print(ManeuverSign.to_json())
 
 # convert the object into a dict
 maneuver_sign_dict = maneuver_sign_instance.to_dict()

@@ -3,6 +3,7 @@
 The directions in which the edge is traversable.
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 

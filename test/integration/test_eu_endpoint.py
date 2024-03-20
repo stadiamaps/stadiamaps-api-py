@@ -16,6 +16,6 @@ class TestEUEndpoint(unittest.TestCase):
         with stadiamaps.ApiClient(self.configuration) as api_client:
             api_instance = stadiamaps.GeocodingApi(api_client)
 
-            res = api_instance.autocomplete("Põhja pst 27a")
+            res = api_instance.autocomplete("Põhja pst 27")
             self.assertEqual("Estonia", res.features[0].properties.country)
             self.assertEqual("address", res.features[0].properties.layer)

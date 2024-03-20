@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | **str** |  | 
@@ -20,7 +21,7 @@ json = "{}"
 # create an instance of PeliasGeoJSONFeature from a JSON string
 pelias_geo_json_feature_instance = PeliasGeoJSONFeature.from_json(json)
 # print the JSON string representation of the object
-print PeliasGeoJSONFeature.to_json()
+print(PeliasGeoJSONFeature.to_json())
 
 # convert the object into a dict
 pelias_geo_json_feature_dict = pelias_geo_json_feature_instance.to_dict()

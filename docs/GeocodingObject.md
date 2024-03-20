@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **attribution** | **str** | A URL containing attribution information. If you are not using Stadia Maps and our standard attribution already for your basemaps, you must include this attribution link somewhere in your website/app. | [optional] 
@@ -19,7 +20,7 @@ json = "{}"
 # create an instance of GeocodingObject from a JSON string
 geocoding_object_instance = GeocodingObject.from_json(json)
 # print the JSON string representation of the object
-print GeocodingObject.to_json()
+print(GeocodingObject.to_json())
 
 # convert the object into a dict
 geocoding_object_dict = geocoding_object_instance.to_dict()

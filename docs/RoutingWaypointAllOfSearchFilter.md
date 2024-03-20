@@ -2,14 +2,15 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **exclude_tunnel** | **bool** | Excludes roads marked as tunnels | [optional] [default to False]
 **exclude_bridge** | **bool** | Excludes roads marked as bridges | [optional] [default to False]
 **exclude_ramp** | **bool** | Excludes roads marked as ramps | [optional] [default to False]
 **exclude_closures** | **bool** | Excludes roads marked as closed | [optional] [default to True]
-**min_road_class** | [**RoadClass**](RoadClass.md) |  | [optional] 
-**max_road_class** | [**RoadClass**](RoadClass.md) |  | [optional] 
+**min_road_class** | [**RoadClass**](RoadClass.md) | The lowest road class allowed | [optional] 
+**max_road_class** | [**RoadClass**](RoadClass.md) | The highest road class allowed | [optional] 
 
 ## Example
 
@@ -21,7 +22,7 @@ json = "{}"
 # create an instance of RoutingWaypointAllOfSearchFilter from a JSON string
 routing_waypoint_all_of_search_filter_instance = RoutingWaypointAllOfSearchFilter.from_json(json)
 # print the JSON string representation of the object
-print RoutingWaypointAllOfSearchFilter.to_json()
+print(RoutingWaypointAllOfSearchFilter.to_json())
 
 # convert the object into a dict
 routing_waypoint_all_of_search_filter_dict = routing_waypoint_all_of_search_filter_instance.to_dict()

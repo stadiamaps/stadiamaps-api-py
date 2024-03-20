@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **golf_cart** | **bool** |  | [optional] 
@@ -27,7 +28,7 @@ json = "{}"
 # create an instance of Restrictions from a JSON string
 restrictions_instance = Restrictions.from_json(json)
 # print the JSON string representation of the object
-print Restrictions.to_json()
+print(Restrictions.to_json())
 
 # convert the object into a dict
 restrictions_dict = restrictions_instance.to_dict()

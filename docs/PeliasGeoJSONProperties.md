@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **gid** | **str** | A scoped GID for this result. This can be passed to the place endpoint. Note that these are not always stable. For OSM, Geonames, and Who&#39;s on First, these are usually stable, but for other sources like OSM, no stability is guaranteed. | [optional] 
@@ -38,7 +39,7 @@ json = "{}"
 # create an instance of PeliasGeoJSONProperties from a JSON string
 pelias_geo_json_properties_instance = PeliasGeoJSONProperties.from_json(json)
 # print the JSON string representation of the object
-print PeliasGeoJSONProperties.to_json()
+print(PeliasGeoJSONProperties.to_json())
 
 # convert the object into a dict
 pelias_geo_json_properties_dict = pelias_geo_json_properties_instance.to_dict()

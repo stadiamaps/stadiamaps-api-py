@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **text** | **str** | The interchange sign text (varies based on the context; see the &#x60;maneuverSign&#x60; schema). | 
@@ -18,7 +19,7 @@ json = "{}"
 # create an instance of ManeuverSignElement from a JSON string
 maneuver_sign_element_instance = ManeuverSignElement.from_json(json)
 # print the JSON string representation of the object
-print ManeuverSignElement.to_json()
+print(ManeuverSignElement.to_json())
 
 # convert the object into a dict
 maneuver_sign_element_dict = maneuver_sign_element_instance.to_dict()

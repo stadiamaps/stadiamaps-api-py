@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **tz_id** | **str** | The canonical time zone ID. In the event that multiple time zones could be returned, the first one from the Unicode CLDR timezone.xml is returned. | 
@@ -18,7 +19,7 @@ json = "{}"
 # create an instance of TzResponse from a JSON string
 tz_response_instance = TzResponse.from_json(json)
 # print the JSON string representation of the object
-print TzResponse.to_json()
+print(TzResponse.to_json())
 
 # convert the object into a dict
 tz_response_dict = tz_response_instance.to_dict()

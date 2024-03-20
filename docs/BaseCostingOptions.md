@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **maneuver_penalty** | **int** | A penalty (in seconds) applied when transitioning between roads (determined by name). | [optional] [default to 5]
@@ -24,7 +25,7 @@ json = "{}"
 # create an instance of BaseCostingOptions from a JSON string
 base_costing_options_instance = BaseCostingOptions.from_json(json)
 # print the JSON string representation of the object
-print BaseCostingOptions.to_json()
+print(BaseCostingOptions.to_json())
 
 # convert the object into a dict
 base_costing_options_dict = base_costing_options_instance.to_dict()

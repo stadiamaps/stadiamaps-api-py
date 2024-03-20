@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **text** | **str** |  | [optional] 
@@ -17,7 +18,7 @@ json = "{}"
 # create an instance of Warning from a JSON string
 warning_instance = Warning.from_json(json)
 # print the JSON string representation of the object
-print Warning.to_json()
+print(Warning.to_json())
 
 # convert the object into a dict
 warning_dict = warning_instance.to_dict()

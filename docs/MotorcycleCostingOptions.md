@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **maneuver_penalty** | **int** | A penalty (in seconds) applied when transitioning between roads (determined by name). | [optional] [default to 5]
@@ -27,6 +28,7 @@ Name | Type | Description | Notes
 **include_hov2** | **bool** | If true, indicates the desire to include HOV roads with a 2-occupant requirement in the route when advantageous. | [optional] [default to False]
 **include_hov3** | **bool** | If true, indicates the desire to include HOV roads with a 3-occupant requirement in the route when advantageous. | [optional] [default to False]
 **include_hot** | **bool** | If true, indicates the desire to include toll roads which require the driver to pay a toll if the occupant requirement isn&#39;t met | [optional] [default to False]
+**alley_factor** | **float** | A factor that multiplies the cost when alleys are encountered. | [optional] [default to 1]
 **use_trails** | **float** | A measure of the rider&#39;s sense of adventure. Values near 0 attempt to avoid highways and stay on roads with potentially unsuitable terrain (trails, tracks, unclassified, or bad surfaces), and values near 1 will tend to avoid major roads and route on secondary roads. | [optional] [default to 0.0]
 
 ## Example
@@ -39,7 +41,7 @@ json = "{}"
 # create an instance of MotorcycleCostingOptions from a JSON string
 motorcycle_costing_options_instance = MotorcycleCostingOptions.from_json(json)
 # print the JSON string representation of the object
-print MotorcycleCostingOptions.to_json()
+print(MotorcycleCostingOptions.to_json())
 
 # convert the object into a dict
 motorcycle_costing_options_dict = motorcycle_costing_options_instance.to_dict()

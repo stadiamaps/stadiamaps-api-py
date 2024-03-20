@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | **str** |  | 
@@ -17,7 +18,7 @@ json = "{}"
 # create an instance of GeoJSONPolygon from a JSON string
 geo_json_polygon_instance = GeoJSONPolygon.from_json(json)
 # print the JSON string representation of the object
-print GeoJSONPolygon.to_json()
+print(GeoJSONPolygon.to_json())
 
 # convert the object into a dict
 geo_json_polygon_dict = geo_json_polygon_instance.to_dict()

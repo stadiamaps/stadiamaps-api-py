@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | **str** |  | 
@@ -16,7 +17,7 @@ json = "{}"
 # create an instance of GeoJSONGeometryBase from a JSON string
 geo_json_geometry_base_instance = GeoJSONGeometryBase.from_json(json)
 # print the JSON string representation of the object
-print GeoJSONGeometryBase.to_json()
+print(GeoJSONGeometryBase.to_json())
 
 # convert the object into a dict
 geo_json_geometry_base_dict = geo_json_geometry_base_instance.to_dict()

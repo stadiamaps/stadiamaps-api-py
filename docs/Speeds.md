@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **predicted** | **bool** | Does this edge have predicted (historical) speed records? | [optional] 
@@ -20,7 +21,7 @@ json = "{}"
 # create an instance of Speeds from a JSON string
 speeds_instance = Speeds.from_json(json)
 # print the JSON string representation of the object
-print Speeds.to_json()
+print(Speeds.to_json())
 
 # convert the object into a dict
 speeds_dict = speeds_instance.to_dict()

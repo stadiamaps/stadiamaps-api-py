@@ -2,10 +2,12 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** | An identifier to disambiguate requests (echoed by the server). | [optional] 
-**trip** | [**RouteResponseTrip**](RouteResponseTrip.md) |  | 
+**trip** | [**RouteTrip**](RouteTrip.md) |  | 
+**alternates** | [**List[RouteResponseAlternatesInner]**](RouteResponseAlternatesInner.md) |  | [optional] 
 **linear_references** | **List[str]** |  | [optional] 
 
 ## Example
@@ -18,7 +20,7 @@ json = "{}"
 # create an instance of MapMatchRouteResponse from a JSON string
 map_match_route_response_instance = MapMatchRouteResponse.from_json(json)
 # print the JSON string representation of the object
-print MapMatchRouteResponse.to_json()
+print(MapMatchRouteResponse.to_json())
 
 # convert the object into a dict
 map_match_route_response_dict = map_match_route_response_instance.to_dict()

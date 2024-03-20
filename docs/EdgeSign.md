@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **exit_number** | **List[str]** |  | [optional] 
@@ -19,7 +20,7 @@ json = "{}"
 # create an instance of EdgeSign from a JSON string
 edge_sign_instance = EdgeSign.from_json(json)
 # print the JSON string representation of the object
-print EdgeSign.to_json()
+print(EdgeSign.to_json())
 
 # convert the object into a dict
 edge_sign_dict = edge_sign_instance.to_dict()

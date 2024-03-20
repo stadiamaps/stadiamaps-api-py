@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **time** | **float** | The estimated travel time, in seconds | 
@@ -21,7 +22,7 @@ json = "{}"
 # create an instance of RouteSummary from a JSON string
 route_summary_instance = RouteSummary.from_json(json)
 # print the JSON string representation of the object
-print RouteSummary.to_json()
+print(RouteSummary.to_json())
 
 # convert the object into a dict
 route_summary_dict = route_summary_instance.to_dict()

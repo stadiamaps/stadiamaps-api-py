@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **lat** | **float** | The latitude of a point in the shape. | 
@@ -27,7 +28,7 @@ json = "{}"
 # create an instance of LocateNode from a JSON string
 locate_node_instance = LocateNode.from_json(json)
 # print the JSON string representation of the object
-print LocateNode.to_json()
+print(LocateNode.to_json())
 
 # convert the object into a dict
 locate_node_dict = locate_node_instance.to_dict()

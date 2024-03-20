@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **search_radius** | **int** | The search radius, in meters, when trying to match each trace point. | [optional] 
@@ -20,7 +21,7 @@ json = "{}"
 # create an instance of MapMatchTraceOptions from a JSON string
 map_match_trace_options_instance = MapMatchTraceOptions.from_json(json)
 # print the JSON string representation of the object
-print MapMatchTraceOptions.to_json()
+print(MapMatchTraceOptions.to_json())
 
 # convert the object into a dict
 map_match_trace_options_dict = map_match_trace_options_instance.to_dict()

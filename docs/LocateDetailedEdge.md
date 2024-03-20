@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **sidewalk_left** | **bool** | Is there a sidewalk to the left of the edge? | [optional] 
@@ -31,8 +32,8 @@ Name | Type | Description | Notes
 **access** | [**Restrictions**](Restrictions.md) |  | [optional] 
 **bridge** | **bool** | Is the edge part of a bridge? | [optional] 
 **classification** | [**HighwayClassification**](HighwayClassification.md) |  | [optional] 
-**toll** | **bool** | Is the edge part of a toll road? | [optional] 
-**tunnel** | **bool** | Is the edge part of a tunnel? | [optional] 
+**toll** | **bool** | Is the edge a toll road? | [optional] 
+**tunnel** | **bool** | Is the edge a tunnel? | [optional] 
 
 ## Example
 
@@ -44,7 +45,7 @@ json = "{}"
 # create an instance of LocateDetailedEdge from a JSON string
 locate_detailed_edge_instance = LocateDetailedEdge.from_json(json)
 # print the JSON string representation of the object
-print LocateDetailedEdge.to_json()
+print(LocateDetailedEdge.to_json())
 
 # convert the object into a dict
 locate_detailed_edge_dict = locate_detailed_edge_instance.to_dict()

@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** | An identifier to disambiguate requests (echoed by the server). | [optional] 
@@ -20,7 +21,7 @@ json = "{}"
 # create an instance of LocateObject from a JSON string
 locate_object_instance = LocateObject.from_json(json)
 # print the JSON string representation of the object
-print LocateObject.to_json()
+print(LocateObject.to_json())
 
 # convert the object into a dict
 locate_object_dict = locate_object_instance.to_dict()

@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **mountain** | **bool** |  | [optional] 
@@ -19,7 +20,7 @@ json = "{}"
 # create an instance of BikeNetwork from a JSON string
 bike_network_instance = BikeNetwork.from_json(json)
 # print the JSON string representation of the object
-print BikeNetwork.to_json()
+print(BikeNetwork.to_json())
 
 # convert the object into a dict
 bike_network_dict = bike_network_instance.to_dict()

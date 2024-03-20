@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** |  | [optional] 
@@ -18,7 +19,7 @@ json = "{}"
 # create an instance of IsochroneResponse from a JSON string
 isochrone_response_instance = IsochroneResponse.from_json(json)
 # print the JSON string representation of the object
-print IsochroneResponse.to_json()
+print(IsochroneResponse.to_json())
 
 # convert the object into a dict
 isochrone_response_dict = isochrone_response_instance.to_dict()

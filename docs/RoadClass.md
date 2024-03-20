@@ -3,6 +3,7 @@
 Class of road (ranked in descending order)
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 

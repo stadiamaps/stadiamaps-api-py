@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **begin_heading** | **int** | The direction at the beginning of an edge. The units are degrees clockwise from north. | [optional] 
@@ -23,7 +24,7 @@ json = "{}"
 # create an instance of IntersectingEdge from a JSON string
 intersecting_edge_instance = IntersectingEdge.from_json(json)
 # print the JSON string representation of the object
-print IntersectingEdge.to_json()
+print(IntersectingEdge.to_json())
 
 # convert the object into a dict
 intersecting_edge_dict = intersecting_edge_instance.to_dict()

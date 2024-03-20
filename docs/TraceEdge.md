@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **names** | **List[str]** | The name(s) of the road at this edge, if any. | [optional] 
@@ -16,10 +17,10 @@ Name | Type | Description | Notes
 **use** | [**EdgeUse**](EdgeUse.md) |  | [optional] 
 **toll** | **bool** | True if the edge has a toll. | [optional] 
 **unpaved** | **bool** | True if the edge has rough payment. | [optional] 
-**tunnel** | **bool** | True if the edge has a tunnel. | [optional] 
-**bridge** | **bool** | True if the edge has a bridge. | [optional] 
-**roundabout** | **bool** | True if the edge has a roundabout. | [optional] 
-**internal_intersection** | **bool** | True if the edge has an internal intersection. | [optional] 
+**tunnel** | **bool** | True if the edge is a tunnel. | [optional] 
+**bridge** | **bool** | True if the edge is a bridge. | [optional] 
+**roundabout** | **bool** | True if the edge is a roundabout. | [optional] 
+**internal_intersection** | **bool** | True if the edge is an internal intersection. | [optional] 
 **drive_on_right** | **bool** | True if the edge is in an area where you must drive on the right side of the road. | [optional] 
 **surface** | **str** | The type of surface for the edge. | [optional] 
 **sign** | [**EdgeSign**](EdgeSign.md) |  | [optional] 
@@ -55,7 +56,7 @@ json = "{}"
 # create an instance of TraceEdge from a JSON string
 trace_edge_instance = TraceEdge.from_json(json)
 # print the JSON string representation of the object
-print TraceEdge.to_json()
+print(TraceEdge.to_json())
 
 # convert the object into a dict
 trace_edge_dict = trace_edge_instance.to_dict()

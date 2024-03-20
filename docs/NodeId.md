@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **int** |  | [optional] 
@@ -19,7 +20,7 @@ json = "{}"
 # create an instance of NodeId from a JSON string
 node_id_instance = NodeId.from_json(json)
 # print the JSON string representation of the object
-print NodeId.to_json()
+print(NodeId.to_json())
 
 # convert the object into a dict
 node_id_dict = node_id_instance.to_dict()

@@ -9,7 +9,7 @@ Method | HTTP request | Description
 [**nearest_roads**](RoutingApi.md#nearest_roads) | **POST** /nearest_roads/v1 | Find the nearest roads to the set of input locations.
 [**optimized_route**](RoutingApi.md#optimized_route) | **POST** /optimized_route/v1 | Calculate an optimized route between a known start and end point.
 [**route**](RoutingApi.md#route) | **POST** /route/v1 | Get turn by turn routing instructions between two or more locations.
-[**time_distance_matrix**](RoutingApi.md#time_distance_matrix) | **POST** /matrix/v1 | Calculate a time distance matrix for a grid of start and end points.
+[**time_distance_matrix**](RoutingApi.md#time_distance_matrix) | **POST** /matrix/v1 | Calculate a time distance matrix for use in an optimizer.
 [**trace_attributes**](RoutingApi.md#trace_attributes) | **POST** /trace_attributes/v1 | Trace the attributes of roads visited on a route.
 
 
@@ -23,9 +23,8 @@ The isochrone API lets you compute or visualize areas of roughly equal travel ti
 ### Example
 
 * Api Key Authentication (ApiKeyAuth):
+
 ```python
-import time
-import os
 import stadiamaps
 from stadiamaps.models.isochrone_request import IsochroneRequest
 from stadiamaps.models.isochrone_response import IsochroneResponse
@@ -65,7 +64,9 @@ with stadiamaps.ApiClient(configuration) as api_client:
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -85,9 +86,11 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Returns a GeoJSON object which can be integrated into your geospatial application. |  -  |
+**400** | Bad request; more details will be included |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -101,9 +104,8 @@ The map matching API transforms a recorded route into navigation instructions li
 ### Example
 
 * Api Key Authentication (ApiKeyAuth):
+
 ```python
-import time
-import os
 import stadiamaps
 from stadiamaps.models.map_match_request import MapMatchRequest
 from stadiamaps.models.map_match_route_response import MapMatchRouteResponse
@@ -143,7 +145,9 @@ with stadiamaps.ApiClient(configuration) as api_client:
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -163,6 +167,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Returns the matched route, which looks more or less like a normal route response, optionally with a &#x60;linear_references&#x60; key. |  -  |
@@ -181,9 +186,8 @@ The nearest roads API allows you query for detailed information about streets an
 ### Example
 
 * Api Key Authentication (ApiKeyAuth):
+
 ```python
-import time
-import os
 import stadiamaps
 from stadiamaps.models.locate_object import LocateObject
 from stadiamaps.models.nearest_roads_request import NearestRoadsRequest
@@ -223,7 +227,9 @@ with stadiamaps.ApiClient(configuration) as api_client:
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -243,9 +249,11 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Returns a list of streets and intersections that match the query. |  -  |
+**400** | Bad request; more details will be included |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -254,14 +262,13 @@ Name | Type | Description  | Notes
 
 Calculate an optimized route between a known start and end point.
 
-The optimized route API is a mix of the matrix and normal route API. For an optimized route, the start and end point are fixed, but the intermediate points will be re-ordered to form an optimal route visiting all nodes once. Note that all matrix endpoints have a limit of 1000 elements, regardless of the costing/mode of travel. A matrix request with 3 inputs and 5 outputs has 3 x 5 = 15 elements. This means you could send a 100 x 10 or 20 x 50 matrix request (each having 1000 elements), but not 40 x 30 as it has 1200 elements.
+The optimized route API is a mix of the matrix and normal route API. For an optimized route, the start and end point are fixed, but the intermediate points will be re-ordered to form an optimal route visiting all nodes once.
 
 ### Example
 
 * Api Key Authentication (ApiKeyAuth):
+
 ```python
-import time
-import os
 import stadiamaps
 from stadiamaps.models.optimized_route_request import OptimizedRouteRequest
 from stadiamaps.models.route_response import RouteResponse
@@ -301,7 +308,9 @@ with stadiamaps.ApiClient(configuration) as api_client:
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -321,6 +330,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Returns the optimized route, which looks more or less like a normal route response. The only significant difference is that the &#x60;locations&#x60; may be re-ordered and annotated with an &#x60;original_index&#x60;. |  -  |
@@ -339,9 +349,8 @@ The route (turn-by-turn) API computes routes between two or more locations. It s
 ### Example
 
 * Api Key Authentication (ApiKeyAuth):
+
 ```python
-import time
-import os
 import stadiamaps
 from stadiamaps.models.route_request import RouteRequest
 from stadiamaps.models.route_response import RouteResponse
@@ -381,7 +390,9 @@ with stadiamaps.ApiClient(configuration) as api_client:
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -401,6 +412,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Returns the computed route |  -  |
@@ -412,16 +424,15 @@ Name | Type | Description  | Notes
 # **time_distance_matrix**
 > MatrixResponse time_distance_matrix(matrix_request=matrix_request)
 
-Calculate a time distance matrix for a grid of start and end points.
+Calculate a time distance matrix for use in an optimizer.
 
-The time distance matrix API lets you compare travel times between a set of possible start and end points. Note that all matrix endpoints have a limit of 1000 elements, regardless of the costing/mode of travel. A matrix request with 3 inputs and 5 outputs has 3 x 5 = 15 elements. This means you could send a 100 x 10 or 20 x 50 matrix request (each having 1000 elements), but not 40 x 30 as it has 1200 elements.
+The time distance matrix API lets you compare travel times between a set of possible start and end points. Note that this endpoint has a limit of 22,500 elements, regardless of the costing/mode of travel. A matrix request with 3 inputs and 5 outputs has 3 x 5 = 15 elements. For example, a matrix request with 3 inputs and 5 outputs has 3 x 5 = 15 elements. This means you could send a 150 x 150 or 30 x 750 matrix request (each having 22,500 elements), but not a 500 x 500 matrix (250,000 elements).
 
 ### Example
 
 * Api Key Authentication (ApiKeyAuth):
+
 ```python
-import time
-import os
 import stadiamaps
 from stadiamaps.models.matrix_request import MatrixRequest
 from stadiamaps.models.matrix_response import MatrixResponse
@@ -452,7 +463,7 @@ with stadiamaps.ApiClient(configuration) as api_client:
     matrix_request = stadiamaps.MatrixRequest() # MatrixRequest |  (optional)
 
     try:
-        # Calculate a time distance matrix for a grid of start and end points.
+        # Calculate a time distance matrix for use in an optimizer.
         api_response = api_instance.time_distance_matrix(matrix_request=matrix_request)
         print("The response of RoutingApi->time_distance_matrix:\n")
         pprint(api_response)
@@ -461,7 +472,9 @@ with stadiamaps.ApiClient(configuration) as api_client:
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -481,9 +494,11 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Returns a matrix of times and distances between the start and end points. |  -  |
+**400** | Bad request; more details will be included |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -497,9 +512,8 @@ The trace attributes endpoint retrieves detailed information along a route, retu
 ### Example
 
 * Api Key Authentication (ApiKeyAuth):
+
 ```python
-import time
-import os
 import stadiamaps
 from stadiamaps.models.trace_attributes_request import TraceAttributesRequest
 from stadiamaps.models.trace_attributes_response import TraceAttributesResponse
@@ -539,7 +553,9 @@ with stadiamaps.ApiClient(configuration) as api_client:
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -559,9 +575,11 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Returns the edges along the traced route with detailed info. |  -  |
+**400** | Bad request; more details will be included |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

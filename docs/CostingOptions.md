@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **auto** | [**AutoCostingOptions**](AutoCostingOptions.md) |  | [optional] 
@@ -23,7 +24,7 @@ json = "{}"
 # create an instance of CostingOptions from a JSON string
 costing_options_instance = CostingOptions.from_json(json)
 # print the JSON string representation of the object
-print CostingOptions.to_json()
+print(CostingOptions.to_json())
 
 # convert the object into a dict
 costing_options_dict = costing_options_instance.to_dict()

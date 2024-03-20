@@ -2,13 +2,16 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**units** | [**DistanceUnit**](DistanceUnit.md) |  | [optional] 
+**language** | [**ValhallaLanguages**](ValhallaLanguages.md) |  | [optional] 
+**directions_type** | **str** | The level of directional narrative to include. Locations and times will always be returned, but narrative generation verbosity can be controlled with this parameter. | [optional] [default to 'instructions']
 **locations** | [**List[Coordinate]**](Coordinate.md) |  | 
 **costing** | [**CostingModel**](CostingModel.md) |  | [optional] 
 **costing_options** | [**CostingOptions**](CostingOptions.md) |  | [optional] 
 **verbose** | **bool** |  | [optional] [default to False]
-**directions_options** | [**DirectionsOptions**](DirectionsOptions.md) |  | [optional] 
 
 ## Example
 
@@ -20,7 +23,7 @@ json = "{}"
 # create an instance of NearestRoadsRequest from a JSON string
 nearest_roads_request_instance = NearestRoadsRequest.from_json(json)
 # print the JSON string representation of the object
-print NearestRoadsRequest.to_json()
+print(NearestRoadsRequest.to_json())
 
 # convert the object into a dict
 nearest_roads_request_dict = nearest_roads_request_instance.to_dict()

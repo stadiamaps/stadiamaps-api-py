@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **maneuver_penalty** | **int** | A penalty (in seconds) applied when transitioning between roads (determined by name). | [optional] [default to 5]
@@ -27,6 +28,7 @@ Name | Type | Description | Notes
 **include_hov2** | **bool** | If true, indicates the desire to include HOV roads with a 2-occupant requirement in the route when advantageous. | [optional] [default to False]
 **include_hov3** | **bool** | If true, indicates the desire to include HOV roads with a 3-occupant requirement in the route when advantageous. | [optional] [default to False]
 **include_hot** | **bool** | If true, indicates the desire to include toll roads which require the driver to pay a toll if the occupant requirement isn&#39;t met | [optional] [default to False]
+**alley_factor** | **float** | A factor that multiplies the cost when alleys are encountered. | [optional] [default to 1]
 **length** | **float** | The length of the truck (in meters). | [optional] [default to 21.64]
 **weight** | **float** | The weight of the truck (in tonnes). | [optional] [default to 21.77]
 **axle_load** | **float** | The axle load of the truck (in tonnes). | [optional] [default to 9.07]
@@ -42,7 +44,7 @@ json = "{}"
 # create an instance of TruckCostingOptions from a JSON string
 truck_costing_options_instance = TruckCostingOptions.from_json(json)
 # print the JSON string representation of the object
-print TruckCostingOptions.to_json()
+print(TruckCostingOptions.to_json())
 
 # convert the object into a dict
 truck_costing_options_dict = truck_costing_options_instance.to_dict()

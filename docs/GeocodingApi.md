@@ -21,9 +21,8 @@ Autocomplete enables interactive search-as-you-type user experiences, suggesting
 ### Example
 
 * Api Key Authentication (ApiKeyAuth):
+
 ```python
-import time
-import os
 import stadiamaps
 from stadiamaps.models.pelias_layer import PeliasLayer
 from stadiamaps.models.pelias_response import PeliasResponse
@@ -79,7 +78,9 @@ with stadiamaps.ApiClient(configuration) as api_client:
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -114,6 +115,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Returns the collection of autocomplete results. |  -  |
@@ -131,9 +133,8 @@ Many search result components include an associated GID field (for example, an a
 ### Example
 
 * Api Key Authentication (ApiKeyAuth):
+
 ```python
-import time
-import os
 import stadiamaps
 from stadiamaps.models.pelias_response import PeliasResponse
 from stadiamaps.rest import ApiException
@@ -173,7 +174,9 @@ with stadiamaps.ApiClient(configuration) as api_client:
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -194,6 +197,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Returns the collection of search results. |  -  |
@@ -211,9 +215,8 @@ Reverse geocoding and search finds places and addresses near any geographic coor
 ### Example
 
 * Api Key Authentication (ApiKeyAuth):
+
 ```python
-import time
-import os
 import stadiamaps
 from stadiamaps.models.pelias_layer import PeliasLayer
 from stadiamaps.models.pelias_response import PeliasResponse
@@ -262,7 +265,9 @@ with stadiamaps.ApiClient(configuration) as api_client:
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -290,6 +295,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Returns the collection of search results. |  -  |
@@ -307,9 +313,8 @@ The search endpoint lets you search for addresses, points of interest, and admin
 ### Example
 
 * Api Key Authentication (ApiKeyAuth):
+
 ```python
-import time
-import os
 import stadiamaps
 from stadiamaps.models.pelias_layer import PeliasLayer
 from stadiamaps.models.pelias_response import PeliasResponse
@@ -365,7 +370,9 @@ with stadiamaps.ApiClient(configuration) as api_client:
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -400,6 +407,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Returns the collection of search results. |  -  |
@@ -417,9 +425,8 @@ The structured search endpoint lets you search for addresses, points of interest
 ### Example
 
 * Api Key Authentication (ApiKeyAuth):
+
 ```python
-import time
-import os
 import stadiamaps
 from stadiamaps.models.pelias_layer import PeliasLayer
 from stadiamaps.models.pelias_response import PeliasResponse
@@ -482,7 +489,9 @@ with stadiamaps.ApiClient(configuration) as api_client:
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -524,6 +533,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Returns the collection of search results. |  -  |

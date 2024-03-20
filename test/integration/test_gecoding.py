@@ -3,7 +3,7 @@ import unittest
 
 import stadiamaps
 
-address = "Põhja pst 27a"
+address = "Põhja pst 27"
 
 
 class TestGeocoding(unittest.TestCase):

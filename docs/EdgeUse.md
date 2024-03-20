@@ -3,6 +3,7 @@
 The use for the edge.
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 

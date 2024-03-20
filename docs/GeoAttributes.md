@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **curvature** | **int** | Curvature factor. | [optional] 
@@ -20,7 +21,7 @@ json = "{}"
 # create an instance of GeoAttributes from a JSON string
 geo_attributes_instance = GeoAttributes.from_json(json)
 # print the JSON string representation of the object
-print GeoAttributes.to_json()
+print(GeoAttributes.to_json())
 
 # convert the object into a dict
 geo_attributes_dict = geo_attributes_instance.to_dict()

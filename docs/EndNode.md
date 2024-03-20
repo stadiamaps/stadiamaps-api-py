@@ -3,6 +3,7 @@
 The node at the end of this edge
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **intersecting_edges** | [**List[IntersectingEdge]**](IntersectingEdge.md) | A set of edges intersecting this node. | [optional] 
@@ -22,7 +23,7 @@ json = "{}"
 # create an instance of EndNode from a JSON string
 end_node_instance = EndNode.from_json(json)
 # print the JSON string representation of the object
-print EndNode.to_json()
+print(EndNode.to_json())
 
 # convert the object into a dict
 end_node_dict = end_node_instance.to_dict()

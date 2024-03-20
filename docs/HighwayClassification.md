@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **internal** | **bool** | Is the edge internal to an intersection? | [optional] 
@@ -20,7 +21,7 @@ json = "{}"
 # create an instance of HighwayClassification from a JSON string
 highway_classification_instance = HighwayClassification.from_json(json)
 # print the JSON string representation of the object
-print HighwayClassification.to_json()
+print(HighwayClassification.to_json())
 
 # convert the object into a dict
 highway_classification_dict = highway_classification_instance.to_dict()

@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **maneuvers** | [**List[RouteManeuver]**](RouteManeuver.md) |  | 
@@ -18,7 +19,7 @@ json = "{}"
 # create an instance of RouteLeg from a JSON string
 route_leg_instance = RouteLeg.from_json(json)
 # print the JSON string representation of the object
-print RouteLeg.to_json()
+print(RouteLeg.to_json())
 
 # convert the object into a dict
 route_leg_dict = route_leg_instance.to_dict()

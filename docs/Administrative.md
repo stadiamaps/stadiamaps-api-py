@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **iso_3166_1** | **str** | The ISO 3166-1 alpha-2 country code of the administrative region. | [optional] 
@@ -19,7 +20,7 @@ json = "{}"
 # create an instance of Administrative from a JSON string
 administrative_instance = Administrative.from_json(json)
 # print the JSON string representation of the object
-print Administrative.to_json()
+print(Administrative.to_json())
 
 # convert the object into a dict
 administrative_dict = administrative_instance.to_dict()

@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **golf_cart** | **bool** |  | [optional] 
@@ -27,7 +28,7 @@ json = "{}"
 # create an instance of Access from a JSON string
 access_instance = Access.from_json(json)
 # print the JSON string representation of the object
-print Access.to_json()
+print(Access.to_json())
 
 # convert the object into a dict
 access_dict = access_instance.to_dict()

@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **walking_speed** | **int** | Walking speed in kph. | [optional] 
@@ -31,7 +32,7 @@ json = "{}"
 # create an instance of PedestrianCostingOptions from a JSON string
 pedestrian_costing_options_instance = PedestrianCostingOptions.from_json(json)
 # print the JSON string representation of the object
-print PedestrianCostingOptions.to_json()
+print(PedestrianCostingOptions.to_json())
 
 # convert the object into a dict
 pedestrian_costing_options_dict = pedestrian_costing_options_instance.to_dict()

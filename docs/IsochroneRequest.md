@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** | An identifier to disambiguate requests (echoed by the server). | [optional] 
@@ -24,7 +25,7 @@ json = "{}"
 # create an instance of IsochroneRequest from a JSON string
 isochrone_request_instance = IsochroneRequest.from_json(json)
 # print the JSON string representation of the object
-print IsochroneRequest.to_json()
+print(IsochroneRequest.to_json())
 
 # convert the object into a dict
 isochrone_request_dict = isochrone_request_instance.to_dict()

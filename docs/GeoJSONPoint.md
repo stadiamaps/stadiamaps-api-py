@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | **str** |  | 
@@ -17,7 +18,7 @@ json = "{}"
 # create an instance of GeoJSONPoint from a JSON string
 geo_json_point_instance = GeoJSONPoint.from_json(json)
 # print the JSON string representation of the object
-print GeoJSONPoint.to_json()
+print(GeoJSONPoint.to_json())
 
 # convert the object into a dict
 geo_json_point_dict = geo_json_point_instance.to_dict()

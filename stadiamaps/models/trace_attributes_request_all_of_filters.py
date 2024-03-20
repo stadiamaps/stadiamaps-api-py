@@ -27,7 +27,7 @@ class TraceAttributesRequestAllOfFilters(BaseModel):
     """
     If present, provides either a whitelist or a blacklist of keys to include/exclude in the response. This key is optional, and if omitted from the request, all available info will be returned.
     """
-    attributes: conlist(TraceAttributeKey, min_items=1) = Field(...)
+    attributes: conlist(TraceAttributeKey, min_length=1) = Field(...)
     action: StrictStr = Field(..., description="Determines whether the list of attributes will be used as a whitelist or a blacklist.")
     additional_properties: Dict[str, Any] = {}
     __properties = ["attributes", "action"]

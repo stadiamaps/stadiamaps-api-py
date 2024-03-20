@@ -26,7 +26,7 @@ class GeoJSONPointAllOf(BaseModel):
     """
     GeoJSONPointAllOf
     """
-    coordinates: conlist(Union[StrictFloat, StrictInt], max_items=3, min_items=2) = Field(...)
+    coordinates: conlist(Union[StrictFloat, StrictInt], max_length=3, min_length=2) = Field(...)
     additional_properties: Dict[str, Any] = {}
     __properties = ["coordinates"]
 

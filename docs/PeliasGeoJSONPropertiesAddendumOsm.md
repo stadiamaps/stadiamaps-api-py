@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **website** | **str** |  | [optional] 
@@ -19,7 +20,7 @@ json = "{}"
 # create an instance of PeliasGeoJSONPropertiesAddendumOsm from a JSON string
 pelias_geo_json_properties_addendum_osm_instance = PeliasGeoJSONPropertiesAddendumOsm.from_json(json)
 # print the JSON string representation of the object
-print PeliasGeoJSONPropertiesAddendumOsm.to_json()
+print(PeliasGeoJSONPropertiesAddendumOsm.to_json())
 
 # convert the object into a dict
 pelias_geo_json_properties_addendum_osm_dict = pelias_geo_json_properties_addendum_osm_instance.to_dict()

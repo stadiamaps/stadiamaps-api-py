@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **lat** | **float** | The latitude of a point in the shape. | 
@@ -19,7 +20,7 @@ json = "{}"
 # create an instance of RoutingResponseWaypoint from a JSON string
 routing_response_waypoint_instance = RoutingResponseWaypoint.from_json(json)
 # print the JSON string representation of the object
-print RoutingResponseWaypoint.to_json()
+print(RoutingResponseWaypoint.to_json())
 
 # convert the object into a dict
 routing_response_waypoint_dict = routing_response_waypoint_instance.to_dict()

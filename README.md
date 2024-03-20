@@ -4,6 +4,10 @@ The Stadia Maps Geospatial APIs provide you with the data you need to build awes
 
 For more information about the API, please visit [https://docs.stadiamaps.com](https://docs.stadiamaps.com)
 
+## Requirements.
+
+Python 3.7+
+
 ## Installation & Usage
 ### pip install
 
@@ -15,10 +19,15 @@ pip install stadiamaps
 
 Install via [Setuptools](http://pypi.python.org/pypi/setuptools).
 
-```shell
+```sh
 python setup.py install --user
 ```
 (or `sudo python setup.py install` to install the package for all users)
+
+Then import the package:
+```python
+import stadiamaps
+```
 
 ### Tests
 
@@ -77,7 +86,7 @@ Class | Method | HTTP request | Description
 *RoutingApi* | [**nearest_roads**](docs/RoutingApi.md#nearest_roads) | **POST** /nearest_roads/v1 | Find the nearest roads to the set of input locations.
 *RoutingApi* | [**optimized_route**](docs/RoutingApi.md#optimized_route) | **POST** /optimized_route/v1 | Calculate an optimized route between a known start and end point.
 *RoutingApi* | [**route**](docs/RoutingApi.md#route) | **POST** /route/v1 | Get turn by turn routing instructions between two or more locations.
-*RoutingApi* | [**time_distance_matrix**](docs/RoutingApi.md#time_distance_matrix) | **POST** /matrix/v1 | Calculate a time distance matrix for a grid of start and end points.
+*RoutingApi* | [**time_distance_matrix**](docs/RoutingApi.md#time_distance_matrix) | **POST** /matrix/v1 | Calculate a time distance matrix for use in an optimizer.
 *RoutingApi* | [**trace_attributes**](docs/RoutingApi.md#trace_attributes) | **POST** /trace_attributes/v1 | Trace the attributes of roads visited on a route.
 
 
@@ -87,11 +96,9 @@ Class | Method | HTTP request | Description
  - [AdminRegion](docs/AdminRegion.md)
  - [Administrative](docs/Administrative.md)
  - [AutoCostingOptions](docs/AutoCostingOptions.md)
- - [AutoCostingOptionsAllOf](docs/AutoCostingOptionsAllOf.md)
  - [BaseCostingOptions](docs/BaseCostingOptions.md)
  - [BaseTraceRequest](docs/BaseTraceRequest.md)
  - [BicycleCostingOptions](docs/BicycleCostingOptions.md)
- - [BicycleCostingOptionsAllOf](docs/BicycleCostingOptionsAllOf.md)
  - [BikeNetwork](docs/BikeNetwork.md)
  - [Contour](docs/Contour.md)
  - [Coordinate](docs/Coordinate.md)
@@ -106,11 +113,8 @@ Class | Method | HTTP request | Description
  - [GeoJSONGeometry](docs/GeoJSONGeometry.md)
  - [GeoJSONGeometryBase](docs/GeoJSONGeometryBase.md)
  - [GeoJSONLineString](docs/GeoJSONLineString.md)
- - [GeoJSONLineStringAllOf](docs/GeoJSONLineStringAllOf.md)
  - [GeoJSONPoint](docs/GeoJSONPoint.md)
- - [GeoJSONPointAllOf](docs/GeoJSONPointAllOf.md)
  - [GeoJSONPolygon](docs/GeoJSONPolygon.md)
- - [GeoJSONPolygonAllOf](docs/GeoJSONPolygonAllOf.md)
  - [GeocodingObject](docs/GeocodingObject.md)
  - [HeightRequest](docs/HeightRequest.md)
  - [HeightResponse](docs/HeightResponse.md)
@@ -125,27 +129,21 @@ Class | Method | HTTP request | Description
  - [LocateEdge](docs/LocateEdge.md)
  - [LocateEdgeInfo](docs/LocateEdgeInfo.md)
  - [LocateNode](docs/LocateNode.md)
- - [LocateNodeAllOf](docs/LocateNodeAllOf.md)
  - [LocateObject](docs/LocateObject.md)
  - [ManeuverSign](docs/ManeuverSign.md)
  - [ManeuverSignElement](docs/ManeuverSignElement.md)
  - [MapMatchCostingModel](docs/MapMatchCostingModel.md)
  - [MapMatchRequest](docs/MapMatchRequest.md)
- - [MapMatchRequestAllOf](docs/MapMatchRequestAllOf.md)
  - [MapMatchRouteResponse](docs/MapMatchRouteResponse.md)
- - [MapMatchRouteResponseAllOf](docs/MapMatchRouteResponseAllOf.md)
  - [MapMatchTraceOptions](docs/MapMatchTraceOptions.md)
  - [MapMatchWaypoint](docs/MapMatchWaypoint.md)
- - [MapMatchWaypointAllOf](docs/MapMatchWaypointAllOf.md)
  - [MatchedPoint](docs/MatchedPoint.md)
  - [MatrixCostingModel](docs/MatrixCostingModel.md)
  - [MatrixDistance](docs/MatrixDistance.md)
  - [MatrixRequest](docs/MatrixRequest.md)
  - [MatrixResponse](docs/MatrixResponse.md)
  - [MotorScooterCostingOptions](docs/MotorScooterCostingOptions.md)
- - [MotorScooterCostingOptionsAllOf](docs/MotorScooterCostingOptionsAllOf.md)
  - [MotorcycleCostingOptions](docs/MotorcycleCostingOptions.md)
- - [MotorcycleCostingOptionsAllOf](docs/MotorcycleCostingOptionsAllOf.md)
  - [NearestRoadsRequest](docs/NearestRoadsRequest.md)
  - [NodeId](docs/NodeId.md)
  - [NodeType](docs/NodeType.md)
@@ -157,7 +155,6 @@ Class | Method | HTTP request | Description
  - [PeliasGeoJSONPropertiesAddendumOsm](docs/PeliasGeoJSONPropertiesAddendumOsm.md)
  - [PeliasLayer](docs/PeliasLayer.md)
  - [PeliasResponse](docs/PeliasResponse.md)
- - [PeliasResponseGeocoding](docs/PeliasResponseGeocoding.md)
  - [PeliasSource](docs/PeliasSource.md)
  - [Restrictions](docs/Restrictions.md)
  - [RoadClass](docs/RoadClass.md)
@@ -165,29 +162,23 @@ Class | Method | HTTP request | Description
  - [RouteManeuver](docs/RouteManeuver.md)
  - [RouteRequest](docs/RouteRequest.md)
  - [RouteResponse](docs/RouteResponse.md)
- - [RouteResponseTrip](docs/RouteResponseTrip.md)
+ - [RouteResponseAlternatesInner](docs/RouteResponseAlternatesInner.md)
  - [RouteSummary](docs/RouteSummary.md)
+ - [RouteTrip](docs/RouteTrip.md)
  - [RoutingResponseWaypoint](docs/RoutingResponseWaypoint.md)
- - [RoutingResponseWaypointAllOf](docs/RoutingResponseWaypointAllOf.md)
  - [RoutingWaypoint](docs/RoutingWaypoint.md)
- - [RoutingWaypointAllOf](docs/RoutingWaypointAllOf.md)
  - [RoutingWaypointAllOfSearchFilter](docs/RoutingWaypointAllOfSearchFilter.md)
  - [SimpleRoutingWaypoint](docs/SimpleRoutingWaypoint.md)
- - [SimpleRoutingWaypointAllOf](docs/SimpleRoutingWaypointAllOf.md)
  - [Speeds](docs/Speeds.md)
  - [TraceAttributeFilterOptions](docs/TraceAttributeFilterOptions.md)
  - [TraceAttributeKey](docs/TraceAttributeKey.md)
  - [TraceAttributesBaseResponse](docs/TraceAttributesBaseResponse.md)
  - [TraceAttributesRequest](docs/TraceAttributesRequest.md)
- - [TraceAttributesRequestAllOf](docs/TraceAttributesRequestAllOf.md)
- - [TraceAttributesRequestAllOfFilters](docs/TraceAttributesRequestAllOfFilters.md)
  - [TraceAttributesResponse](docs/TraceAttributesResponse.md)
- - [TraceAttributesResponseAllOf](docs/TraceAttributesResponseAllOf.md)
  - [TraceEdge](docs/TraceEdge.md)
  - [TravelMode](docs/TravelMode.md)
  - [Traversability](docs/Traversability.md)
  - [TruckCostingOptions](docs/TruckCostingOptions.md)
- - [TruckCostingOptionsAllOf](docs/TruckCostingOptionsAllOf.md)
  - [TzResponse](docs/TzResponse.md)
  - [ValhallaLanguages](docs/ValhallaLanguages.md)
  - [ValhallaLongUnits](docs/ValhallaLongUnits.md)

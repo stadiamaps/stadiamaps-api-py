@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **lat** | **float** | The latitude of the matched point. | 
@@ -23,7 +24,7 @@ json = "{}"
 # create an instance of MatchedPoint from a JSON string
 matched_point_instance = MatchedPoint.from_json(json)
 # print the JSON string representation of the object
-print MatchedPoint.to_json()
+print(MatchedPoint.to_json())
 
 # convert the object into a dict
 matched_point_dict = matched_point_instance.to_dict()

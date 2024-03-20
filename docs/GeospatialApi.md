@@ -18,9 +18,8 @@ The Stadia elevation API allows you to get the elevation of any point on earth. 
 ### Example
 
 * Api Key Authentication (ApiKeyAuth):
+
 ```python
-import time
-import os
 import stadiamaps
 from stadiamaps.models.height_request import HeightRequest
 from stadiamaps.models.height_response import HeightResponse
@@ -60,7 +59,9 @@ with stadiamaps.ApiClient(configuration) as api_client:
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -80,9 +81,11 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Returns a list of elevations along the polyline, in meters. |  -  |
+**400** | Bad request; more details will be included |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -96,9 +99,8 @@ The Stadia TZ API provides time zone information, as well as information about a
 ### Example
 
 * Api Key Authentication (ApiKeyAuth):
+
 ```python
-import time
-import os
 import stadiamaps
 from stadiamaps.models.tz_response import TzResponse
 from stadiamaps.rest import ApiException
@@ -139,7 +141,9 @@ with stadiamaps.ApiClient(configuration) as api_client:
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -161,6 +165,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Returns the time zone metadata. |  -  |

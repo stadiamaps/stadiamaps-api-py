@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **maneuver_penalty** | **int** | A penalty (in seconds) applied when transitioning between roads (determined by name). | [optional] [default to 5]
@@ -27,6 +28,7 @@ Name | Type | Description | Notes
 **include_hov2** | **bool** | If true, indicates the desire to include HOV roads with a 2-occupant requirement in the route when advantageous. | [optional] [default to False]
 **include_hov3** | **bool** | If true, indicates the desire to include HOV roads with a 3-occupant requirement in the route when advantageous. | [optional] [default to False]
 **include_hot** | **bool** | If true, indicates the desire to include toll roads which require the driver to pay a toll if the occupant requirement isn&#39;t met | [optional] [default to False]
+**alley_factor** | **float** | A factor that multiplies the cost when alleys are encountered. | [optional] [default to 1]
 **use_primary** | **float** | A measure of willingness to use primary roads. Values near 0 attempt to avoid primary roads and stay on roads with lower speeds, and values near 1 indicate the rider is more comfortable on these roads. | [optional] [default to 0.5]
 **use_hills** | **float** | A measure of willingness to take tackle hills. Values near 0 attempt to avoid hills and steeper grades even if it means a longer route, and values near 1 indicates that the rider does not fear them. Note that as some routes may be impossible without hills, 0 does not guarantee avoidance of them. | [optional] [default to 0.5]
 
@@ -40,7 +42,7 @@ json = "{}"
 # create an instance of MotorScooterCostingOptions from a JSON string
 motor_scooter_costing_options_instance = MotorScooterCostingOptions.from_json(json)
 # print the JSON string representation of the object
-print MotorScooterCostingOptions.to_json()
+print(MotorScooterCostingOptions.to_json())
 
 # convert the object into a dict
 motor_scooter_costing_options_dict = motor_scooter_costing_options_instance.to_dict()

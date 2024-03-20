@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **country_code** | **str** | The [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) country code. | [optional] 
@@ -19,7 +20,7 @@ json = "{}"
 # create an instance of AdminRegion from a JSON string
 admin_region_instance = AdminRegion.from_json(json)
 # print the JSON string representation of the object
-print AdminRegion.to_json()
+print(AdminRegion.to_json())
 
 # convert the object into a dict
 admin_region_dict = admin_region_instance.to_dict()

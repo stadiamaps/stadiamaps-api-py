@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **edges** | [**List[TraceEdge]**](TraceEdge.md) | The list of edges matched along the path. | [optional] 
@@ -21,7 +22,7 @@ json = "{}"
 # create an instance of TraceAttributesBaseResponse from a JSON string
 trace_attributes_base_response_instance = TraceAttributesBaseResponse.from_json(json)
 # print the JSON string representation of the object
-print TraceAttributesBaseResponse.to_json()
+print(TraceAttributesBaseResponse.to_json())
 
 # convert the object into a dict
 trace_attributes_base_response_dict = trace_attributes_base_response_instance.to_dict()

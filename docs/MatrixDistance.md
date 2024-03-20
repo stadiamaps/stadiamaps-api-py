@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **distance** | **float** | The distance (in &#x60;units&#x60;) between the location in &#x60;sources&#x60; at &#x60;from_index&#x60; and the location in &#x60;targets&#x60; at &#x60;to_index&#x60;. | 
@@ -19,7 +20,7 @@ json = "{}"
 # create an instance of MatrixDistance from a JSON string
 matrix_distance_instance = MatrixDistance.from_json(json)
 # print the JSON string representation of the object
-print MatrixDistance.to_json()
+print(MatrixDistance.to_json())
 
 # convert the object into a dict
 matrix_distance_dict = matrix_distance_instance.to_dict()
