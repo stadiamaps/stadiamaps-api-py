@@ -37,3 +37,5 @@ The following info is current as of v7.4.0.
 
 The current release of the generator's `python` generator does not generate entirely valid code.
 Specifically the `conlist`s are constructed with incorrect length arguments.
+
+The auto-generated code does not pass flake8, so we have disabled the checks.
