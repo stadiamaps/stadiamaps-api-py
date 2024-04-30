@@ -36,6 +36,7 @@ When making schema changes, you may need to temporarily remove [README.md](READM
 The following info is current as of v7.4.0.
 
 The current release of the generator's `python` generator does not generate entirely valid code.
-Specifically the `conlist`s are constructed with incorrect length arguments.
+Specifically the handling of enums is not correct, and they will not serialize to the expected values.
+We have added workarounds to api_client.py.
 
 The auto-generated code does not pass flake8, so we have disabled the checks.
