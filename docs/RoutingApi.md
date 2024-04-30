@@ -498,7 +498,7 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Returns a matrix of times and distances between the start and end points. |  -  |
-**400** | Bad request; more details will be included |  -  |
+**400** | Bad request; more details will be included. NOTE: failure to find suitable edges near a location will result in a 400. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

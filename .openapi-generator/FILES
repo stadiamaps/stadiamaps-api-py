@@ -41,6 +41,7 @@ docs/LocateEdge.md
 docs/LocateEdgeInfo.md
 docs/LocateNode.md
 docs/LocateObject.md
+docs/LowSpeedVehicleCostingOptions.md
 docs/ManeuverSign.md
 docs/ManeuverSignElement.md
 docs/MapMatchCostingModel.md
@@ -53,6 +54,7 @@ docs/MatrixCostingModel.md
 docs/MatrixDistance.md
 docs/MatrixRequest.md
 docs/MatrixResponse.md
+docs/MatrixWaypoint.md
 docs/MotorScooterCostingOptions.md
 docs/MotorcycleCostingOptions.md
 docs/NearestRoadsRequest.md
@@ -148,6 +150,7 @@ stadiamaps/models/locate_edge.py
 stadiamaps/models/locate_edge_info.py
 stadiamaps/models/locate_node.py
 stadiamaps/models/locate_object.py
+stadiamaps/models/low_speed_vehicle_costing_options.py
 stadiamaps/models/maneuver_sign.py
 stadiamaps/models/maneuver_sign_element.py
 stadiamaps/models/map_match_costing_model.py
@@ -160,6 +163,7 @@ stadiamaps/models/matrix_costing_model.py
 stadiamaps/models/matrix_distance.py
 stadiamaps/models/matrix_request.py
 stadiamaps/models/matrix_response.py
+stadiamaps/models/matrix_waypoint.py
 stadiamaps/models/motor_scooter_costing_options.py
 stadiamaps/models/motorcycle_costing_options.py
 stadiamaps/models/nearest_roads_request.py

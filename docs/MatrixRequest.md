@@ -9,8 +9,8 @@ Name | Type | Description | Notes
 **language** | [**ValhallaLanguages**](ValhallaLanguages.md) |  | [optional] 
 **directions_type** | **str** | The level of directional narrative to include. Locations and times will always be returned, but narrative generation verbosity can be controlled with this parameter. | [optional] [default to 'instructions']
 **id** | **str** | An identifier to disambiguate requests (echoed by the server). | [optional] 
-**sources** | [**List[Coordinate]**](Coordinate.md) | The list of starting locations | 
-**targets** | [**List[Coordinate]**](Coordinate.md) | The list of ending locations | 
+**sources** | [**List[MatrixWaypoint]**](MatrixWaypoint.md) | The list of starting locations | 
+**targets** | [**List[MatrixWaypoint]**](MatrixWaypoint.md) | The list of ending locations | 
 **costing** | [**MatrixCostingModel**](MatrixCostingModel.md) |  | 
 **costing_options** | [**CostingOptions**](CostingOptions.md) |  | [optional] 
 **matrix_locations** | **int** | Only applicable to one-to-many or many-to-one requests. This defaults to all locations. When specified explicitly, this option allows a partial result to be returned. This is basically equivalent to \&quot;find the closest/best locations out of the full set.\&quot; This can have a dramatic improvement for large requests. | [optional] 

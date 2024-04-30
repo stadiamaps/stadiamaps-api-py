@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **motor_scooter** | [**MotorScooterCostingOptions**](MotorScooterCostingOptions.md) |  | [optional] 
 **motorcycle** | [**MotorcycleCostingOptions**](MotorcycleCostingOptions.md) |  | [optional] 
 **pedestrian** | [**PedestrianCostingOptions**](PedestrianCostingOptions.md) |  | [optional] 
+**low_speed_vehicle** | [**LowSpeedVehicleCostingOptions**](LowSpeedVehicleCostingOptions.md) |  | [optional] 
 
 ## Example
 

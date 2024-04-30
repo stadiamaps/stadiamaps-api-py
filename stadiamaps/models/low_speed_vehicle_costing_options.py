@@ -24,9 +24,9 @@ from typing_extensions import Annotated
 from typing import Optional, Set
 from typing_extensions import Self
 
-class BicycleCostingOptions(BaseModel):
+class LowSpeedVehicleCostingOptions(BaseModel):
     """
-    BicycleCostingOptions
+    LowSpeedVehicleCostingOptions
     """ # noqa: E501
     maneuver_penalty: Optional[StrictInt] = Field(default=5, description="A penalty (in seconds) applied when transitioning between roads (determined by name).")
     gate_cost: Optional[StrictInt] = Field(default=15, description="The estimated cost (in seconds) when a gate is encountered.")
@@ -40,24 +40,20 @@ class BicycleCostingOptions(BaseModel):
     ignore_restrictions: Optional[StrictBool] = Field(default=None, description="If set to true, ignores any restrictions (eg: turn and conditional restrictions). Useful for matching GPS traces to the road network regardless of restrictions.")
     ignore_non_vehicular_restrictions: Optional[StrictBool] = Field(default=None, description="If set to true, ignores most restrictions (eg: turn and conditional restrictions), but still respects restrictions that impact vehicle safety such as weight and size.")
     ignore_oneways: Optional[StrictBool] = Field(default=None, description="If set to true, ignores directional restrictions on roads. Useful for matching GPS traces to the road network regardless of restrictions.")
-    bicycle_type: Optional[StrictStr] = Field(default='Hybrid', description="The type of bicycle: * Road: has narrow tires and is generally lightweight and designed for speed on paved surfaces * Hybrid or City: designed for city riding or casual riding on roads and paths with good surfaces * Cross: similar to a road bike, but has wider tires so it can handle rougher surfaces * Mountain: able to handle most surfaces, but generally heavier and slower on paved surfaces")
-    cycling_speed: Optional[StrictInt] = Field(default=None, description="The average comfortable travel speed (in kph) along smooth, flat roads. The costing will vary the speed based on the surface, bicycle type, elevation change, etc. This value should be the average sustainable cruising speed the cyclist can maintain over the entire route. The default speeds are as follows based on bicycle type:   * Road - 25kph   * Cross - 20kph   * Hybrid - 18kph   * Mountain - 16kph")
-    use_roads: Optional[Union[Annotated[float, Field(le=1, strict=True, ge=0)], Annotated[int, Field(le=1, strict=True, ge=0)]]] = Field(default=0.5, description="A measure of willingness to use roads alongside other vehicles. Values near 0 attempt to avoid roads and stay on cycleways, and values near 1 indicate the cyclist is more comfortable on roads.")
-    use_hills: Optional[Union[Annotated[float, Field(le=1, strict=True, ge=0)], Annotated[int, Field(le=1, strict=True, ge=0)]]] = Field(default=0.5, description="A measure of willingness to take tackle hills. Values near 0 attempt to avoid hills and steeper grades even if it means a longer route, and values near 1 indicates that the user does not fear them. Note that as some routes may be impossible without hills, 0 does not guarantee avoidance of them.")
-    avoid_bad_surfaces: Optional[Union[Annotated[float, Field(le=1, strict=True, ge=0)], Annotated[int, Field(le=1, strict=True, ge=0)]]] = Field(default=0.25, description="A measure of how much the cyclist wants to avoid roads with poor surfaces relative to the type of bicycle being ridden. When 0, there is no penalization of roads with poorer surfaces, and only bicycle speed is taken into account. As the value approaches 1, roads with poor surfaces relative to the bicycle type receive a heaver penalty, so they will only be taken if they significantly reduce travel time. When the value is 1, all bad surfaces are completely avoided from the route, including the start and end points.")
-    bss_return_cost: Optional[StrictInt] = Field(default=120, description="The estimated cost (in seconds) to return a bicycle in `bikeshare` mode.")
-    bss_return_penalty: Optional[StrictInt] = Field(default=0, description="A penalty (in seconds) to return a bicycle in `bikeshare` mode.")
+    vehicle_type: Optional[StrictStr] = Field(default='low_speed_vehicle', description="The type of vehicle: * low_speed_vehicle (BETA): a low-speed vehicle which falls under a different regulatory and licensing regime than automobiles (ex: LSV in the US and Canada, Quadricycles in the EU, etc.) * golf_cart: a street legal golf cart that is under a similar regulator regime as the generic LSV laws, but may need to follow special paths when available or abide by restrictions specific to golf carts.")
+    top_speed: Optional[Annotated[int, Field(le=60, strict=True, ge=20)]] = Field(default=35, description="The top speed (in kph) that the vehicle is capable of travelling. This impacts travel time calculations as well as which roads are preferred. A very low speed vehicle will tend to prefer lower speed roads even in the presence of other legal routes.")
+    max_allowed_speed_limit: Optional[Annotated[int, Field(le=80, strict=True, ge=20)]] = Field(default=57, description="The maximum speed limit for highways on which it is legal for the vehicle to travel. Defaults to 57 (kph; around 35 mph). Acceptable values range from 20 to 80. Highways with *tagged* speed limits higher than this value will not be routed over (some caveats apply; this feature is still BETA).")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["maneuver_penalty", "gate_cost", "gate_penalty", "country_crossing_cost", "country_crossing_penalty", "service_penalty", "service_factor", "use_living_streets", "use_ferry", "ignore_restrictions", "ignore_non_vehicular_restrictions", "ignore_oneways", "bicycle_type", "cycling_speed", "use_roads", "use_hills", "avoid_bad_surfaces", "bss_return_cost", "bss_return_penalty"]
+    __properties: ClassVar[List[str]] = ["maneuver_penalty", "gate_cost", "gate_penalty", "country_crossing_cost", "country_crossing_penalty", "service_penalty", "service_factor", "use_living_streets", "use_ferry", "ignore_restrictions", "ignore_non_vehicular_restrictions", "ignore_oneways", "vehicle_type", "top_speed", "max_allowed_speed_limit"]
 
-    @field_validator('bicycle_type')
-    def bicycle_type_validate_enum(cls, value):
+    @field_validator('vehicle_type')
+    def vehicle_type_validate_enum(cls, value):
         """Validates the enum"""
         if value is None:
             return value
 
-        if value not in set(['Road', 'Hybrid', 'Cross', 'Mountain']):
-            raise ValueError("must be one of enum values ('Road', 'Hybrid', 'Cross', 'Mountain')")
+        if value not in set(['low_speed_vehicle', 'golf_cart']):
+            raise ValueError("must be one of enum values ('low_speed_vehicle', 'golf_cart')")
         return value
 
     model_config = ConfigDict(
@@ -78,7 +74,7 @@ class BicycleCostingOptions(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of BicycleCostingOptions from a JSON string"""
+        """Create an instance of LowSpeedVehicleCostingOptions from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -110,7 +106,7 @@ class BicycleCostingOptions(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of BicycleCostingOptions from a dict"""
+        """Create an instance of LowSpeedVehicleCostingOptions from a dict"""
         if obj is None:
             return None
 
@@ -130,13 +126,9 @@ class BicycleCostingOptions(BaseModel):
             "ignore_restrictions": obj.get("ignore_restrictions"),
             "ignore_non_vehicular_restrictions": obj.get("ignore_non_vehicular_restrictions"),
             "ignore_oneways": obj.get("ignore_oneways"),
-            "bicycle_type": obj.get("bicycle_type") if obj.get("bicycle_type") is not None else 'Hybrid',
-            "cycling_speed": obj.get("cycling_speed"),
-            "use_roads": obj.get("use_roads") if obj.get("use_roads") is not None else 0.5,
-            "use_hills": obj.get("use_hills") if obj.get("use_hills") is not None else 0.5,
-            "avoid_bad_surfaces": obj.get("avoid_bad_surfaces") if obj.get("avoid_bad_surfaces") is not None else 0.25,
-            "bss_return_cost": obj.get("bss_return_cost") if obj.get("bss_return_cost") is not None else 120,
-            "bss_return_penalty": obj.get("bss_return_penalty") if obj.get("bss_return_penalty") is not None else 0
+            "vehicle_type": obj.get("vehicle_type") if obj.get("vehicle_type") is not None else 'low_speed_vehicle',
+            "top_speed": obj.get("top_speed") if obj.get("top_speed") is not None else 35,
+            "max_allowed_speed_limit": obj.get("max_allowed_speed_limit") if obj.get("max_allowed_speed_limit") is not None else 57
         })
         # store additional fields in additional_properties
         for _key in obj.keys():

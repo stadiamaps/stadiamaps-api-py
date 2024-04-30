@@ -73,7 +73,8 @@ class TestRouting(unittest.TestCase):
                     stadiamaps.RoutingWaypoint.from_dict(location_b)
                 ],
                 costing=stadiamaps.CostingModel.BICYCLE,
-                costing_options=stadiamaps.CostingOptions(bicycle=stadiamaps.BicycleCostingOptions(bicycle_type='Hybrid', use_roads=0.4, use_hills=0.6)),
+                costing_options=stadiamaps.CostingOptions(
+                    bicycle=stadiamaps.BicycleCostingOptions(bicycle_type='Hybrid', use_roads=0.4, use_hills=0.6)),
                 units=stadiamaps.DistanceUnit.KM,
             )
 
@@ -113,11 +114,11 @@ class TestRouting(unittest.TestCase):
             req = stadiamaps.MatrixRequest(
                 id="matrix",
                 sources=[
-                    stadiamaps.Coordinate.from_dict(location_a),
+                    stadiamaps.MatrixWaypoint.from_dict(location_a),
                 ],
                 targets=[
-                    stadiamaps.Coordinate.from_dict(location_b),
-                    stadiamaps.Coordinate.from_dict(location_c),
+                    stadiamaps.MatrixWaypoint.from_dict(location_b),
+                    stadiamaps.MatrixWaypoint.from_dict(location_c),
                 ],
                 costing=stadiamaps.MatrixCostingModel.PEDESTRIAN,
             )
@@ -129,12 +130,48 @@ class TestRouting(unittest.TestCase):
             self.assertGreater(len(res.sources_to_targets[0]), 1)
             self.assertEqual("kilometers", res.units)
 
+    def testTimeDistanceMatrixWithUnroutableLegs(self):
+        with stadiamaps.ApiClient(self.configuration) as api_client:
+            api_instance = stadiamaps.RoutingApi(api_client)
+
+            # At least one of these is not routable; make sure we handle it gracefully
+            locations = [
+                stadiamaps.MatrixWaypoint.from_dict({
+                    "lon": 22.726262,
+                    "lat": 58.891957
+                }),
+                stadiamaps.MatrixWaypoint.from_dict({
+                    "lon": 23.762758,
+                    "lat": 59.1558
+                }),
+                stadiamaps.MatrixWaypoint.from_dict({
+                    "lon": 23.846605,
+                    "lat": 59.176153
+                }),
+                stadiamaps.MatrixWaypoint.from_dict({
+                    "lon": 23.096114,
+                    "lat": 59.562853
+                }),
+            ]
+            req = stadiamaps.MatrixRequest(
+                id="matrix",
+                sources=locations,
+                targets=locations,
+                costing=stadiamaps.MatrixCostingModel.PEDESTRIAN,
+            )
+
+            res = api_instance.time_distance_matrix(req)
+            self.assertEqual(req.id, res.id)
+            self.assertEqual(len(req.sources), len(res.sources))
+            self.assertGreater(len(res.sources_to_targets[0]), 1)
+            self.assertEqual("kilometers", res.units)
+
     def testNearestRoads(self):
         with stadiamaps.ApiClient(self.configuration) as api_client:
             api_instance = stadiamaps.RoutingApi(api_client)
 
             req = stadiamaps.NearestRoadsRequest(
-                locations=[location_a, location_b, location_c]
+                locations=[stadiamaps.Coordinate.from_dict(loc) for loc in (location_a, location_b, location_c)]
             )
             res = api_instance.nearest_roads(req)
             self.assertEqual(len(res), 3)
@@ -146,7 +183,7 @@ class TestRouting(unittest.TestCase):
 
             req = stadiamaps.IsochroneRequest(
                 id="isochrone",
-                locations=[location_a],
+                locations=[stadiamaps.Coordinate.from_dict(location_a)],
                 costing=stadiamaps.IsochroneCostingModel.PEDESTRIAN,
                 contours=[
                     stadiamaps.Contour(time=5, color="aabbcc")

@@ -46,6 +46,14 @@ class TestGeocoding(unittest.TestCase):
             self.assertEqual("Estonia", res.features[0].properties.country)
             self.assertEqual("address", res.features[0].properties.layer)
 
+    def testReverseWithLayerFilter(self):
+        with stadiamaps.ApiClient(self.configuration) as api_client:
+            api_instance = stadiamaps.GeocodingApi(api_client)
+
+            res = api_instance.reverse(59.444351, 24.750645, layers=[stadiamaps.PeliasLayer.ADDRESS, stadiamaps.PeliasLayer.OCEAN])
+            self.assertEqual("Estonia", res.features[0].properties.country)
+            self.assertEqual("address", res.features[0].properties.layer)
+
     def testReverseUncommonLayer(self):
         with stadiamaps.ApiClient(self.configuration) as api_client:
             api_instance = stadiamaps.GeocodingApi(api_client)

@@ -18,32 +18,21 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
+from pydantic import BaseModel, ConfigDict, Field, StrictInt
 from typing import Any, ClassVar, Dict, List, Optional, Union
 from typing_extensions import Annotated
 from typing import Optional, Set
 from typing_extensions import Self
 
-class RoutingResponseWaypoint(BaseModel):
+class MatrixWaypoint(BaseModel):
     """
-    RoutingResponseWaypoint
+    MatrixWaypoint
     """ # noqa: E501
     lat: Union[Annotated[float, Field(le=90, strict=True, ge=-90)], Annotated[int, Field(le=90, strict=True, ge=-90)]] = Field(description="The latitude of a point in the shape.")
     lon: Union[Annotated[float, Field(le=180, strict=True, ge=-180)], Annotated[int, Field(le=180, strict=True, ge=-180)]] = Field(description="The longitude of a point in the shape.")
-    type: Optional[StrictStr] = Field(default='break', description="A `break` represents the start or end of a leg, and allows reversals. A `through` location is an intermediate waypoint that must be visited between `break`s, but at which reversals are not allowed. A `via` is similar to a `through` except that reversals are allowed. A `break_through` is similar to a `break` in that it can be the start/end of a leg, but does not allow reversals.")
-    original_index: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, description="The original index of the location (locations may be reordered for optimized routes)")
+    search_cutoff: Optional[StrictInt] = Field(default=None, description="The cutoff (in meters) at which we will assume the input is too far away from civilisation to be worth correlating to the nearest graph elements. The default is 35 km.")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["lat", "lon", "type", "original_index"]
-
-    @field_validator('type')
-    def type_validate_enum(cls, value):
-        """Validates the enum"""
-        if value is None:
-            return value
-
-        if value not in set(['break', 'through', 'via', 'break_through']):
-            raise ValueError("must be one of enum values ('break', 'through', 'via', 'break_through')")
-        return value
+    __properties: ClassVar[List[str]] = ["lat", "lon", "search_cutoff"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -63,7 +52,7 @@ class RoutingResponseWaypoint(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of RoutingResponseWaypoint from a JSON string"""
+        """Create an instance of MatrixWaypoint from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -95,7 +84,7 @@ class RoutingResponseWaypoint(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of RoutingResponseWaypoint from a dict"""
+        """Create an instance of MatrixWaypoint from a dict"""
         if obj is None:
             return None
 
@@ -105,8 +94,7 @@ class RoutingResponseWaypoint(BaseModel):
         _obj = cls.model_validate({
             "lat": obj.get("lat"),
             "lon": obj.get("lon"),
-            "type": obj.get("type") if obj.get("type") is not None else 'break',
-            "original_index": obj.get("original_index")
+            "search_cutoff": obj.get("search_cutoff")
         })
         # store additional fields in additional_properties
         for _key in obj.keys():

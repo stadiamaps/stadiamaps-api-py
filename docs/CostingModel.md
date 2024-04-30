@@ -1,6 +1,6 @@
 # CostingModel
 
-Costing models for determining the most optimal route to take. Note that bikeshare and motorcycle are still in beta. While Valhalla supports multimodal routing, we do not currently process transit data and have excluded it from the list. See https://valhalla.github.io/valhalla/api/turn-by-turn/api-reference/#costing-models for detailed descriptions of each model.
+A model which influences the routing based on the type of travel. The costing model affects parameters ranging from which roads are legally accessible to preferences based on comfort or speed. See https://valhalla.github.io/valhalla/api/turn-by-turn/api-reference/#costing-models for in-depth descriptions of each costing model.
 
 ## Properties
 
