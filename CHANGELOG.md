@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Add support for low-speed vehicle routing
 - The matrix endpoint now accepts its own model rather than coordinate. This includes a search cutoff and paves the way for future expansion.
 
 ### Changed
