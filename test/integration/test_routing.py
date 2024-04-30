@@ -135,29 +135,29 @@ class TestRouting(unittest.TestCase):
             api_instance = stadiamaps.RoutingApi(api_client)
 
             # At least one of these is not routable; make sure we handle it gracefully
-            locations = [
-                stadiamaps.MatrixWaypoint.from_dict({
-                    "lon": 22.726262,
-                    "lat": 58.891957
-                }),
-                stadiamaps.MatrixWaypoint.from_dict({
-                    "lon": 23.762758,
-                    "lat": 59.1558
-                }),
-                stadiamaps.MatrixWaypoint.from_dict({
-                    "lon": 23.846605,
-                    "lat": 59.176153
-                }),
-                stadiamaps.MatrixWaypoint.from_dict({
-                    "lon": 23.096114,
-                    "lat": 59.562853
-                }),
-            ]
             req = stadiamaps.MatrixRequest(
                 id="matrix",
-                sources=locations,
-                targets=locations,
-                costing=stadiamaps.MatrixCostingModel.PEDESTRIAN,
+                sources=[
+                    stadiamaps.MatrixWaypoint.from_dict({
+                        "lon": 22.726262,
+                        "lat": 58.891957
+                    }),
+                    stadiamaps.MatrixWaypoint.from_dict({
+                        "lon": 23.762758,
+                        "lat": 59.1558
+                    }),
+                ],
+                targets=[
+                    stadiamaps.MatrixWaypoint.from_dict({
+                        "lon": 23.846605,
+                        "lat": 59.176153
+                    }),
+                    stadiamaps.MatrixWaypoint.from_dict({
+                        "lon": 23.096114,
+                        "lat": 59.562853
+                    }),
+                ],
+                costing=stadiamaps.MatrixCostingModel.BICYCLE,
             )
 
             res = api_instance.time_distance_matrix(req)
