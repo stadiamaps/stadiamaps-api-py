@@ -23,7 +23,7 @@ print(Coordinate.to_json())
 # convert the object into a dict
 coordinate_dict = coordinate_instance.to_dict()
 # create an instance of Coordinate from a dict
-coordinate_form_dict = coordinate.from_dict(coordinate_dict)
+coordinate_from_dict = Coordinate.from_dict(coordinate_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

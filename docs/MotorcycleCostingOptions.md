@@ -49,7 +49,7 @@ print(MotorcycleCostingOptions.to_json())
 # convert the object into a dict
 motorcycle_costing_options_dict = motorcycle_costing_options_instance.to_dict()
 # create an instance of MotorcycleCostingOptions from a dict
-motorcycle_costing_options_form_dict = motorcycle_costing_options.from_dict(motorcycle_costing_options_dict)
+motorcycle_costing_options_from_dict = MotorcycleCostingOptions.from_dict(motorcycle_costing_options_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

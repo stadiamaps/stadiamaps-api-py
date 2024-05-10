@@ -17,7 +17,7 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
-from typing import Optional
+from typing import List, Optional
 from stadiamaps.models.isochrone_request import IsochroneRequest
 from stadiamaps.models.isochrone_response import IsochroneResponse
 from stadiamaps.models.locate_object import LocateObject
@@ -268,7 +268,7 @@ class RoutingApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, str] = {}
+        _files: Dict[str, Union[str, bytes]] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -545,7 +545,7 @@ class RoutingApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, str] = {}
+        _files: Dict[str, Union[str, bytes]] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -819,7 +819,7 @@ class RoutingApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, str] = {}
+        _files: Dict[str, Union[str, bytes]] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -1096,7 +1096,7 @@ class RoutingApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, str] = {}
+        _files: Dict[str, Union[str, bytes]] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -1373,7 +1373,7 @@ class RoutingApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, str] = {}
+        _files: Dict[str, Union[str, bytes]] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -1448,7 +1448,7 @@ class RoutingApi:
     ) -> MatrixResponse:
         """Calculate a time distance matrix for use in an optimizer.
 
-        The time distance matrix API lets you compare travel times between a set of possible start and end points. Note that this endpoint has a limit of 22,500 elements, regardless of the costing/mode of travel. A matrix request with 3 inputs and 5 outputs has 3 x 5 = 15 elements. For example, a matrix request with 3 inputs and 5 outputs has 3 x 5 = 15 elements. This means you could send a 150 x 150 or 30 x 750 matrix request (each having 22,500 elements), but not a 500 x 500 matrix (250,000 elements).
+        The time distance matrix API lets you compare travel times between a set of possible start and end points. See https://docs.stadiamaps.com/limits/ for documentation of our latest limits.
 
         :param matrix_request:
         :type matrix_request: MatrixRequest
@@ -1516,7 +1516,7 @@ class RoutingApi:
     ) -> ApiResponse[MatrixResponse]:
         """Calculate a time distance matrix for use in an optimizer.
 
-        The time distance matrix API lets you compare travel times between a set of possible start and end points. Note that this endpoint has a limit of 22,500 elements, regardless of the costing/mode of travel. A matrix request with 3 inputs and 5 outputs has 3 x 5 = 15 elements. For example, a matrix request with 3 inputs and 5 outputs has 3 x 5 = 15 elements. This means you could send a 150 x 150 or 30 x 750 matrix request (each having 22,500 elements), but not a 500 x 500 matrix (250,000 elements).
+        The time distance matrix API lets you compare travel times between a set of possible start and end points. See https://docs.stadiamaps.com/limits/ for documentation of our latest limits.
 
         :param matrix_request:
         :type matrix_request: MatrixRequest
@@ -1584,7 +1584,7 @@ class RoutingApi:
     ) -> RESTResponseType:
         """Calculate a time distance matrix for use in an optimizer.
 
-        The time distance matrix API lets you compare travel times between a set of possible start and end points. Note that this endpoint has a limit of 22,500 elements, regardless of the costing/mode of travel. A matrix request with 3 inputs and 5 outputs has 3 x 5 = 15 elements. For example, a matrix request with 3 inputs and 5 outputs has 3 x 5 = 15 elements. This means you could send a 150 x 150 or 30 x 750 matrix request (each having 22,500 elements), but not a 500 x 500 matrix (250,000 elements).
+        The time distance matrix API lets you compare travel times between a set of possible start and end points. See https://docs.stadiamaps.com/limits/ for documentation of our latest limits.
 
         :param matrix_request:
         :type matrix_request: MatrixRequest
@@ -1647,7 +1647,7 @@ class RoutingApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, str] = {}
+        _files: Dict[str, Union[str, bytes]] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -1921,7 +1921,7 @@ class RoutingApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, str] = {}
+        _files: Dict[str, Union[str, bytes]] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters

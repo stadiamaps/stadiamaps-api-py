@@ -28,7 +28,7 @@ print(HeightRequest.to_json())
 # convert the object into a dict
 height_request_dict = height_request_instance.to_dict()
 # create an instance of HeightRequest from a dict
-height_request_form_dict = height_request.from_dict(height_request_dict)
+height_request_from_dict = HeightRequest.from_dict(height_request_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

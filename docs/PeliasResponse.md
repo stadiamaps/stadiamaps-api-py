@@ -24,7 +24,7 @@ print(PeliasResponse.to_json())
 # convert the object into a dict
 pelias_response_dict = pelias_response_instance.to_dict()
 # create an instance of PeliasResponse from a dict
-pelias_response_form_dict = pelias_response.from_dict(pelias_response_dict)
+pelias_response_from_dict = PeliasResponse.from_dict(pelias_response_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

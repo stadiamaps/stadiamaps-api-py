@@ -31,7 +31,7 @@ print(TraceAttributesRequest.to_json())
 # convert the object into a dict
 trace_attributes_request_dict = trace_attributes_request_instance.to_dict()
 # create an instance of TraceAttributesRequest from a dict
-trace_attributes_request_form_dict = trace_attributes_request.from_dict(trace_attributes_request_dict)
+trace_attributes_request_from_dict = TraceAttributesRequest.from_dict(trace_attributes_request_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

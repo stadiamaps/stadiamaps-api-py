@@ -26,7 +26,7 @@ print(GeoAttributes.to_json())
 # convert the object into a dict
 geo_attributes_dict = geo_attributes_instance.to_dict()
 # create an instance of GeoAttributes from a dict
-geo_attributes_form_dict = geo_attributes.from_dict(geo_attributes_dict)
+geo_attributes_from_dict = GeoAttributes.from_dict(geo_attributes_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

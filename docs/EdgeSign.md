@@ -25,7 +25,7 @@ print(EdgeSign.to_json())
 # convert the object into a dict
 edge_sign_dict = edge_sign_instance.to_dict()
 # create an instance of EdgeSign from a dict
-edge_sign_form_dict = edge_sign.from_dict(edge_sign_dict)
+edge_sign_from_dict = EdgeSign.from_dict(edge_sign_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

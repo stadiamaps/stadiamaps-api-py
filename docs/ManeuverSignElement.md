@@ -24,7 +24,7 @@ print(ManeuverSignElement.to_json())
 # convert the object into a dict
 maneuver_sign_element_dict = maneuver_sign_element_instance.to_dict()
 # create an instance of ManeuverSignElement from a dict
-maneuver_sign_element_form_dict = maneuver_sign_element.from_dict(maneuver_sign_element_dict)
+maneuver_sign_element_from_dict = ManeuverSignElement.from_dict(maneuver_sign_element_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

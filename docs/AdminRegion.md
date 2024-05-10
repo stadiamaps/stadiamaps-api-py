@@ -25,7 +25,7 @@ print(AdminRegion.to_json())
 # convert the object into a dict
 admin_region_dict = admin_region_instance.to_dict()
 # create an instance of AdminRegion from a dict
-admin_region_form_dict = admin_region.from_dict(admin_region_dict)
+admin_region_from_dict = AdminRegion.from_dict(admin_region_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

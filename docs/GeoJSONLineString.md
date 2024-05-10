@@ -23,7 +23,7 @@ print(GeoJSONLineString.to_json())
 # convert the object into a dict
 geo_json_line_string_dict = geo_json_line_string_instance.to_dict()
 # create an instance of GeoJSONLineString from a dict
-geo_json_line_string_form_dict = geo_json_line_string.from_dict(geo_json_line_string_dict)
+geo_json_line_string_from_dict = GeoJSONLineString.from_dict(geo_json_line_string_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

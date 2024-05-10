@@ -37,7 +37,7 @@ print(PedestrianCostingOptions.to_json())
 # convert the object into a dict
 pedestrian_costing_options_dict = pedestrian_costing_options_instance.to_dict()
 # create an instance of PedestrianCostingOptions from a dict
-pedestrian_costing_options_form_dict = pedestrian_costing_options.from_dict(pedestrian_costing_options_dict)
+pedestrian_costing_options_from_dict = PedestrianCostingOptions.from_dict(pedestrian_costing_options_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

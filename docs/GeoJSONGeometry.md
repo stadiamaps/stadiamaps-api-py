@@ -23,7 +23,7 @@ print(GeoJSONGeometry.to_json())
 # convert the object into a dict
 geo_json_geometry_dict = geo_json_geometry_instance.to_dict()
 # create an instance of GeoJSONGeometry from a dict
-geo_json_geometry_form_dict = geo_json_geometry.from_dict(geo_json_geometry_dict)
+geo_json_geometry_from_dict = GeoJSONGeometry.from_dict(geo_json_geometry_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

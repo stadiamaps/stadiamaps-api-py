@@ -44,7 +44,7 @@ print(PeliasGeoJSONProperties.to_json())
 # convert the object into a dict
 pelias_geo_json_properties_dict = pelias_geo_json_properties_instance.to_dict()
 # create an instance of PeliasGeoJSONProperties from a dict
-pelias_geo_json_properties_form_dict = pelias_geo_json_properties.from_dict(pelias_geo_json_properties_dict)
+pelias_geo_json_properties_from_dict = PeliasGeoJSONProperties.from_dict(pelias_geo_json_properties_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

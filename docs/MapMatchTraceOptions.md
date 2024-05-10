@@ -26,7 +26,7 @@ print(MapMatchTraceOptions.to_json())
 # convert the object into a dict
 map_match_trace_options_dict = map_match_trace_options_instance.to_dict()
 # create an instance of MapMatchTraceOptions from a dict
-map_match_trace_options_form_dict = map_match_trace_options.from_dict(map_match_trace_options_dict)
+map_match_trace_options_from_dict = MapMatchTraceOptions.from_dict(map_match_trace_options_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

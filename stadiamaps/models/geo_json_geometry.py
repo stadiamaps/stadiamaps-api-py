@@ -22,7 +22,7 @@ from stadiamaps.models.geo_json_line_string import GeoJSONLineString
 from stadiamaps.models.geo_json_point import GeoJSONPoint
 from stadiamaps.models.geo_json_polygon import GeoJSONPolygon
 from pydantic import StrictStr, Field
-from typing import Union, List, Optional, Dict
+from typing import Union, List, Set, Optional, Dict
 from typing_extensions import Literal, Self
 
 GEOJSONGEOMETRY_ONE_OF_SCHEMAS = ["GeoJSONLineString", "GeoJSONPoint", "GeoJSONPolygon"]
@@ -38,7 +38,7 @@ class GeoJSONGeometry(BaseModel):
     # data type: GeoJSONPolygon
     oneof_schema_3_validator: Optional[GeoJSONPolygon] = None
     actual_instance: Optional[Union[GeoJSONLineString, GeoJSONPoint, GeoJSONPolygon]] = None
-    one_of_schemas: List[str] = Field(default=Literal["GeoJSONLineString", "GeoJSONPoint", "GeoJSONPolygon"])
+    one_of_schemas: Set[str] = { "GeoJSONLineString", "GeoJSONPoint", "GeoJSONPolygon" }
 
     model_config = ConfigDict(
         validate_assignment=True,

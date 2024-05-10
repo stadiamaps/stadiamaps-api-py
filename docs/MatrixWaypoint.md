@@ -24,7 +24,7 @@ print(MatrixWaypoint.to_json())
 # convert the object into a dict
 matrix_waypoint_dict = matrix_waypoint_instance.to_dict()
 # create an instance of MatrixWaypoint from a dict
-matrix_waypoint_form_dict = matrix_waypoint.from_dict(matrix_waypoint_dict)
+matrix_waypoint_from_dict = MatrixWaypoint.from_dict(matrix_waypoint_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -29,7 +29,7 @@ print(IntersectingEdge.to_json())
 # convert the object into a dict
 intersecting_edge_dict = intersecting_edge_instance.to_dict()
 # create an instance of IntersectingEdge from a dict
-intersecting_edge_form_dict = intersecting_edge.from_dict(intersecting_edge_dict)
+intersecting_edge_from_dict = IntersectingEdge.from_dict(intersecting_edge_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

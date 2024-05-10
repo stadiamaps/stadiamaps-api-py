@@ -26,7 +26,7 @@ print(HighwayClassification.to_json())
 # convert the object into a dict
 highway_classification_dict = highway_classification_instance.to_dict()
 # create an instance of HighwayClassification from a dict
-highway_classification_form_dict = highway_classification.from_dict(highway_classification_dict)
+highway_classification_from_dict = HighwayClassification.from_dict(highway_classification_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

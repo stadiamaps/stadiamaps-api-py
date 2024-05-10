@@ -33,7 +33,7 @@ print(LocateNode.to_json())
 # convert the object into a dict
 locate_node_dict = locate_node_instance.to_dict()
 # create an instance of LocateNode from a dict
-locate_node_form_dict = locate_node.from_dict(locate_node_dict)
+locate_node_from_dict = LocateNode.from_dict(locate_node_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

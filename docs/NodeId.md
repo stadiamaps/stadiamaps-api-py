@@ -25,7 +25,7 @@ print(NodeId.to_json())
 # convert the object into a dict
 node_id_dict = node_id_instance.to_dict()
 # create an instance of NodeId from a dict
-node_id_form_dict = node_id.from_dict(node_id_dict)
+node_id_from_dict = NodeId.from_dict(node_id_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

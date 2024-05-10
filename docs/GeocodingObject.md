@@ -25,7 +25,7 @@ print(GeocodingObject.to_json())
 # convert the object into a dict
 geocoding_object_dict = geocoding_object_instance.to_dict()
 # create an instance of GeocodingObject from a dict
-geocoding_object_form_dict = geocoding_object.from_dict(geocoding_object_dict)
+geocoding_object_from_dict = GeocodingObject.from_dict(geocoding_object_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

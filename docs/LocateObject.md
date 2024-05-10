@@ -26,7 +26,7 @@ print(LocateObject.to_json())
 # convert the object into a dict
 locate_object_dict = locate_object_instance.to_dict()
 # create an instance of LocateObject from a dict
-locate_object_form_dict = locate_object.from_dict(locate_object_dict)
+locate_object_from_dict = LocateObject.from_dict(locate_object_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

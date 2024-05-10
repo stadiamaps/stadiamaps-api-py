@@ -24,7 +24,7 @@ print(Contour.to_json())
 # convert the object into a dict
 contour_dict = contour_instance.to_dict()
 # create an instance of Contour from a dict
-contour_form_dict = contour.from_dict(contour_dict)
+contour_from_dict = Contour.from_dict(contour_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

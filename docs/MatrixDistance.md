@@ -25,7 +25,7 @@ print(MatrixDistance.to_json())
 # convert the object into a dict
 matrix_distance_dict = matrix_distance_instance.to_dict()
 # create an instance of MatrixDistance from a dict
-matrix_distance_form_dict = matrix_distance.from_dict(matrix_distance_dict)
+matrix_distance_from_dict = MatrixDistance.from_dict(matrix_distance_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

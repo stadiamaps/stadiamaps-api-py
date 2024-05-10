@@ -26,7 +26,7 @@ print(Speeds.to_json())
 # convert the object into a dict
 speeds_dict = speeds_instance.to_dict()
 # create an instance of Speeds from a dict
-speeds_form_dict = speeds.from_dict(speeds_dict)
+speeds_from_dict = Speeds.from_dict(speeds_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

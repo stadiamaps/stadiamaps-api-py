@@ -61,7 +61,7 @@ print(TraceEdge.to_json())
 # convert the object into a dict
 trace_edge_dict = trace_edge_instance.to_dict()
 # create an instance of TraceEdge from a dict
-trace_edge_form_dict = trace_edge.from_dict(trace_edge_dict)
+trace_edge_from_dict = TraceEdge.from_dict(trace_edge_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

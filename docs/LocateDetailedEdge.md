@@ -50,7 +50,7 @@ print(LocateDetailedEdge.to_json())
 # convert the object into a dict
 locate_detailed_edge_dict = locate_detailed_edge_instance.to_dict()
 # create an instance of LocateDetailedEdge from a dict
-locate_detailed_edge_form_dict = locate_detailed_edge.from_dict(locate_detailed_edge_dict)
+locate_detailed_edge_from_dict = LocateDetailedEdge.from_dict(locate_detailed_edge_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

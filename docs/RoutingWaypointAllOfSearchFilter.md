@@ -27,7 +27,7 @@ print(RoutingWaypointAllOfSearchFilter.to_json())
 # convert the object into a dict
 routing_waypoint_all_of_search_filter_dict = routing_waypoint_all_of_search_filter_instance.to_dict()
 # create an instance of RoutingWaypointAllOfSearchFilter from a dict
-routing_waypoint_all_of_search_filter_form_dict = routing_waypoint_all_of_search_filter.from_dict(routing_waypoint_all_of_search_filter_dict)
+routing_waypoint_all_of_search_filter_from_dict = RoutingWaypointAllOfSearchFilter.from_dict(routing_waypoint_all_of_search_filter_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

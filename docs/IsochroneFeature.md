@@ -24,7 +24,7 @@ print(IsochroneFeature.to_json())
 # convert the object into a dict
 isochrone_feature_dict = isochrone_feature_instance.to_dict()
 # create an instance of IsochroneFeature from a dict
-isochrone_feature_form_dict = isochrone_feature.from_dict(isochrone_feature_dict)
+isochrone_feature_from_dict = IsochroneFeature.from_dict(isochrone_feature_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

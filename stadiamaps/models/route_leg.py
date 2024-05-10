@@ -18,8 +18,8 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictStr
-from typing import Any, ClassVar, Dict, List
+from pydantic import BaseModel, ConfigDict, Field, StrictFloat, StrictInt, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional, Union
 from typing_extensions import Annotated
 from stadiamaps.models.route_maneuver import RouteManeuver
 from stadiamaps.models.route_summary import RouteSummary
@@ -33,8 +33,10 @@ class RouteLeg(BaseModel):
     maneuvers: Annotated[List[RouteManeuver], Field(min_length=1)]
     shape: StrictStr = Field(description="An encoded polyline (https://developers.google.com/maps/documentation/utilities/polylinealgorithm) with 6 digits of decimal precision.")
     summary: RouteSummary
+    elevation_interval: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="The sampling distance between elevation values along the route. This echoes the request parameter having the same name.")
+    elevation: Optional[List[Union[StrictFloat, StrictInt]]] = Field(default=None, description="An array of elevation values sampled every `elevation_interval`. Units are either metric or imperial depending on the value of `units`.")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["maneuvers", "shape", "summary"]
+    __properties: ClassVar[List[str]] = ["maneuvers", "shape", "summary", "elevation_interval", "elevation"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -106,7 +108,9 @@ class RouteLeg(BaseModel):
         _obj = cls.model_validate({
             "maneuvers": [RouteManeuver.from_dict(_item) for _item in obj["maneuvers"]] if obj.get("maneuvers") is not None else None,
             "shape": obj.get("shape"),
-            "summary": RouteSummary.from_dict(obj["summary"]) if obj.get("summary") is not None else None
+            "summary": RouteSummary.from_dict(obj["summary"]) if obj.get("summary") is not None else None,
+            "elevation_interval": obj.get("elevation_interval"),
+            "elevation": obj.get("elevation")
         })
         # store additional fields in additional_properties
         for _key in obj.keys():

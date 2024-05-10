@@ -25,7 +25,7 @@ print(RoutingResponseWaypoint.to_json())
 # convert the object into a dict
 routing_response_waypoint_dict = routing_response_waypoint_instance.to_dict()
 # create an instance of RoutingResponseWaypoint from a dict
-routing_response_waypoint_form_dict = routing_response_waypoint.from_dict(routing_response_waypoint_dict)
+routing_response_waypoint_from_dict = RoutingResponseWaypoint.from_dict(routing_response_waypoint_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

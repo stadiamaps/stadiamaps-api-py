@@ -27,7 +27,7 @@ print(RouteSummary.to_json())
 # convert the object into a dict
 route_summary_dict = route_summary_instance.to_dict()
 # create an instance of RouteSummary from a dict
-route_summary_form_dict = route_summary.from_dict(route_summary_dict)
+route_summary_from_dict = RouteSummary.from_dict(route_summary_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

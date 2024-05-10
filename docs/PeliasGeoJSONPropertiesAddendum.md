@@ -23,7 +23,7 @@ print(PeliasGeoJSONPropertiesAddendum.to_json())
 # convert the object into a dict
 pelias_geo_json_properties_addendum_dict = pelias_geo_json_properties_addendum_instance.to_dict()
 # create an instance of PeliasGeoJSONPropertiesAddendum from a dict
-pelias_geo_json_properties_addendum_form_dict = pelias_geo_json_properties_addendum.from_dict(pelias_geo_json_properties_addendum_dict)
+pelias_geo_json_properties_addendum_from_dict = PeliasGeoJSONPropertiesAddendum.from_dict(pelias_geo_json_properties_addendum_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

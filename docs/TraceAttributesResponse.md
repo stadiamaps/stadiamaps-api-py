@@ -30,7 +30,7 @@ print(TraceAttributesResponse.to_json())
 # convert the object into a dict
 trace_attributes_response_dict = trace_attributes_response_instance.to_dict()
 # create an instance of TraceAttributesResponse from a dict
-trace_attributes_response_form_dict = trace_attributes_response.from_dict(trace_attributes_response_dict)
+trace_attributes_response_from_dict = TraceAttributesResponse.from_dict(trace_attributes_response_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

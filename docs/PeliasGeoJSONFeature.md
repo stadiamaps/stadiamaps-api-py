@@ -26,7 +26,7 @@ print(PeliasGeoJSONFeature.to_json())
 # convert the object into a dict
 pelias_geo_json_feature_dict = pelias_geo_json_feature_instance.to_dict()
 # create an instance of PeliasGeoJSONFeature from a dict
-pelias_geo_json_feature_form_dict = pelias_geo_json_feature.from_dict(pelias_geo_json_feature_dict)
+pelias_geo_json_feature_from_dict = PeliasGeoJSONFeature.from_dict(pelias_geo_json_feature_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

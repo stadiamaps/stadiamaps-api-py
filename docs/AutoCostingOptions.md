@@ -48,7 +48,7 @@ print(AutoCostingOptions.to_json())
 # convert the object into a dict
 auto_costing_options_dict = auto_costing_options_instance.to_dict()
 # create an instance of AutoCostingOptions from a dict
-auto_costing_options_form_dict = auto_costing_options.from_dict(auto_costing_options_dict)
+auto_costing_options_from_dict = AutoCostingOptions.from_dict(auto_costing_options_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

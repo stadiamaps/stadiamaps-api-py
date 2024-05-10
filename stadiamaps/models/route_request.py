@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictFloat, StrictInt, StrictStr, field_validator
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictFloat, StrictInt, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional, Union
 from typing_extensions import Annotated
 from stadiamaps.models.costing_model import CostingModel
@@ -43,8 +43,10 @@ class RouteRequest(BaseModel):
     exclude_locations: Optional[List[RoutingWaypoint]] = Field(default=None, description="This has the same format as the locations list. Locations are mapped to the closed road(s), and these road(s) are excluded from the route path computation.")
     exclude_polygons: Optional[List[List[List[Union[StrictFloat, StrictInt]]]]] = Field(default=None, description="One or multiple exterior rings of polygons in the form of nested JSON arrays. Roads intersecting these rings will be avoided during path finding. Open rings will be closed automatically. If you only need to avoid a few specific roads, it's much more efficient to use `exclude_locations`.")
     alternates: Optional[StrictInt] = Field(default=None, description="How many alternate routes are desired. Note that fewer or no alternates may be returned. Alternates are not yet supported on routes with more than 2 locations or on time-dependent routes.")
+    elevation_interval: Optional[Union[StrictFloat, StrictInt]] = Field(default=0.0, description="If greater than zero, attempts to include elevation along the route at regular intervals. The \"native\" internal resolution is 30m, so we recommend you use this when possible. This number is interpreted as either meters or feet depending on the unit parameter. Elevation for route sections containing a bridge or tunnel is interpolated linearly. This doesn't always match the true elevation of the bridge/tunnel, but it prevents sharp artifacts from the surrounding terrain. This functionality is unique to the route endpoint and is not available via the elevation API.")
+    roundabout_exits: Optional[StrictBool] = Field(default=True, description="Determines whether the output should include roundabout exit instructions.")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["units", "language", "directions_type", "id", "locations", "costing", "costing_options", "exclude_locations", "exclude_polygons", "alternates"]
+    __properties: ClassVar[List[str]] = ["units", "language", "directions_type", "id", "locations", "costing", "costing_options", "exclude_locations", "exclude_polygons", "alternates", "elevation_interval", "roundabout_exits"]
 
     @field_validator('directions_type')
     def directions_type_validate_enum(cls, value):
@@ -140,7 +142,9 @@ class RouteRequest(BaseModel):
             "costing_options": CostingOptions.from_dict(obj["costing_options"]) if obj.get("costing_options") is not None else None,
             "exclude_locations": [RoutingWaypoint.from_dict(_item) for _item in obj["exclude_locations"]] if obj.get("exclude_locations") is not None else None,
             "exclude_polygons": obj.get("exclude_polygons"),
-            "alternates": obj.get("alternates")
+            "alternates": obj.get("alternates"),
+            "elevation_interval": obj.get("elevation_interval") if obj.get("elevation_interval") is not None else 0.0,
+            "roundabout_exits": obj.get("roundabout_exits") if obj.get("roundabout_exits") is not None else True
         })
         # store additional fields in additional_properties
         for _key in obj.keys():

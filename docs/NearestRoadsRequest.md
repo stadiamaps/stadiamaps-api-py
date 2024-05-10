@@ -28,7 +28,7 @@ print(NearestRoadsRequest.to_json())
 # convert the object into a dict
 nearest_roads_request_dict = nearest_roads_request_instance.to_dict()
 # create an instance of NearestRoadsRequest from a dict
-nearest_roads_request_form_dict = nearest_roads_request.from_dict(nearest_roads_request_dict)
+nearest_roads_request_from_dict = NearestRoadsRequest.from_dict(nearest_roads_request_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

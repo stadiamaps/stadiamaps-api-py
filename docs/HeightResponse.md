@@ -26,7 +26,7 @@ print(HeightResponse.to_json())
 # convert the object into a dict
 height_response_dict = height_response_instance.to_dict()
 # create an instance of HeightResponse from a dict
-height_response_form_dict = height_response.from_dict(height_response_dict)
+height_response_from_dict = HeightResponse.from_dict(height_response_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

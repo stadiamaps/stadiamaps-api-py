@@ -24,7 +24,7 @@ print(SimpleRoutingWaypoint.to_json())
 # convert the object into a dict
 simple_routing_waypoint_dict = simple_routing_waypoint_instance.to_dict()
 # create an instance of SimpleRoutingWaypoint from a dict
-simple_routing_waypoint_form_dict = simple_routing_waypoint.from_dict(simple_routing_waypoint_dict)
+simple_routing_waypoint_from_dict = SimpleRoutingWaypoint.from_dict(simple_routing_waypoint_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

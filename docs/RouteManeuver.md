@@ -47,7 +47,7 @@ print(RouteManeuver.to_json())
 # convert the object into a dict
 route_maneuver_dict = route_maneuver_instance.to_dict()
 # create an instance of RouteManeuver from a dict
-route_maneuver_form_dict = route_maneuver.from_dict(route_maneuver_dict)
+route_maneuver_from_dict = RouteManeuver.from_dict(route_maneuver_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

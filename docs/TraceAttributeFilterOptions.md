@@ -23,7 +23,7 @@ print(TraceAttributeFilterOptions.to_json())
 # convert the object into a dict
 trace_attribute_filter_options_dict = trace_attribute_filter_options_instance.to_dict()
 # create an instance of TraceAttributeFilterOptions from a dict
-trace_attribute_filter_options_form_dict = trace_attribute_filter_options.from_dict(trace_attribute_filter_options_dict)
+trace_attribute_filter_options_from_dict = TraceAttributeFilterOptions.from_dict(trace_attribute_filter_options_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

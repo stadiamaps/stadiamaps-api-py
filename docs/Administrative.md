@@ -25,7 +25,7 @@ print(Administrative.to_json())
 # convert the object into a dict
 administrative_dict = administrative_instance.to_dict()
 # create an instance of Administrative from a dict
-administrative_form_dict = administrative.from_dict(administrative_dict)
+administrative_from_dict = Administrative.from_dict(administrative_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

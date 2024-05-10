@@ -24,7 +24,7 @@ print(TzResponse.to_json())
 # convert the object into a dict
 tz_response_dict = tz_response_instance.to_dict()
 # create an instance of TzResponse from a dict
-tz_response_form_dict = tz_response.from_dict(tz_response_dict)
+tz_response_from_dict = TzResponse.from_dict(tz_response_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

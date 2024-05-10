@@ -28,7 +28,7 @@ print(RouteTrip.to_json())
 # convert the object into a dict
 route_trip_dict = route_trip_instance.to_dict()
 # create an instance of RouteTrip from a dict
-route_trip_form_dict = route_trip.from_dict(route_trip_dict)
+route_trip_from_dict = RouteTrip.from_dict(route_trip_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -30,7 +30,7 @@ print(MatrixRequest.to_json())
 # convert the object into a dict
 matrix_request_dict = matrix_request_instance.to_dict()
 # create an instance of MatrixRequest from a dict
-matrix_request_form_dict = matrix_request.from_dict(matrix_request_dict)
+matrix_request_from_dict = MatrixRequest.from_dict(matrix_request_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
