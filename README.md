@@ -35,7 +35,11 @@ Execute `pytest` to run the tests. These are run automatically via CI.
 
 ## Getting Started
 
-Please follow the [installation procedure](#installation--usage) and then run the following:
+After following the [installation procedure](#installation--usage), you'll need a Stadia Maps API key.
+
+You can create an API key for free
+[here](https://client.stadiamaps.com/signup/?utm_source=github&utm_campaign=sdk_readme&utm_content=python_readme)
+(no credit card required).
 
 ```python
 import os
@@ -68,7 +72,14 @@ with stadiamaps.ApiClient(configuration) as api_client:
         print("Exception when calling GeocodingApi->autocomplete: %s\n" % e)
 ```
 
-## Documentation for API Endpoints
+## Documentation
+
+Official documentation lives at [docs.stadiamaps.com](https://docs.stadiamaps.com/?utm_source=github&utm_campaign=sdk_readme&utm_content=python_readme),
+where we have both long-form prose explanations of each endpoint and an interactive [API reference](https://docs.stadiamaps.com/api-reference/?utm_source=github&utm_campaign=sdk_readme&utm_content=python_readme).
+
+You can also find auto-generated class references below.
+
+### API Endpoints
 
 All URIs are relative to *https://api.stadiamaps.com*
 
@@ -90,7 +101,7 @@ Class | Method | HTTP request | Description
 *RoutingApi* | [**trace_attributes**](docs/RoutingApi.md#trace_attributes) | **POST** /trace_attributes/v1 | Trace the attributes of roads visited on a route.
 
 
-## Documentation For Models
+### Models
 
  - [Access](docs/Access.md)
  - [AdminRegion](docs/AdminRegion.md)
@@ -183,16 +194,3 @@ Class | Method | HTTP request | Description
  - [ValhallaLanguages](docs/ValhallaLanguages.md)
  - [ValhallaLongUnits](docs/ValhallaLongUnits.md)
  - [Warning](docs/Warning.md)
-
-
-<a id="documentation-for-authorization"></a>
-## Documentation For Authorization
-
-
-Authentication schemes defined for the API:
-<a id="ApiKeyAuth"></a>
-### ApiKeyAuth
-
-- **Type**: API key
-- **API key parameter name**: api_key
-- **Location**: URL query string
