@@ -15,7 +15,7 @@
 """  # noqa: E501
 
 
-__version__ = "3.2.0"
+__version__ = "3.2.1"
 
 # import apis into sdk package
 from stadiamaps.api.geocoding_api import GeocodingApi

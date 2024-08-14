@@ -97,6 +97,16 @@ class LocateObject(BaseModel):
             for _key, _value in self.additional_properties.items():
                 _dict[_key] = _value
 
+        # set to None if nodes (nullable) is None
+        # and model_fields_set contains the field
+        if self.nodes is None and "nodes" in self.model_fields_set:
+            _dict['nodes'] = None
+
+        # set to None if edges (nullable) is None
+        # and model_fields_set contains the field
+        if self.edges is None and "edges" in self.model_fields_set:
+            _dict['edges'] = None
+
         return _dict
 
     @classmethod
