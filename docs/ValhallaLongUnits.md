@@ -1,10 +1,11 @@
 # ValhallaLongUnits
 
 
-## Properties
+## Enum
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
+* `MILES` (value: `'miles'`)
+
+* `KILOMETERS` (value: `'kilometers'`)
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

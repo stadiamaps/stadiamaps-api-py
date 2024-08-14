@@ -8,6 +8,7 @@ Method | HTTP request | Description
 [**place**](GeocodingApi.md#place) | **GET** /geocoding/v1/place | Retrieve details of a place using its GID.
 [**reverse**](GeocodingApi.md#reverse) | **GET** /geocoding/v1/reverse | Find places and addresses near geographic coordinates (reverse geocoding).
 [**search**](GeocodingApi.md#search) | **GET** /geocoding/v1/search | Search for location and other info using a place name or address (forward geocoding).
+[**search_bulk**](GeocodingApi.md#search_bulk) | **POST** /geocoding/v1/search/bulk | Quickly run a batch of geocoding queries against the search or structured search endpoints.
 [**search_structured**](GeocodingApi.md#search_structured) | **GET** /geocoding/v1/search/structured | Find locations matching components (structured forward geocoding).
 
 
@@ -51,7 +52,7 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 with stadiamaps.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = stadiamaps.GeocodingApi(api_client)
-    text = '1600 Pennsylvania Ave NW' # str | The place name (address, venue name, etc.) to search for.
+    text = 'text_example' # str | The place name (address, venue name, etc.) to search for.
     focus_point_lat = 3.4 # float | The latitude of the point to focus the search on. This will bias results toward the focus point. Requires `focus.point.lon`. (optional)
     focus_point_lon = 3.4 # float | The longitude of the point to focus the search on. This will bias results toward the focus point. Requires `focus.point.lat`. (optional)
     boundary_rect_min_lat = 3.4 # float | Defines the min latitude component of a bounding box to limit the search to. Requires all other `boundary.rect` parameters to be specified. (optional)
@@ -118,7 +119,7 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Returns the collection of autocomplete results. |  -  |
+**200** | A GeoJSON collection of autocomplete search results. |  -  |
 **400** | Bad request |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -200,7 +201,7 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Returns the collection of search results. |  -  |
+**200** | A GeoJSON collection of search results. |  -  |
 **400** | Bad request |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -245,8 +246,8 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 with stadiamaps.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = stadiamaps.GeocodingApi(api_client)
-    point_lat = 48.848268 # float | The latitude of the point at which to perform the search.
-    point_lon = 2.294471 # float | The longitude of the point at which to perform the search.
+    point_lat = 3.4 # float | The latitude of the point at which to perform the search.
+    point_lon = 3.4 # float | The longitude of the point at which to perform the search.
     boundary_circle_radius = 3.4 # float | The radius of the circle (in kilometers) to limit the search to. Defaults to 50km if unspecified. (optional)
     layers = [stadiamaps.PeliasLayer()] # List[PeliasLayer] | A list of layers to limit the search to. (optional)
     sources = [stadiamaps.PeliasSource()] # List[PeliasSource] | A list of sources to limit the search to. (optional)
@@ -298,7 +299,7 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Returns the collection of search results. |  -  |
+**200** | A GeoJSON collection of search results. |  -  |
 **400** | Bad request |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -343,7 +344,7 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 with stadiamaps.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = stadiamaps.GeocodingApi(api_client)
-    text = '1600 Pennsylvania Ave NW' # str | The place name (address, venue name, etc.) to search for.
+    text = 'text_example' # str | The place name (address, venue name, etc.) to search for.
     focus_point_lat = 3.4 # float | The latitude of the point to focus the search on. This will bias results toward the focus point. Requires `focus.point.lon`. (optional)
     focus_point_lon = 3.4 # float | The longitude of the point to focus the search on. This will bias results toward the focus point. Requires `focus.point.lat`. (optional)
     boundary_rect_min_lat = 3.4 # float | Defines the min latitude component of a bounding box to limit the search to. Requires all other `boundary.rect` parameters to be specified. (optional)
@@ -410,8 +411,89 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Returns the collection of search results. |  -  |
+**200** | A GeoJSON collection of search results. |  -  |
 **400** | Bad request |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **search_bulk**
+> List[BulkSearchResponse] search_bulk(bulk_request=bulk_request)
+
+Quickly run a batch of geocoding queries against the search or structured search endpoints.
+
+The batch endpoint lets you specify many search or structured search requests at once. Once received, all requests will be processed internally on our infrastructure, improving throughput when you need to do a lot of queries.
+
+### Example
+
+* Api Key Authentication (ApiKeyAuth):
+
+```python
+import stadiamaps
+from stadiamaps.models.bulk_request import BulkRequest
+from stadiamaps.models.bulk_search_response import BulkSearchResponse
+from stadiamaps.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.stadiamaps.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = stadiamaps.Configuration(
+    host = "https://api.stadiamaps.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKeyAuth
+configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with stadiamaps.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = stadiamaps.GeocodingApi(api_client)
+    bulk_request = [stadiamaps.BulkRequest()] # List[BulkRequest] |  (optional)
+
+    try:
+        # Quickly run a batch of geocoding queries against the search or structured search endpoints.
+        api_response = api_instance.search_bulk(bulk_request=bulk_request)
+        print("The response of GeocodingApi->search_bulk:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling GeocodingApi->search_bulk: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **bulk_request** | [**List[BulkRequest]**](BulkRequest.md)|  | [optional] 
+
+### Return type
+
+[**List[BulkSearchResponse]**](BulkSearchResponse.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | A JSON array of the individual query responses, each annotated with a status code. Individual requests may fail but this endpoint will still return all results. Responses will be in the same order as the input. |  -  |
+**400** | Bad request; more details will be included |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -455,14 +537,14 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 with stadiamaps.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = stadiamaps.GeocodingApi(api_client)
-    address = '11 Wall Street' # str | A street name, optionally with a house number. (optional)
-    neighbourhood = 'Financial District' # str | Varies by area, but has a locally specific meaning (NOT always an official administrative unit). (optional)
-    borough = 'Manhattan' # str | A unit within a city (not widely used, but present in places like NYC and Mexico City). (optional)
-    locality = 'New York' # str | The city, village, town, etc. that the place/address is part of. (optional)
-    county = 'New York County' # str | Administrative divisions between localities and regions. Not commonly used as input to structured geocoding. (optional)
-    region = 'New York' # str | Typically the first administrative division within a country. For example, a US state or a Canadian province. (optional)
-    postalcode = '10005' # str | A mail sorting code. (optional)
-    country = 'USA' # str | A full name (ex: Canada), or a 2 or 3 character ISO code. Prefer ISO codes when possible. (optional)
+    address = 'address_example' # str | A street name, optionally with a house number. (optional)
+    neighbourhood = 'neighbourhood_example' # str | Varies by area, but has a locally specific meaning (NOT always an official administrative unit). (optional)
+    borough = 'borough_example' # str | A unit within a city (not widely used, but present in places like NYC and Mexico City). (optional)
+    locality = 'locality_example' # str | The city, village, town, etc. that the place/address is part of. (optional)
+    county = 'county_example' # str | Administrative divisions between localities and regions. Not commonly used as input to structured geocoding. (optional)
+    region = 'region_example' # str | Typically the first administrative division within a country. For example, a US state or a Canadian province. (optional)
+    postalcode = 'postalcode_example' # str | A mail sorting code. (optional)
+    country = 'country_example' # str | A full name (ex: Canada), or a 2 or 3 character ISO code. Prefer ISO codes when possible. (optional)
     focus_point_lat = 3.4 # float | The latitude of the point to focus the search on. This will bias results toward the focus point. Requires `focus.point.lon`. (optional)
     focus_point_lon = 3.4 # float | The longitude of the point to focus the search on. This will bias results toward the focus point. Requires `focus.point.lat`. (optional)
     boundary_rect_min_lat = 3.4 # float | Defines the min latitude component of a bounding box to limit the search to. Requires all other `boundary.rect` parameters to be specified. (optional)
@@ -536,7 +618,7 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Returns the collection of search results. |  -  |
+**200** | A GeoJSON collection of search results. |  -  |
 **400** | Bad request |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

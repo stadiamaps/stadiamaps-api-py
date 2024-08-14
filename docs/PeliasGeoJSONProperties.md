@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**gid** | **str** | A scoped GID for this result. This can be passed to the place endpoint. Note that these are not always stable. For OSM, Geonames, and Who&#39;s on First, these are usually stable, but for other sources like OSM, no stability is guaranteed. | [optional] 
+**gid** | **str** | A scoped GID for this result. This can be passed to the place endpoint. Note that these are not always stable. For Geonames and Who&#39;s on First, these are usually stable, but for other sources like OSM, no stability is guaranteed. | [optional] 
 **source_id** | **str** | An ID referencing the original data source (specified via source) for the result. These IDs are specific to the source that they originated from. For example, in the case of OSM, these typically look like way/123 or point/123. | [optional] 
 **label** | **str** | A full, human-readable label. However, you may not necessarily want to use this; be sure to read the docs for name, locality, and region before making a decision. This field is mostly localized. The order of components is generally locally correct (ex: for an address in South Korea, the house number appears after the street name). However, components will use a request language equivalent if one exists (ex: Seoul instead of 서울 if lang&#x3D;en). | [optional] 
 **layer** | [**PeliasLayer**](PeliasLayer.md) |  | [optional] 

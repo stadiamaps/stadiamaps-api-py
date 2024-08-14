@@ -18,7 +18,7 @@ Method | HTTP request | Description
 
 Calculate areas of equal travel time from a location.
 
-The isochrone API lets you compute or visualize areas of roughly equal travel time based on the routing graph. The resulting polygon can be rendered on a map and shaded much like elevation contours and used for exploring urban mobility.
+The isochrone API computes reachable areas within a time or distance constraint. The resulting polygon can be rendered on a map and used for assessing urban mobility, planning, or as a search filter of places within a constrained range.
 
 ### Example
 
@@ -89,7 +89,7 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Returns a GeoJSON object which can be integrated into your geospatial application. |  -  |
+**200** | A GeoJSON object which can be integrated into your geospatial application. |  -  |
 **400** | Bad request; more details will be included |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -170,7 +170,7 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Returns the matched route, which looks more or less like a normal route response, optionally with a &#x60;linear_references&#x60; key. |  -  |
+**200** | The matched route(s), which looks more or less like a normal route response, optionally with a &#x60;linear_references&#x60; key. |  -  |
 **400** | Bad request; more details will be included |  -  |
 **500** | An internal parse error occurred; more details will be included |  -  |
 
@@ -252,7 +252,7 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Returns a list of streets and intersections that match the query. |  -  |
+**200** | A list of streets and intersections that match the query. |  -  |
 **400** | Bad request; more details will be included |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -333,7 +333,7 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Returns the optimized route, which looks more or less like a normal route response. The only significant difference is that the &#x60;locations&#x60; may be re-ordered and annotated with an &#x60;original_index&#x60;. |  -  |
+**200** | The optimized route, which looks more or less like a normal route response. The only significant difference is that the &#x60;locations&#x60; may be re-ordered and annotated with an &#x60;original_index&#x60;. |  -  |
 **400** | Bad request; more details will be included |  -  |
 **500** | An internal parse error occurred; more details will be included |  -  |
 
@@ -415,7 +415,7 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Returns the computed route |  -  |
+**200** | The computed route(s). |  -  |
 **400** | Bad request; more details will be included |  -  |
 **500** | An internal parse error occurred; more details will be included |  -  |
 
@@ -497,7 +497,7 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Returns a matrix of times and distances between the start and end points. |  -  |
+**200** | A matrix of times and distances between the start and end points. |  -  |
 **400** | Bad request; more details will be included. NOTE: failure to find suitable edges near a location will result in a 400. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -578,7 +578,7 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Returns the edges along the traced route with detailed info. |  -  |
+**200** | The edges along the traced route with detailed info. |  -  |
 **400** | Bad request; more details will be included |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

@@ -7,8 +7,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **status** | **int** | The response status code | 
 **status_message** | **str** | The response status message | 
-**units** | [**ValhallaLongUnits**](ValhallaLongUnits.md) |  | 
-**language** | [**ValhallaLanguages**](ValhallaLanguages.md) |  | 
+**units** | [**ValhallaLongUnits**](ValhallaLongUnits.md) |  | [default to ValhallaLongUnits.KILOMETERS]
+**language** | [**ValhallaLanguages**](ValhallaLanguages.md) |  | [default to ValhallaLanguages.EN_MINUS_US]
 **locations** | [**List[RoutingResponseWaypoint]**](RoutingResponseWaypoint.md) |  | 
 **legs** | [**List[RouteLeg]**](RouteLeg.md) |  | 
 **summary** | [**RouteSummary**](RouteSummary.md) |  | 

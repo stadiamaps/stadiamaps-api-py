@@ -1,10 +1,15 @@
 # TravelMode
 
 
-## Properties
+## Enum
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
+* `DRIVE` (value: `'drive'`)
+
+* `PEDESTRIAN` (value: `'pedestrian'`)
+
+* `BICYCLE` (value: `'bicycle'`)
+
+* `TRANSIT` (value: `'transit'`)
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -50,7 +50,8 @@ class TestGeocoding(unittest.TestCase):
         with stadiamaps.ApiClient(self.configuration) as api_client:
             api_instance = stadiamaps.GeocodingApi(api_client)
 
-            res = api_instance.reverse(59.444351, 24.750645, layers=[stadiamaps.PeliasLayer.ADDRESS, stadiamaps.PeliasLayer.OCEAN])
+            res = api_instance.reverse(59.444351, 24.750645,
+                                       layers=[stadiamaps.PeliasLayer.ADDRESS, stadiamaps.PeliasLayer.OCEAN])
             self.assertEqual("Estonia", res.features[0].properties.country)
             self.assertEqual("address", res.features[0].properties.layer)
 
@@ -70,3 +71,24 @@ class TestGeocoding(unittest.TestCase):
             self.assertEqual(1, len(res.features))
             self.assertEqual("Estonia", res.features[0].properties.country)
             self.assertEqual("address", res.features[0].properties.layer)
+
+    def testBulk(self):
+        with stadiamaps.ApiClient(self.configuration) as api_client:
+            api_instance = stadiamaps.GeocodingApi(api_client)
+
+            res = api_instance.search_bulk([
+                stadiamaps.BulkRequest(
+                    stadiamaps.SearchBulkQuery(endpoint="/v1/search", query=stadiamaps.SearchQuery(text=address))),
+                stadiamaps.BulkRequest(stadiamaps.SearchStructuredBulkQuery(endpoint="/v1/search/structured",
+                                                                            query=stadiamaps.SearchStructuredQuery(
+                                                                                address=address,
+                                                                                country="EE", layers=[
+                                                                                    stadiamaps.PeliasLayer.COARSE,
+                                                                                    stadiamaps.PeliasLayer.ADDRESS], ))),
+            ])
+
+            self.assertEqual(2, len(res))
+            for rec in res:
+                self.assertEqual(200, rec.status)
+                self.assertEqual("Estonia", rec.response.features[0].properties.country)
+                self.assertEqual("address", rec.response.features[0].properties.layer)

@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **shape** | **str** | The encoded polyline (https://developers.google.com/maps/documentation/utilities/polylinealgorithm) of the matched path. | [optional] 
 **confidence_score** | **float** |  | [optional] 
 **id** | **str** | An identifier to disambiguate requests (echoed by the server). | [optional] 
-**units** | [**ValhallaLongUnits**](ValhallaLongUnits.md) |  | [optional] 
+**units** | [**ValhallaLongUnits**](ValhallaLongUnits.md) |  | [optional] [default to ValhallaLongUnits.KILOMETERS]
 **alternate_paths** | [**List[TraceAttributesBaseResponse]**](TraceAttributesBaseResponse.md) | Alternate paths, if any, that were not classified as the best match. | [optional] 
 
 ## Example
