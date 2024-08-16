@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **endpoint** | **str** |  | [optional] 
-**query** | [**SearchStructuredQuery**](SearchStructuredQuery.md) |  | [optional] 
+**query** | [**BulkRequestQuery**](BulkRequestQuery.md) |  | [optional] 
 
 ## Example
 

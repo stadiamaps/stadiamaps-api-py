@@ -10,6 +10,7 @@ docs/BaseTraceRequest.md
 docs/BicycleCostingOptions.md
 docs/BikeNetwork.md
 docs/BulkRequest.md
+docs/BulkRequestQuery.md
 docs/BulkSearchResponse.md
 docs/Contour.md
 docs/Coordinate.md
@@ -84,9 +85,7 @@ docs/RoutingApi.md
 docs/RoutingResponseWaypoint.md
 docs/RoutingWaypoint.md
 docs/RoutingWaypointAllOfSearchFilter.md
-docs/SearchBulkQuery.md
 docs/SearchQuery.md
-docs/SearchStructuredBulkQuery.md
 docs/SearchStructuredQuery.md
 docs/SimpleRoutingWaypoint.md
 docs/Speeds.md
@@ -127,6 +126,7 @@ stadiamaps/models/base_trace_request.py
 stadiamaps/models/bicycle_costing_options.py
 stadiamaps/models/bike_network.py
 stadiamaps/models/bulk_request.py
+stadiamaps/models/bulk_request_query.py
 stadiamaps/models/bulk_search_response.py
 stadiamaps/models/contour.py
 stadiamaps/models/coordinate.py
@@ -198,9 +198,7 @@ stadiamaps/models/route_trip.py
 stadiamaps/models/routing_response_waypoint.py
 stadiamaps/models/routing_waypoint.py
 stadiamaps/models/routing_waypoint_all_of_search_filter.py
-stadiamaps/models/search_bulk_query.py
 stadiamaps/models/search_query.py
-stadiamaps/models/search_structured_bulk_query.py
 stadiamaps/models/search_structured_query.py
 stadiamaps/models/simple_routing_waypoint.py
 stadiamaps/models/speeds.py
@@ -221,4 +219,5 @@ stadiamaps/py.typed
 stadiamaps/rest.py
 test-requirements.txt
 test/__init__.py
+test/test_bulk_request_query.py
 tox.ini

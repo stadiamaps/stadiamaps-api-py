@@ -18,36 +18,30 @@ import json
 import pprint
 from pydantic import BaseModel, ConfigDict, Field, StrictStr, ValidationError, field_validator
 from typing import Any, List, Optional
-from stadiamaps.models.geo_json_line_string import GeoJSONLineString
-from stadiamaps.models.geo_json_point import GeoJSONPoint
-from stadiamaps.models.geo_json_polygon import GeoJSONPolygon
+from stadiamaps.models.search_query import SearchQuery
+from stadiamaps.models.search_structured_query import SearchStructuredQuery
 from pydantic import StrictStr, Field
 from typing import Union, List, Set, Optional, Dict
 from typing_extensions import Literal, Self
 
-GEOJSONGEOMETRY_ONE_OF_SCHEMAS = ["GeoJSONLineString", "GeoJSONPoint", "GeoJSONPolygon"]
+BULKREQUESTQUERY_ONE_OF_SCHEMAS = ["SearchQuery", "SearchStructuredQuery"]
 
-class GeoJSONGeometry(BaseModel):
+class BulkRequestQuery(BaseModel):
     """
-    GeoJSONGeometry
+    BulkRequestQuery
     """
-    # data type: GeoJSONPoint
-    oneof_schema_1_validator: Optional[GeoJSONPoint] = None
-    # data type: GeoJSONLineString
-    oneof_schema_2_validator: Optional[GeoJSONLineString] = None
-    # data type: GeoJSONPolygon
-    oneof_schema_3_validator: Optional[GeoJSONPolygon] = None
-    actual_instance: Optional[Union[GeoJSONLineString, GeoJSONPoint, GeoJSONPolygon]] = None
-    one_of_schemas: Set[str] = { "GeoJSONLineString", "GeoJSONPoint", "GeoJSONPolygon" }
+    # data type: SearchQuery
+    oneof_schema_1_validator: Optional[SearchQuery] = None
+    # data type: SearchStructuredQuery
+    oneof_schema_2_validator: Optional[SearchStructuredQuery] = None
+    actual_instance: Optional[Union[SearchQuery, SearchStructuredQuery]] = None
+    one_of_schemas: Set[str] = { "SearchQuery", "SearchStructuredQuery" }
 
     model_config = ConfigDict(
         validate_assignment=True,
         protected_namespaces=(),
     )
 
-
-    discriminator_value_class_map: Dict[str, str] = {
-    }
 
     def __init__(self, *args, **kwargs) -> None:
         if args:
@@ -61,30 +55,25 @@ class GeoJSONGeometry(BaseModel):
 
     @field_validator('actual_instance')
     def actual_instance_must_validate_oneof(cls, v):
-        instance = GeoJSONGeometry.model_construct()
+        instance = BulkRequestQuery.model_construct()
         error_messages = []
         match = 0
-        # validate data type: GeoJSONPoint
-        if not isinstance(v, GeoJSONPoint):
-            error_messages.append(f"Error! Input type `{type(v)}` is not `GeoJSONPoint`")
+        # validate data type: SearchQuery
+        if not isinstance(v, SearchQuery):
+            error_messages.append(f"Error! Input type `{type(v)}` is not `SearchQuery`")
         else:
             match += 1
-        # validate data type: GeoJSONLineString
-        if not isinstance(v, GeoJSONLineString):
-            error_messages.append(f"Error! Input type `{type(v)}` is not `GeoJSONLineString`")
-        else:
-            match += 1
-        # validate data type: GeoJSONPolygon
-        if not isinstance(v, GeoJSONPolygon):
-            error_messages.append(f"Error! Input type `{type(v)}` is not `GeoJSONPolygon`")
+        # validate data type: SearchStructuredQuery
+        if not isinstance(v, SearchStructuredQuery):
+            error_messages.append(f"Error! Input type `{type(v)}` is not `SearchStructuredQuery`")
         else:
             match += 1
         if match > 1:
             # more than 1 match
-            raise ValueError("Multiple matches found when setting `actual_instance` in GeoJSONGeometry with oneOf schemas: GeoJSONLineString, GeoJSONPoint, GeoJSONPolygon. Details: " + ", ".join(error_messages))
+            raise ValueError("Multiple matches found when setting `actual_instance` in BulkRequestQuery with oneOf schemas: SearchQuery, SearchStructuredQuery. Details: " + ", ".join(error_messages))
         elif match == 0:
             # no match
-            raise ValueError("No match found when setting `actual_instance` in GeoJSONGeometry with oneOf schemas: GeoJSONLineString, GeoJSONPoint, GeoJSONPolygon. Details: " + ", ".join(error_messages))
+            raise ValueError("No match found when setting `actual_instance` in BulkRequestQuery with oneOf schemas: SearchQuery, SearchStructuredQuery. Details: " + ", ".join(error_messages))
         else:
             return v
 
@@ -99,31 +88,25 @@ class GeoJSONGeometry(BaseModel):
         error_messages = []
         match = 0
 
-        # deserialize data into GeoJSONPoint
+        # deserialize data into SearchQuery
         try:
-            instance.actual_instance = GeoJSONPoint.from_json(json_str)
+            instance.actual_instance = SearchQuery.from_json(json_str)
             match += 1
         except (ValidationError, ValueError) as e:
             error_messages.append(str(e))
-        # deserialize data into GeoJSONLineString
+        # deserialize data into SearchStructuredQuery
         try:
-            instance.actual_instance = GeoJSONLineString.from_json(json_str)
-            match += 1
-        except (ValidationError, ValueError) as e:
-            error_messages.append(str(e))
-        # deserialize data into GeoJSONPolygon
-        try:
-            instance.actual_instance = GeoJSONPolygon.from_json(json_str)
+            instance.actual_instance = SearchStructuredQuery.from_json(json_str)
             match += 1
         except (ValidationError, ValueError) as e:
             error_messages.append(str(e))
 
         if match > 1:
             # more than 1 match
-            raise ValueError("Multiple matches found when deserializing the JSON string into GeoJSONGeometry with oneOf schemas: GeoJSONLineString, GeoJSONPoint, GeoJSONPolygon. Details: " + ", ".join(error_messages))
+            raise ValueError("Multiple matches found when deserializing the JSON string into BulkRequestQuery with oneOf schemas: SearchQuery, SearchStructuredQuery. Details: " + ", ".join(error_messages))
         elif match == 0:
             # no match
-            raise ValueError("No match found when deserializing the JSON string into GeoJSONGeometry with oneOf schemas: GeoJSONLineString, GeoJSONPoint, GeoJSONPolygon. Details: " + ", ".join(error_messages))
+            raise ValueError("No match found when deserializing the JSON string into BulkRequestQuery with oneOf schemas: SearchQuery, SearchStructuredQuery. Details: " + ", ".join(error_messages))
         else:
             return instance
 
@@ -137,7 +120,7 @@ class GeoJSONGeometry(BaseModel):
         else:
             return json.dumps(self.actual_instance)
 
-    def to_dict(self) -> Optional[Union[Dict[str, Any], GeoJSONLineString, GeoJSONPoint, GeoJSONPolygon]]:
+    def to_dict(self) -> Optional[Union[Dict[str, Any], SearchQuery, SearchStructuredQuery]]:
         """Returns the dict representation of the actual instance"""
         if self.actual_instance is None:
             return None

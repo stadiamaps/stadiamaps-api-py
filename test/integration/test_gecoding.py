@@ -77,14 +77,15 @@ class TestGeocoding(unittest.TestCase):
             api_instance = stadiamaps.GeocodingApi(api_client)
 
             res = api_instance.search_bulk([
-                stadiamaps.BulkRequest(
-                    stadiamaps.SearchBulkQuery(endpoint="/v1/search", query=stadiamaps.SearchQuery(text=address))),
-                stadiamaps.BulkRequest(stadiamaps.SearchStructuredBulkQuery(endpoint="/v1/search/structured",
-                                                                            query=stadiamaps.SearchStructuredQuery(
-                                                                                address=address,
-                                                                                country="EE", layers=[
-                                                                                    stadiamaps.PeliasLayer.COARSE,
-                                                                                    stadiamaps.PeliasLayer.ADDRESS], ))),
+                stadiamaps.BulkRequest(endpoint="/v1/search",
+                                       query=stadiamaps.BulkRequestQuery(stadiamaps.SearchQuery(text=address))),
+                stadiamaps.BulkRequest(endpoint="/v1/search/structured",
+                                       query=stadiamaps.BulkRequestQuery(stadiamaps.SearchStructuredQuery(
+                                           address=address,
+                                           country="EE",
+                                           layers=[
+                                               stadiamaps.PeliasLayer.COARSE,
+                                               stadiamaps.PeliasLayer.ADDRESS]))),
             ])
 
             self.assertEqual(2, len(res))
