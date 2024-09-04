@@ -258,7 +258,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **optimized_route**
-> RouteResponse optimized_route(optimized_route_request=optimized_route_request)
+> Route200Response optimized_route(optimized_route_request=optimized_route_request)
 
 Calculate an optimized route between a known start and end point.
 
@@ -271,7 +271,7 @@ The optimized route API is a mix of the matrix and normal route API. For an opti
 ```python
 import stadiamaps
 from stadiamaps.models.optimized_route_request import OptimizedRouteRequest
-from stadiamaps.models.route_response import RouteResponse
+from stadiamaps.models.route200_response import Route200Response
 from stadiamaps.rest import ApiException
 from pprint import pprint
 
@@ -318,7 +318,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**RouteResponse**](RouteResponse.md)
+[**Route200Response**](Route200Response.md)
 
 ### Authorization
 
@@ -340,7 +340,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **route**
-> RouteResponse route(route_request=route_request)
+> Route200Response route(route_request=route_request)
 
 Get turn by turn routing instructions between two or more locations.
 
@@ -352,8 +352,8 @@ The route (turn-by-turn) API computes routes between two or more locations. It s
 
 ```python
 import stadiamaps
+from stadiamaps.models.route200_response import Route200Response
 from stadiamaps.models.route_request import RouteRequest
-from stadiamaps.models.route_response import RouteResponse
 from stadiamaps.rest import ApiException
 from pprint import pprint
 
@@ -400,7 +400,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**RouteResponse**](RouteResponse.md)
+[**Route200Response**](Route200Response.md)
 
 ### Authorization
 

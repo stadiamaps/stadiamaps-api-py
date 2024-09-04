@@ -8,6 +8,10 @@ Name | Type | Description | Notes
 **units** | [**DistanceUnit**](DistanceUnit.md) |  | [optional] [default to DistanceUnit.KM]
 **language** | [**ValhallaLanguages**](ValhallaLanguages.md) |  | [optional] [default to ValhallaLanguages.EN_MINUS_US]
 **directions_type** | **str** | The level of directional narrative to include. Locations and times will always be returned, but narrative generation verbosity can be controlled with this parameter. | [optional] [default to 'instructions']
+**format** | **str** | The output response format. The default JSON format is extremely compact and ideal for web or data-constrained use cases where you want to fetch additional attributes on demand in small chunks. The OSRM format is much richer and is configurable with significantly more info for turn-by-turn navigation use cases. | [optional] 
+**banner_instructions** | **bool** | Optionally includes helpful banners with timing information for turn-by-turn navigation. This is only available in the OSRM format. | [optional] 
+**voice_instructions** | **bool** | Optionally includes voice instructions with timing information for turn-by-turn navigation. This is only available in the OSRM format. | [optional] 
+**filters** | [**AnnotationFilters**](AnnotationFilters.md) |  | [optional] 
 **id** | **str** | An identifier to disambiguate requests (echoed by the server). | [optional] 
 **locations** | [**List[RoutingWaypoint]**](RoutingWaypoint.md) |  | 
 **costing** | [**CostingModel**](CostingModel.md) |  | 

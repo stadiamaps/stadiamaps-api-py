@@ -2,6 +2,7 @@ import os
 import unittest
 
 import stadiamaps
+from stadiamaps import AnnotationFilters
 
 location_a = {"lat": 40.042072, "lon": -76.306572}
 location_b = {"lat": 39.992115, "lon": -76.781559}
@@ -31,12 +32,40 @@ class TestRouting(unittest.TestCase):
                 units=stadiamaps.DistanceUnit.MI,
             )
 
-            res = api_instance.route(req)
+            res = api_instance.route(req).actual_instance
             self.assertEqual(req.id, res.id)
             self.assertEqual(0, res.trip.status)
             self.assertEqual("miles", res.trip.units)
             self.assertEqual(len(res.trip.legs), 1)
             self.assertEqual(len(res.alternates or []), 0)
+
+    def testNavigationRoute(self):
+        with stadiamaps.ApiClient(self.configuration) as api_client:
+            api_instance = stadiamaps.RoutingApi(api_client)
+
+            req = stadiamaps.RouteRequest(
+                id="route",
+                locations=[
+                    stadiamaps.RoutingWaypoint.from_dict(location_a),
+                    stadiamaps.RoutingWaypoint.from_dict(location_b)
+                ],
+                costing=stadiamaps.CostingModel.AUTO,
+                costing_options=stadiamaps.CostingOptions(auto=stadiamaps.AutoCostingOptions(use_tolls=0.7)),
+                units=stadiamaps.DistanceUnit.MI,
+                format="osrm",
+                banner_instructions=True,
+                filters=AnnotationFilters(action="include", attributes=["shape_attributes.speed_limit"])
+            )
+
+            res = api_instance.route(req).actual_instance
+            self.assertEqual("Ok", res.code)
+            self.assertEqual(len(res.routes), 1)
+            has_banner_instructions = False
+            for step in res.routes[0].legs[0].steps:
+                if len(step.banner_instructions) > 0:
+                    has_banner_instructions = True
+
+            self.assertTrue(has_banner_instructions)
 
     def testRouteWithAlternates(self):
         with stadiamaps.ApiClient(self.configuration) as api_client:
@@ -54,7 +83,7 @@ class TestRouting(unittest.TestCase):
                 alternates=1,
             )
 
-            res = api_instance.route(req)
+            res = api_instance.route(req).actual_instance
             self.assertEqual(req.id, res.id)
             self.assertEqual(0, res.trip.status)
             self.assertEqual("miles", res.trip.units)
@@ -77,7 +106,7 @@ class TestRouting(unittest.TestCase):
                 elevation_interval=30,
             )
 
-            res = api_instance.route(req)
+            res = api_instance.route(req).actual_instance
             self.assertEqual(req.id, res.id)
             self.assertEqual(0, res.trip.status)
             self.assertEqual("miles", res.trip.units)
@@ -101,7 +130,7 @@ class TestRouting(unittest.TestCase):
                 units=stadiamaps.DistanceUnit.KM,
             )
 
-            res = api_instance.route(req)
+            res = api_instance.route(req).actual_instance
             self.assertEqual(req.id, res.id)
             self.assertEqual(0, res.trip.status)
             self.assertEqual("kilometers", res.trip.units)
@@ -124,7 +153,7 @@ class TestRouting(unittest.TestCase):
                 units=stadiamaps.DistanceUnit.MI,
             )
 
-            res = api_instance.optimized_route(req)
+            res = api_instance.optimized_route(req).actual_instance
             self.assertEqual(req.id, res.id)
             self.assertEqual(0, res.trip.status)
             self.assertEqual("miles", res.trip.units)

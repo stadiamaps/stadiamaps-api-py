@@ -31,7 +31,7 @@ Name | Type | Description | Notes
 **transit_type** | **str** |  | [optional] 
 **id** | **int** |  | [optional] 
 **way_id** | **int** | The way identifier of the edge in OSM. | [optional] 
-**weighted_grade** | **float** | The weighted grade factor. Valhalla manufactures a weighted grade from elevation data. It is a measure used for hill avoidance in routing - sort of a relative energy use along an edge. But since an edge in Valhalla can possibly go up and down over several hills it might not equate to what you would normally think of as grade. | [optional] 
+**weighted_grade** | **float** | The weighted grade factor. The weighted grade is derived from elevation data. It is a measure used for hill avoidance in routing - sort of a relative energy use along an edge. But since an edge can possibly go up and down over several hills, it might not equate to what you would normally think of as grade. | [optional] 
 **max_upward_grade** | **int** | The maximum upward slope. A value of 32768 indicates no elevation data is available for this edge. | [optional] 
 **max_downward_grade** | **int** | The maximum downward slope. A value of 32768 indicates no elevation data is available for this edge. | [optional] 
 **mean_elevation** | **int** | The mean elevation along the edge. Units are meters by default. If the &#x60;units&#x60; are specified as miles, then the mean elevation is returned in feet. A value of 32768 indicates no elevation data is available for this edge. | [optional] 
