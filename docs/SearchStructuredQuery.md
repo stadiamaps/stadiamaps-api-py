@@ -23,9 +23,9 @@ Name | Type | Description | Notes
 **boundary_circle_lon** | **float** | The longitude of the center of a circle to limit the search to. Requires &#x60;boundary.circle.lat&#x60;. | [optional] 
 **boundary_circle_radius** | **float** | The radius of the circle (in kilometers) to limit the search to. Defaults to 50km if unspecified. | [optional] 
 **boundary_country** | **List[str]** | A list of countries to limit the search to. These may be either full names (ex: Canada), or an ISO 3116-1 alpha-2 or alpha-3 code. Prefer ISO codes when possible. | [optional] 
-**boundary_gid** | **str** | The Pelias GID of an area to limit the search to. | [optional] 
-**layers** | [**List[PeliasLayer]**](PeliasLayer.md) | A list of layers to limit the search to. | [optional] 
-**sources** | [**List[PeliasSource]**](PeliasSource.md) | A list of sources to limit the search to. | [optional] 
+**boundary_gid** | **str** | The GID of an area to limit the search to. | [optional] 
+**layers** | [**List[GeocodingLayer]**](GeocodingLayer.md) | A list of layers to limit the search to. | [optional] 
+**sources** | [**List[GeocodingSource]**](GeocodingSource.md) | A list of sources to limit the search to. | [optional] 
 **size** | **int** | The maximum number of results to return. | [optional] 
 **lang** | **str** | A BCP47 language tag which specifies a preference for localization of results. By default, results are in the default locale of the source data, but specifying a language will attempt to localize the results. Note that while a &#x60;langtag&#x60; (in RFC 5646 terms) can contain script, region, etc., only the &#x60;language&#x60; portion, an ISO 639 code, will be considered. So &#x60;en-US&#x60; and &#x60;en-GB&#x60; will both be treated as English. | [optional] 
 

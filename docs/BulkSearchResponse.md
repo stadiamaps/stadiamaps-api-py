@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **status** | **int** |  | 
-**response** | [**PeliasResponse**](PeliasResponse.md) |  | [optional] 
+**response** | [**GeocodeResponse**](GeocodeResponse.md) |  | [optional] 
 **msg** | **str** | An error message describing what went wrong (if the status is not 200). | [optional] 
 
 ## Example

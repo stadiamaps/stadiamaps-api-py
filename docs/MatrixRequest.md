@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **units** | [**DistanceUnit**](DistanceUnit.md) |  | [optional] [default to DistanceUnit.KM]
-**language** | [**ValhallaLanguages**](ValhallaLanguages.md) |  | [optional] [default to ValhallaLanguages.EN_MINUS_US]
+**language** | [**RoutingLanguages**](RoutingLanguages.md) |  | [optional] [default to RoutingLanguages.EN_MINUS_US]
 **directions_type** | **str** | The level of directional narrative to include. Locations and times will always be returned, but narrative generation verbosity can be controlled with this parameter. | [optional] [default to 'instructions']
 **id** | **str** | An identifier to disambiguate requests (echoed by the server). | [optional] 
 **sources** | [**List[MatrixWaypoint]**](MatrixWaypoint.md) | The list of starting locations | 

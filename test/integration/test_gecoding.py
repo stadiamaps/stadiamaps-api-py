@@ -51,7 +51,7 @@ class TestGeocoding(unittest.TestCase):
             api_instance = stadiamaps.GeocodingApi(api_client)
 
             res = api_instance.reverse(59.444351, 24.750645,
-                                       layers=[stadiamaps.PeliasLayer.ADDRESS, stadiamaps.PeliasLayer.OCEAN])
+                                       layers=[stadiamaps.GeocodingLayer.ADDRESS, stadiamaps.GeocodingLayer.OCEAN])
             self.assertEqual("Estonia", res.features[0].properties.country)
             self.assertEqual("address", res.features[0].properties.layer)
 
@@ -84,8 +84,8 @@ class TestGeocoding(unittest.TestCase):
                                            address=address,
                                            country="EE",
                                            layers=[
-                                               stadiamaps.PeliasLayer.COARSE,
-                                               stadiamaps.PeliasLayer.ADDRESS]))),
+                                               stadiamaps.GeocodingLayer.COARSE,
+                                               stadiamaps.GeocodingLayer.ADDRESS]))),
             ])
 
             self.assertEqual(2, len(res))
