@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**walking_speed** | **int** | Walking speed in kph. | [optional] 
+**walking_speed** | **float** | Walking speed in kph. | [optional] [default to 5.1]
 **walkway_factor** | **float** | A factor that multiplies the cost when walkways are encountered. | [optional] [default to 1]
 **sidewalk_factor** | **float** | A factor that multiplies the cost when sidewalks are encountered. | [optional] [default to 1]
 **alley_factor** | **float** | A factor that multiplies the cost when alleys are encountered. | [optional] [default to 2]
@@ -21,6 +21,7 @@ Name | Type | Description | Notes
 **max_hiking_difficulty** | **int** | The maximum difficulty of hiking trails allowed. This corresponds to the OSM &#x60;sac_scale&#x60;. | [optional] [default to 1]
 **bss_rent_cost** | **int** | The estimated cost (in seconds) to rent a bicycle from a sharing station in &#x60;bikeshare&#x60; mode. | [optional] [default to 120]
 **bss_rent_penalty** | **int** | A penalty (in seconds) to rent a bicycle in &#x60;bikeshare&#x60; mode. | [optional] [default to 0]
+**type** | [**PedestrianType**](PedestrianType.md) |  | [optional] 
 
 ## Example
 

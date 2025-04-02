@@ -426,7 +426,8 @@ Name | Type | Description  | Notes
 
 Calculate a time distance matrix for use in an optimizer.
 
-The time distance matrix API lets you compare travel times between a set of possible start and end points. See https://docs.stadiamaps.com/limits/ for documentation of our latest limits.
+The time distance matrix API lets you compare travel times between a set of possible start and end points.
+See https://docs.stadiamaps.com/limits/ for documentation of our latest limits.
 
 ### Example
 

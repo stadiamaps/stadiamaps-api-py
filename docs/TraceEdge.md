@@ -41,7 +41,7 @@ Name | Type | Description | Notes
 **sac_scale** | **int** | The difficulty of the hiking trail according to the SAC scale. 0 - No Sac Scale 1 - Hiking 2 - Mountain hiking 3 - Demanding mountain hiking 4 - Alpine hiking 5 - Demanding alpine hiking 6 - Difficult alpine hiking | [optional] 
 **sidewalk** | **str** |  | [optional] 
 **density** | **int** |  | [optional] 
-**speed_limit** | **object** | The speed limit along the edge measured in &#x60;units&#x60;/hr. This may be either an integer or the string \&quot;unlimited\&quot; if speed limit data is available. If absent, there is no speed limit data available. | [optional] 
+**speed_limit** | **int** | The speed limit along the edge measured in &#x60;units&#x60;/hr. This may be either an integer or the string \&quot;unlimited\&quot; if speed limit data is available. If absent, there is no speed limit data available. | [optional] 
 **truck_speed** | **int** | The truck speed of this edge in &#x60;units&#x60;/hr, in terms of average/free-flow speed for routing purposes. This is affected by any number of factors such as the road service, vehicle type, etc. and not just the posted speed limits. | [optional] 
 **truck_route** | **bool** | True if the edge is part of a truck route/network. | [optional] 
 **end_node** | [**EndNode**](EndNode.md) |  | [optional] 

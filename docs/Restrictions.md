@@ -6,17 +6,17 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **golf_cart** | **bool** |  | [optional] 
-**truck** | **bool** |  | [optional] 
-**pedestrian** | **bool** |  | [optional] 
 **wheelchair** | **bool** |  | [optional] 
 **taxi** | **bool** |  | [optional] 
 **hov** | **bool** |  | [optional] 
+**truck** | **bool** |  | [optional] 
 **emergency** | **bool** |  | [optional] 
-**motorcycle** | **bool** |  | [optional] 
+**pedestrian** | **bool** |  | [optional] 
 **car** | **bool** |  | [optional] 
-**moped** | **bool** |  | [optional] 
 **bus** | **bool** |  | [optional] 
 **bicycle** | **bool** |  | [optional] 
+**motorcycle** | **bool** |  | [optional] 
+**moped** | **bool** |  | [optional] 
 
 ## Example
 

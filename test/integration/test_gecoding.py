@@ -14,12 +14,20 @@ class TestGeocoding(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def testAutocomplete(self):
+    def testAutocompleteV1(self):
         with stadiamaps.ApiClient(self.configuration) as api_client:
             api_instance = stadiamaps.GeocodingApi(api_client)
 
             res = api_instance.autocomplete(text=address)
             self.assertEqual("Estonia", res.features[0].properties.country)
+            self.assertEqual("address", res.features[0].properties.layer)
+
+    def testAutocompleteV2(self):
+        with stadiamaps.ApiClient(self.configuration) as api_client:
+            api_instance = stadiamaps.GeocodingApi(api_client)
+
+            res = api_instance.autocomplete_v2(text=address)
+            self.assertEqual(None, res.features[0].properties.context)
             self.assertEqual("address", res.features[0].properties.layer)
 
     def testSearch(self):
@@ -44,7 +52,6 @@ class TestGeocoding(unittest.TestCase):
 
             res = api_instance.reverse(59.444351, 24.750645)
             self.assertEqual("Estonia", res.features[0].properties.country)
-            self.assertEqual("address", res.features[0].properties.layer)
 
     def testReverseWithLayerFilter(self):
         with stadiamaps.ApiClient(self.configuration) as api_client:
@@ -63,13 +70,23 @@ class TestGeocoding(unittest.TestCase):
             res = api_instance.reverse(24.750645, 59.444351)
             self.assertEqual("marinearea", res.features[0].properties.layer)
 
-    def testPlace(self):
+    def testPlaceV1(self):
         with stadiamaps.ApiClient(self.configuration) as api_client:
             api_instance = stadiamaps.GeocodingApi(api_client)
 
-            res = api_instance.place(["openstreetmap:address:way/109867749"])
+            res = api_instance.place_details(["openstreetmap:address:way/109867749"])
             self.assertEqual(1, len(res.features))
             self.assertEqual("Estonia", res.features[0].properties.country)
+            self.assertEqual("address", res.features[0].properties.layer)
+
+    def testPlaceV2(self):
+        with stadiamaps.ApiClient(self.configuration) as api_client:
+            api_instance = stadiamaps.GeocodingApi(api_client)
+
+            res = api_instance.place_details_v2(["openstreetmap:address:way/109867749"])
+            self.assertEqual(1, len(res.features))
+            self.assertEqual("Estonia", res.features[0].properties.context.whosonfirst.country.name)
+            self.assertEqual("EST", res.features[0].properties.context.iso_3166_a3)
             self.assertEqual("address", res.features[0].properties.layer)
 
     def testBulk(self):

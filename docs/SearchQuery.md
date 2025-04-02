@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 **boundary_circle_lat** | **float** | The latitude of the center of a circle to limit the search to. Requires &#x60;boundary.circle.lon&#x60;. | [optional] 
 **boundary_circle_lon** | **float** | The longitude of the center of a circle to limit the search to. Requires &#x60;boundary.circle.lat&#x60;. | [optional] 
 **boundary_circle_radius** | **float** | The radius of the circle (in kilometers) to limit the search to. Defaults to 50km if unspecified. | [optional] 
-**boundary_country** | **List[str]** | A list of countries to limit the search to. These may be either full names (ex: Canada), or an ISO 3116-1 alpha-2 or alpha-3 code. Prefer ISO codes when possible. | [optional] 
+**boundary_country** | **List[str]** | A list of country codes in ISO 3116-1 alpha-2 or alpha-3 format. | [optional] 
 **boundary_gid** | **str** | The GID of an area to limit the search to. | [optional] 
 **layers** | [**List[GeocodingLayer]**](GeocodingLayer.md) | A list of layers to limit the search to. | [optional] 
 **sources** | [**List[GeocodingSource]**](GeocodingSource.md) | A list of sources to limit the search to. | [optional] 
