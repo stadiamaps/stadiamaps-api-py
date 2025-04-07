@@ -1,13 +1,24 @@
-[tool.poetry]
+[project]
 name = "stadiamaps"
 version = "6.0.0"
 description = "Stadia Maps Geospatial APIs"
-authors = ["Stadia Maps Support <support@stadiamaps.com>"]
+authors = [
+    { name = "Stadia Maps Support", email = "support@stadiamaps.com" }
+]
 license = "BSD-3-Clause"
 readme = "README.md"
-repository = "https://github.com/stadiamaps/stadiamaps-api-py"
-keywords = ["OpenAPI", "OpenAPI-Generator", "Stadia Maps Geospatial APIs"]
-include = ["stadiamaps/py.typed"]
+requires-python = ">=3.8"
+dependencies = [
+    "urllib3>=1.25.3,<3.0.0",
+    "python-dateutil>=2.8.2",
+    "pydantic>=2",
+    "typing-extensions>=4.7.1"
+]
+
+[project.urls]
+homepage = "https://stadiamaps.com"
+documentation = "https://docs.stadiamaps.com/sdks/python/"
+source = "https://github.com/stadiamaps/stadiamaps-api-py"
 
 [tool.poetry.dependencies]
 python = "^3.8"
@@ -87,3 +98,9 @@ disallow_incomplete_defs = true
 disallow_untyped_defs = true
 no_implicit_reexport = true
 warn_return_any = true
+
+[tool.setuptools.packages.find]
+exclude = ["tests", "test"]
+
+[tool.setuptools.package-data]
+stadiamaps = ["py.typed"]

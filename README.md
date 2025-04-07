@@ -6,27 +6,23 @@ For more information about the API, please visit [https://docs.stadiamaps.com](h
 
 ## Requirements.
 
-Python 3.7+
+Python 3.8+
 
 ## Installation & Usage
-### pip install
+
+You can install via your favorite package manager.
+For example:
+
+### pip
 
 ```shell
 pip install stadiamaps
 ```
 
-### Setuptools
+### poetry
 
-Install via [Setuptools](http://pypi.python.org/pypi/setuptools).
-
-```sh
-python setup.py install --user
-```
-(or `sudo python setup.py install` to install the package for all users)
-
-Then import the package:
-```python
-import stadiamaps
+```shell
+poetry add stadiamaps
 ```
 
 ### Tests

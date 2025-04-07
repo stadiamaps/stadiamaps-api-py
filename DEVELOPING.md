@@ -23,7 +23,7 @@ STADIA_API_KEY="YOUR-API-KEY" pytest
 ## Caveats
 
 When running the generator, a number of files including the GitHub [python.yml](.github/workflows/python.yml)
-action, [pyproject.toml](pyproject.toml), and [setup.py](setup.py). will be overwritten. This is generally the
+action and [pyproject.toml](pyproject.toml). will be overwritten. This is generally the
 right idea. However, the updated files will clobber several _intentional_ local modifications, so check your
 git diff carefully before committing. You _will_ have to stage some chunks and remove others.
 Sorry, not sorry; the automatic generator doesn't support enough configuration.
