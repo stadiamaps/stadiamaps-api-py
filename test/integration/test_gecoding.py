@@ -57,7 +57,7 @@ class TestGeocoding(unittest.TestCase):
         with stadiamaps.ApiClient(self.configuration) as api_client:
             api_instance = stadiamaps.GeocodingApi(api_client)
 
-            res = api_instance.reverse_v2(59.444351, 24.750645)
+            res = api_instance.reverse_v2(59.444351, 24.750645, lang="en")
             self.assertEqual("EST", res.features[0].properties.context.iso_3166_a3)
 
     def testReverseWithLayerFilter(self):
@@ -74,7 +74,8 @@ class TestGeocoding(unittest.TestCase):
             api_instance = stadiamaps.GeocodingApi(api_client)
 
             res = api_instance.reverse_v2(59.444351, 24.750645,
-                                          layers=[stadiamaps.LayerId.ADDRESS, stadiamaps.LayerId.OCEAN])
+                                          layers=[stadiamaps.LayerId.ADDRESS, stadiamaps.LayerId.OCEAN],
+                                          lang="en")
             self.assertEqual("EST", res.features[0].properties.context.iso_3166_a3)
             self.assertEqual("address", res.features[0].properties.layer)
 
@@ -91,7 +92,7 @@ class TestGeocoding(unittest.TestCase):
             api_instance = stadiamaps.GeocodingApi(api_client)
 
             # Middle of the Gulf of Oman
-            res = api_instance.reverse_v2(24.750645, 59.444351)
+            res = api_instance.reverse_v2(24.750645, 59.444351, lang="en")
             self.assertEqual("marinearea", res.features[0].properties.layer)
 
     def testPlaceV1(self):
@@ -107,7 +108,7 @@ class TestGeocoding(unittest.TestCase):
         with stadiamaps.ApiClient(self.configuration) as api_client:
             api_instance = stadiamaps.GeocodingApi(api_client)
 
-            res = api_instance.place_details_v2(["openstreetmap:address:way/109867749"])
+            res = api_instance.place_details_v2(["openstreetmap:address:way/109867749"], lang="en")
             self.assertEqual(1, len(res.features))
             self.assertEqual("Estonia", res.features[0].properties.context.whosonfirst.country.name)
             self.assertEqual("EST", res.features[0].properties.context.iso_3166_a3)
