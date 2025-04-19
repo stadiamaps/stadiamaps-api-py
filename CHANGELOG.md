@@ -13,7 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ```diff
 - res = api_instance.reverse(59.444351, 24.750645)
-- self.assertEqual("Estonia", res.features[0].properties.country)
++ res = api_instance.reverse_v2(59.444351, 24.750645)
 ```
 
 For an overview of the structural changes we've made in the V2 API,
