@@ -1,6 +1,6 @@
 [project]
 name = "stadiamaps"
-version = "6.0.0"
+version = "6.1.0"
 description = "Stadia Maps Geospatial APIs"
 authors = [
     { name = "Stadia Maps Support", email = "support@stadiamaps.com" }

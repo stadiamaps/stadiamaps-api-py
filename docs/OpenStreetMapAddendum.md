@@ -1,5 +1,6 @@
 # OpenStreetMapAddendum
 
+OpenStreetMap-specific additional fields.  These values are exactly as they appear in the associated OSM tag.
 
 ## Properties
 
@@ -12,6 +13,7 @@ Name | Type | Description | Notes
 **operator** | **str** | THe company, corp, person, or other entity directly in charge of operating something.  This is often used for public transport, hotels, restaurants, and postal services. See https://wiki.openstreetmap.org/wiki/Key:operator for details | [optional] 
 **phone** | **str** |  | [optional] 
 **website** | **str** |  | [optional] 
+**wheelchair** | **str** | Is this place wheelchair accessible? | [optional] 
 **wikidata** | **str** | Wikidata concordance ID. | [optional] 
 **wikipedia** | **str** | Wikipedia concordance ID. | [optional] 
 

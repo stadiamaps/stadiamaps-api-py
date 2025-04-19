@@ -53,6 +53,13 @@ class TestGeocoding(unittest.TestCase):
             res = api_instance.reverse(59.444351, 24.750645)
             self.assertEqual("Estonia", res.features[0].properties.country)
 
+    def testReverseV2(self):
+        with stadiamaps.ApiClient(self.configuration) as api_client:
+            api_instance = stadiamaps.GeocodingApi(api_client)
+
+            res = api_instance.reverse_v2(59.444351, 24.750645)
+            self.assertEqual("EST", res.features[0].properties.context.iso_3166_a3)
+
     def testReverseWithLayerFilter(self):
         with stadiamaps.ApiClient(self.configuration) as api_client:
             api_instance = stadiamaps.GeocodingApi(api_client)
@@ -62,12 +69,29 @@ class TestGeocoding(unittest.TestCase):
             self.assertEqual("Estonia", res.features[0].properties.country)
             self.assertEqual("address", res.features[0].properties.layer)
 
+    def testReverseWithLayerFilterV2(self):
+        with stadiamaps.ApiClient(self.configuration) as api_client:
+            api_instance = stadiamaps.GeocodingApi(api_client)
+
+            res = api_instance.reverse_v2(59.444351, 24.750645,
+                                          layers=[stadiamaps.LayerId.ADDRESS, stadiamaps.LayerId.OCEAN])
+            self.assertEqual("EST", res.features[0].properties.context.iso_3166_a3)
+            self.assertEqual("address", res.features[0].properties.layer)
+
     def testReverseUncommonLayer(self):
         with stadiamaps.ApiClient(self.configuration) as api_client:
             api_instance = stadiamaps.GeocodingApi(api_client)
 
             # Middle of the Gulf of Oman
             res = api_instance.reverse(24.750645, 59.444351)
+            self.assertEqual("marinearea", res.features[0].properties.layer)
+
+    def testReverseUncommonLayerV2(self):
+        with stadiamaps.ApiClient(self.configuration) as api_client:
+            api_instance = stadiamaps.GeocodingApi(api_client)
+
+            # Middle of the Gulf of Oman
+            res = api_instance.reverse_v2(24.750645, 59.444351)
             self.assertEqual("marinearea", res.features[0].properties.layer)
 
     def testPlaceV1(self):
