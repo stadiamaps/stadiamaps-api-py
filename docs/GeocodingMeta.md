@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **attribution** | **str** |  | 
 **error** | **str** | Errors encountered serving the request (if any). | [optional] 
+**query** | **object** | An object containing all valid, parsed query parameters.  For example, this will contain text and possibly other parameters for an autocomplete query. This will not be present for invalid requests. | [optional] 
 
 ## Example
 

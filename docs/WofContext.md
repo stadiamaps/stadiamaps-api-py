@@ -14,7 +14,9 @@ Name | Type | Description | Notes
 **locality** | [**WofContextComponent**](WofContextComponent.md) |  | [optional] 
 **macrocounty** | [**WofContextComponent**](WofContextComponent.md) |  | [optional] 
 **macroregion** | [**WofContextComponent**](WofContextComponent.md) |  | [optional] 
+**marinearea** | [**WofContextComponent**](WofContextComponent.md) |  | [optional] 
 **neighbourhood** | [**WofContextComponent**](WofContextComponent.md) |  | [optional] 
+**ocean** | [**WofContextComponent**](WofContextComponent.md) |  | [optional] 
 **region** | [**WofContextComponent**](WofContextComponent.md) |  | [optional] 
 
 ## Example

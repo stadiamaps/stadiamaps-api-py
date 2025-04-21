@@ -64,7 +64,7 @@ with stadiamaps.ApiClient(configuration) as api_client:
     boundary_rect_max_lon = 3.4 # float | Defines the max longitude component of a bounding box to limit the search to. Requires all other `boundary.rect` parameters to be specified. (optional)
     boundary_circle_lat = 3.4 # float | The latitude of the center of a circle to limit the search to. Requires `boundary.circle.lon`. (optional)
     boundary_circle_lon = 3.4 # float | The longitude of the center of a circle to limit the search to. Requires `boundary.circle.lat`. (optional)
-    boundary_circle_radius = 3.4 # float | The radius of the circle (in kilometers) to limit the search to. Defaults to 50km if unspecified. (optional)
+    boundary_circle_radius = 3.4 # float | The radius of the circle (in kilometers) to limit the search to. Defaults to 50km (search) or 1km (reverse) if unspecified. (optional)
     boundary_country = ['boundary_country_example'] # List[str] | A list of country codes in ISO 3116-1 alpha-2 or alpha-3 format. (optional)
     boundary_gid = 'boundary_gid_example' # str | The GID of an area to limit the search to. (optional)
     layers = [stadiamaps.GeocodingLayer()] # List[GeocodingLayer] | A list of layers to limit the search to. (optional)
@@ -97,7 +97,7 @@ Name | Type | Description  | Notes
  **boundary_rect_max_lon** | **float**| Defines the max longitude component of a bounding box to limit the search to. Requires all other &#x60;boundary.rect&#x60; parameters to be specified. | [optional] 
  **boundary_circle_lat** | **float**| The latitude of the center of a circle to limit the search to. Requires &#x60;boundary.circle.lon&#x60;. | [optional] 
  **boundary_circle_lon** | **float**| The longitude of the center of a circle to limit the search to. Requires &#x60;boundary.circle.lat&#x60;. | [optional] 
- **boundary_circle_radius** | **float**| The radius of the circle (in kilometers) to limit the search to. Defaults to 50km if unspecified. | [optional] 
+ **boundary_circle_radius** | **float**| The radius of the circle (in kilometers) to limit the search to. Defaults to 50km (search) or 1km (reverse) if unspecified. | [optional] 
  **boundary_country** | [**List[str]**](str.md)| A list of country codes in ISO 3116-1 alpha-2 or alpha-3 format. | [optional] 
  **boundary_gid** | **str**| The GID of an area to limit the search to. | [optional] 
  **layers** | [**List[GeocodingLayer]**](GeocodingLayer.md)| A list of layers to limit the search to. | [optional] 
@@ -175,7 +175,7 @@ with stadiamaps.ApiClient(configuration) as api_client:
     boundary_rect_max_lat = 3.4 # float | The maximum latitude component of a search bounding box.  NOTE: Requires all other boundary.rect parameters to be specified. (optional)
     boundary_rect_max_lon = 3.4 # float | The maximum longitude component of a search bounding box.  NOTE: Requires all other boundary.rect parameters to be specified. (optional)
     boundary_circle_lat = 3.4 # float | The latitude of the center of a circle to limit the search to.  NOTE: Requires boundary.circle.lon. (optional)
-    boundary_circle_lon = 3.4 # float | The longitude of the center of a circle to limit the search to.  NOTE: Requires boundary.circle.lon. (optional)
+    boundary_circle_lon = 3.4 # float | The longitude of the center of a circle to limit the search to.  NOTE: Requires boundary.circle.lat. (optional)
     boundary_circle_radius = 56 # int | The radius of the circle (in kilometers) to limit the search to.  NOTE: Requires the other boundary.circle parameters to take effect. Defaults to 50km if unspecified. (optional)
     size = 56 # int | The maximum number of items to return from a query. (optional)
     lang = 'lang_example' # str | A BCP47 language tag which specifies a preference for localization of results. There is no default value, so place names will be returned as-is, which is usually in the local language. NOTE: The Accept-Language header is also respected, and many user agents will set it automatically. (optional)
@@ -207,7 +207,7 @@ Name | Type | Description  | Notes
  **boundary_rect_max_lat** | **float**| The maximum latitude component of a search bounding box.  NOTE: Requires all other boundary.rect parameters to be specified. | [optional] 
  **boundary_rect_max_lon** | **float**| The maximum longitude component of a search bounding box.  NOTE: Requires all other boundary.rect parameters to be specified. | [optional] 
  **boundary_circle_lat** | **float**| The latitude of the center of a circle to limit the search to.  NOTE: Requires boundary.circle.lon. | [optional] 
- **boundary_circle_lon** | **float**| The longitude of the center of a circle to limit the search to.  NOTE: Requires boundary.circle.lon. | [optional] 
+ **boundary_circle_lon** | **float**| The longitude of the center of a circle to limit the search to.  NOTE: Requires boundary.circle.lat. | [optional] 
  **boundary_circle_radius** | **int**| The radius of the circle (in kilometers) to limit the search to.  NOTE: Requires the other boundary.circle parameters to take effect. Defaults to 50km if unspecified. | [optional] 
  **size** | **int**| The maximum number of items to return from a query. | [optional] 
  **lang** | **str**| A BCP47 language tag which specifies a preference for localization of results. There is no default value, so place names will be returned as-is, which is usually in the local language. NOTE: The Accept-Language header is also respected, and many user agents will set it automatically. | [optional] 
@@ -437,7 +437,7 @@ with stadiamaps.ApiClient(configuration) as api_client:
     api_instance = stadiamaps.GeocodingApi(api_client)
     point_lat = 3.4 # float | The latitude of the point at which to perform the search.
     point_lon = 3.4 # float | The longitude of the point at which to perform the search.
-    boundary_circle_radius = 3.4 # float | The radius of the circle (in kilometers) to limit the search to. Defaults to 50km if unspecified. (optional)
+    boundary_circle_radius = 3.4 # float | The radius of the circle (in kilometers) to limit the search to. Defaults to 50km (search) or 1km (reverse) if unspecified. (optional)
     layers = [stadiamaps.GeocodingLayer()] # List[GeocodingLayer] | A list of layers to limit the search to. (optional)
     sources = [stadiamaps.GeocodingSource()] # List[GeocodingSource] | A list of sources to limit the search to. (optional)
     boundary_country = ['boundary_country_example'] # List[str] | A list of country codes in ISO 3116-1 alpha-2 or alpha-3 format. (optional)
@@ -463,7 +463,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **point_lat** | **float**| The latitude of the point at which to perform the search. | 
  **point_lon** | **float**| The longitude of the point at which to perform the search. | 
- **boundary_circle_radius** | **float**| The radius of the circle (in kilometers) to limit the search to. Defaults to 50km if unspecified. | [optional] 
+ **boundary_circle_radius** | **float**| The radius of the circle (in kilometers) to limit the search to. Defaults to 50km (search) or 1km (reverse) if unspecified. | [optional] 
  **layers** | [**List[GeocodingLayer]**](GeocodingLayer.md)| A list of layers to limit the search to. | [optional] 
  **sources** | [**List[GeocodingSource]**](GeocodingSource.md)| A list of sources to limit the search to. | [optional] 
  **boundary_country** | [**List[str]**](str.md)| A list of country codes in ISO 3116-1 alpha-2 or alpha-3 format. | [optional] 
@@ -494,7 +494,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **reverse_v2**
-> GeocodeResponseEnvelopePropertiesV2 reverse_v2(point_lat, point_lon, layers=layers, sources=sources, boundary_gid=boundary_gid, boundary_country=boundary_country, boundary_circle_lat=boundary_circle_lat, boundary_circle_lon=boundary_circle_lon, boundary_circle_radius=boundary_circle_radius, size=size, lang=lang)
+> GeocodeResponseEnvelopePropertiesV2 reverse_v2(point_lat, point_lon, layers=layers, sources=sources, boundary_gid=boundary_gid, boundary_country=boundary_country, boundary_circle_radius=boundary_circle_radius, size=size, lang=lang)
 
 ### Example
 
@@ -535,14 +535,12 @@ with stadiamaps.ApiClient(configuration) as api_client:
     sources = [stadiamaps.SourceId()] # List[SourceId] | A list of sources to limit the search to. (optional)
     boundary_gid = 'boundary_gid_example' # str | The GID of a region to limit the search to.  Note: these are not stable for all datasets! For example, OSM features may be deleted and re-added with a new ID. (optional)
     boundary_country = ['boundary_country_example'] # List[str] | A list of comma-separated country codes in ISO 3116-1 alpha-2 or alpha-3 format. The search will be limited to these countries. (optional)
-    boundary_circle_lat = 3.4 # float | The latitude of the center of a circle to limit the search to.  NOTE: Requires boundary.circle.lon. (optional)
-    boundary_circle_lon = 3.4 # float | The longitude of the center of a circle to limit the search to.  NOTE: Requires boundary.circle.lat. (optional)
-    boundary_circle_radius = 56 # int | The radius of the circle (in kilometers) to limit the search to.  NOTE: Requires the other boundary.circle parameters to take effect. Defaults to 2km if unspecified. (optional)
+    boundary_circle_radius = 56 # int | The radius of the circle (in kilometers) to limit the search to.  Defaults to 1km if unspecified. (optional)
     size = 56 # int | The maximum number of items to return from a query. (optional)
     lang = 'lang_example' # str | A BCP47 language tag which specifies a preference for localization of results. There is no default value, so place names will be returned as-is, which is usually in the local language. NOTE: The Accept-Language header is also respected, and many user agents will set it automatically. (optional)
 
     try:
-        api_response = api_instance.reverse_v2(point_lat, point_lon, layers=layers, sources=sources, boundary_gid=boundary_gid, boundary_country=boundary_country, boundary_circle_lat=boundary_circle_lat, boundary_circle_lon=boundary_circle_lon, boundary_circle_radius=boundary_circle_radius, size=size, lang=lang)
+        api_response = api_instance.reverse_v2(point_lat, point_lon, layers=layers, sources=sources, boundary_gid=boundary_gid, boundary_country=boundary_country, boundary_circle_radius=boundary_circle_radius, size=size, lang=lang)
         print("The response of GeocodingApi->reverse_v2:\n")
         pprint(api_response)
     except Exception as e:
@@ -562,9 +560,7 @@ Name | Type | Description  | Notes
  **sources** | [**List[SourceId]**](SourceId.md)| A list of sources to limit the search to. | [optional] 
  **boundary_gid** | **str**| The GID of a region to limit the search to.  Note: these are not stable for all datasets! For example, OSM features may be deleted and re-added with a new ID. | [optional] 
  **boundary_country** | [**List[str]**](str.md)| A list of comma-separated country codes in ISO 3116-1 alpha-2 or alpha-3 format. The search will be limited to these countries. | [optional] 
- **boundary_circle_lat** | **float**| The latitude of the center of a circle to limit the search to.  NOTE: Requires boundary.circle.lon. | [optional] 
- **boundary_circle_lon** | **float**| The longitude of the center of a circle to limit the search to.  NOTE: Requires boundary.circle.lat. | [optional] 
- **boundary_circle_radius** | **int**| The radius of the circle (in kilometers) to limit the search to.  NOTE: Requires the other boundary.circle parameters to take effect. Defaults to 2km if unspecified. | [optional] 
+ **boundary_circle_radius** | **int**| The radius of the circle (in kilometers) to limit the search to.  Defaults to 1km if unspecified. | [optional] 
  **size** | **int**| The maximum number of items to return from a query. | [optional] 
  **lang** | **str**| A BCP47 language tag which specifies a preference for localization of results. There is no default value, so place names will be returned as-is, which is usually in the local language. NOTE: The Accept-Language header is also respected, and many user agents will set it automatically. | [optional] 
 
@@ -640,7 +636,7 @@ with stadiamaps.ApiClient(configuration) as api_client:
     boundary_rect_max_lon = 3.4 # float | Defines the max longitude component of a bounding box to limit the search to. Requires all other `boundary.rect` parameters to be specified. (optional)
     boundary_circle_lat = 3.4 # float | The latitude of the center of a circle to limit the search to. Requires `boundary.circle.lon`. (optional)
     boundary_circle_lon = 3.4 # float | The longitude of the center of a circle to limit the search to. Requires `boundary.circle.lat`. (optional)
-    boundary_circle_radius = 3.4 # float | The radius of the circle (in kilometers) to limit the search to. Defaults to 50km if unspecified. (optional)
+    boundary_circle_radius = 3.4 # float | The radius of the circle (in kilometers) to limit the search to. Defaults to 50km (search) or 1km (reverse) if unspecified. (optional)
     boundary_country = ['boundary_country_example'] # List[str] | A list of country codes in ISO 3116-1 alpha-2 or alpha-3 format. (optional)
     boundary_gid = 'boundary_gid_example' # str | The GID of an area to limit the search to. (optional)
     layers = [stadiamaps.GeocodingLayer()] # List[GeocodingLayer] | A list of layers to limit the search to. (optional)
@@ -673,7 +669,7 @@ Name | Type | Description  | Notes
  **boundary_rect_max_lon** | **float**| Defines the max longitude component of a bounding box to limit the search to. Requires all other &#x60;boundary.rect&#x60; parameters to be specified. | [optional] 
  **boundary_circle_lat** | **float**| The latitude of the center of a circle to limit the search to. Requires &#x60;boundary.circle.lon&#x60;. | [optional] 
  **boundary_circle_lon** | **float**| The longitude of the center of a circle to limit the search to. Requires &#x60;boundary.circle.lat&#x60;. | [optional] 
- **boundary_circle_radius** | **float**| The radius of the circle (in kilometers) to limit the search to. Defaults to 50km if unspecified. | [optional] 
+ **boundary_circle_radius** | **float**| The radius of the circle (in kilometers) to limit the search to. Defaults to 50km (search) or 1km (reverse) if unspecified. | [optional] 
  **boundary_country** | [**List[str]**](str.md)| A list of country codes in ISO 3116-1 alpha-2 or alpha-3 format. | [optional] 
  **boundary_gid** | **str**| The GID of an area to limit the search to. | [optional] 
  **layers** | [**List[GeocodingLayer]**](GeocodingLayer.md)| A list of layers to limit the search to. | [optional] 
@@ -840,7 +836,7 @@ with stadiamaps.ApiClient(configuration) as api_client:
     boundary_rect_max_lon = 3.4 # float | Defines the max longitude component of a bounding box to limit the search to. Requires all other `boundary.rect` parameters to be specified. (optional)
     boundary_circle_lat = 3.4 # float | The latitude of the center of a circle to limit the search to. Requires `boundary.circle.lon`. (optional)
     boundary_circle_lon = 3.4 # float | The longitude of the center of a circle to limit the search to. Requires `boundary.circle.lat`. (optional)
-    boundary_circle_radius = 3.4 # float | The radius of the circle (in kilometers) to limit the search to. Defaults to 50km if unspecified. (optional)
+    boundary_circle_radius = 3.4 # float | The radius of the circle (in kilometers) to limit the search to. Defaults to 50km (search) or 1km (reverse) if unspecified. (optional)
     boundary_country = ['boundary_country_example'] # List[str] | A list of country codes in ISO 3116-1 alpha-2 or alpha-3 format. (optional)
     boundary_gid = 'boundary_gid_example' # str | The GID of an area to limit the search to. (optional)
     layers = [stadiamaps.GeocodingLayer()] # List[GeocodingLayer] | A list of layers to limit the search to. (optional)
@@ -880,7 +876,7 @@ Name | Type | Description  | Notes
  **boundary_rect_max_lon** | **float**| Defines the max longitude component of a bounding box to limit the search to. Requires all other &#x60;boundary.rect&#x60; parameters to be specified. | [optional] 
  **boundary_circle_lat** | **float**| The latitude of the center of a circle to limit the search to. Requires &#x60;boundary.circle.lon&#x60;. | [optional] 
  **boundary_circle_lon** | **float**| The longitude of the center of a circle to limit the search to. Requires &#x60;boundary.circle.lat&#x60;. | [optional] 
- **boundary_circle_radius** | **float**| The radius of the circle (in kilometers) to limit the search to. Defaults to 50km if unspecified. | [optional] 
+ **boundary_circle_radius** | **float**| The radius of the circle (in kilometers) to limit the search to. Defaults to 50km (search) or 1km (reverse) if unspecified. | [optional] 
  **boundary_country** | [**List[str]**](str.md)| A list of country codes in ISO 3116-1 alpha-2 or alpha-3 format. | [optional] 
  **boundary_gid** | **str**| The GID of an area to limit the search to. | [optional] 
  **layers** | [**List[GeocodingLayer]**](GeocodingLayer.md)| A list of layers to limit the search to. | [optional] 
