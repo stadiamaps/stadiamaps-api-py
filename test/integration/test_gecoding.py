@@ -135,3 +135,23 @@ class TestGeocoding(unittest.TestCase):
                 self.assertEqual(200, rec.status)
                 self.assertEqual("Estonia", rec.response.features[0].properties.country)
                 self.assertEqual("address", rec.response.features[0].properties.layer)
+
+    def testBulkPostalcodeRegression(self):
+        with stadiamaps.ApiClient(self.configuration) as api_client:
+            api_instance = stadiamaps.GeocodingApi(api_client)
+
+            res = api_instance.search_bulk([
+                stadiamaps.BulkRequest(endpoint="/v1/search/structured",
+                                       query=stadiamaps.BulkRequestQuery(stadiamaps.SearchStructuredQuery(
+                                           locality="Aach",
+                                           postalcode="78267",
+                                           region="North Rhine-Westphalia",
+                                           country="Germany"))),
+            ])
+
+            self.assertEqual(1, len(res))
+            rec = res[0]
+            self.assertEqual(200, rec.status)
+            self.assertEqual("Germany", rec.response.features[0].properties.country)
+            self.assertEqual("postalcode", rec.response.features[0].properties.layer)
+            self.assertEqual("78267", rec.response.features[0].properties.postalcode)

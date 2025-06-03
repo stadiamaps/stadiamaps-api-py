@@ -5,7 +5,7 @@ All URIs are relative to *https://api.stadiamaps.com*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**elevation**](GeospatialApi.md#elevation) | **POST** /elevation/v1 | Get the elevation profile along a polyline or at a point.
-[**tz_lookup**](GeospatialApi.md#tz_lookup) | **GET** /tz/lookup/v1 | Get the current time zone information for any point on earth.
+[**tz_lookup**](GeospatialApi.md#tz_lookup) | **GET** /tz/lookup/v1 | Get time zone information for any point on earth.
 
 
 # **elevation**
@@ -92,9 +92,9 @@ Name | Type | Description  | Notes
 # **tz_lookup**
 > TzResponse tz_lookup(lat, lng, timestamp=timestamp)
 
-Get the current time zone information for any point on earth.
+Get time zone information for any point on earth.
 
-The Stadia TZ API provides time zone information, as well as information about any special offset (such as DST) in effect based on the latest IANA TZDB. Note that this API may not be accurate for timestamps in the past and does not claim to report precise nautical times in the open ocean beyond territorial waters.
+Retrieve the time zone identifier, standard UTC offset, special offset (such as DST), and the localized time in several common formats.
 
 ### Example
 
@@ -132,7 +132,7 @@ with stadiamaps.ApiClient(configuration) as api_client:
     timestamp = 56 # int | The UNIX timestamp at which the UTC and DST offsets will be calculated. This defaults to the present time. This endpoint is not necessarily guaranteed to be accurate for timestamps that occurred in the past. Time zone geographic boundaries change over time, so if the point you are querying for was previously in a different time zone, historical results will not be accurate. If, however, the point has been in the same geographic time zone for a very long time (ex: `America/New_York`), the historical data may be accurate for 100+ years in the past (depending on how far back the IANA TZDB rules have been specified). (optional)
 
     try:
-        # Get the current time zone information for any point on earth.
+        # Get time zone information for any point on earth.
         api_response = api_instance.tz_lookup(lat, lng, timestamp=timestamp)
         print("The response of GeospatialApi->tz_lookup:\n")
         pprint(api_response)
@@ -168,7 +168,7 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | The time zone metadata. |  -  |
+**200** | The time zone information and local time. |  -  |
 **404** | Time zone not found |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

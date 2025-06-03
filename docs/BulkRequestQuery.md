@@ -27,7 +27,7 @@ Name | Type | Description | Notes
 **locality** | **str** | The city, village, town, etc. that the place/address is part of. | [optional] 
 **county** | **str** | Administrative divisions between localities and regions. Not commonly used as input to structured geocoding. | [optional] 
 **region** | **str** | Typically the first administrative division within a country. For example, a US state or a Canadian province. | [optional] 
-**postal_code** | **str** | A mail sorting code. | [optional] 
+**postalcode** | **str** | A mail sorting code. | [optional] 
 **country** | **str** | A country code in ISO 3116-1 alpha-2 or alpha-3 format. | [optional] 
 
 ## Example

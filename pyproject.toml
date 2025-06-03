@@ -1,6 +1,6 @@
 [project]
 name = "stadiamaps"
-version = "6.2.0"
+version = "6.3.0"
 description = "Stadia Maps Geospatial APIs"
 authors = [
     { name = "Stadia Maps Support", email = "support@stadiamaps.com" }
@@ -21,9 +21,9 @@ documentation = "https://docs.stadiamaps.com/sdks/python/"
 source = "https://github.com/stadiamaps/stadiamaps-api-py"
 
 [tool.poetry.dependencies]
-python = "^3.8"
+python = "^3.9"
 
-urllib3 = ">= 1.25.3, < 3.0.0"
+urllib3 = ">= 2.1.0, < 3.0.0"
 python-dateutil = ">= 2.8.2"
 pydantic = ">= 2"
 typing-extensions = ">= 4.7.1"

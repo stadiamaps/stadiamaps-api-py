@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **locality** | **str** | The city, village, town, etc. that the place/address is part of. | [optional] 
 **county** | **str** | Administrative divisions between localities and regions. Not commonly used as input to structured geocoding. | [optional] 
 **region** | **str** | Typically the first administrative division within a country. For example, a US state or a Canadian province. | [optional] 
-**postal_code** | **str** | A mail sorting code. | [optional] 
+**postalcode** | **str** | A mail sorting code. | [optional] 
 **country** | **str** | A country code in ISO 3116-1 alpha-2 or alpha-3 format. | [optional] 
 **focus_point_lat** | **float** | The latitude of the point to focus the search on. This will bias results toward the focus point. Requires &#x60;focus.point.lon&#x60;. | [optional] 
 **focus_point_lon** | **float** | The longitude of the point to focus the search on. This will bias results toward the focus point. Requires &#x60;focus.point.lat&#x60;. | [optional] 
