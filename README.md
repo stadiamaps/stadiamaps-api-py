@@ -61,12 +61,14 @@ with stadiamaps.ApiClient(configuration) as api_client:
 
     try:
         # Search and geocode quickly based on partial input.
-        api_response = api_instance.autocomplete_v2(text, lang="en")
+        api_response = api_instance.search_v2(text, lang="en")
         print("The response of GeocodingApi->autocomplete:\n")
         pprint(api_response)
     except ApiException as e:
         print("Exception when calling GeocodingApi->autocomplete_v2: %s\n" % e)
 ```
+
+Check out our [integration test folder](test/integration) for more examples.
 
 ## Documentation
 
