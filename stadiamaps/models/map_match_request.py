@@ -36,7 +36,7 @@ class MapMatchRequest(BaseModel):
     """ # noqa: E501
     id: Optional[StrictStr] = Field(default=None, description="An identifier to disambiguate requests (echoed by the server).")
     shape: Optional[List[MapMatchWaypoint]] = Field(default=None, description="REQUIRED if `encoded_polyline` is not present. Note that `break` type locations are only supported when `shape_match` is set to `map_match`.")
-    encoded_polyline: Optional[StrictStr] = Field(default=None, description="REQUIRED if `shape` is not present. An encoded polyline (https://developers.google.com/maps/documentation/utilities/polylinealgorithm). Note that the polyline must be encoded with 6 digits of precision rather than the usual 5.")
+    encoded_polyline: Optional[StrictStr] = Field(default=None, description="REQUIRED if `shape` is not present. An encoded polyline (https://developers.google.com/maps/documentation/utilities/polylinealgorithm). Note that the polyline must be encoded with 6 digits of precision rather than the default 5!")
     costing: MapMatchCostingModel
     costing_options: Optional[CostingOptions] = None
     shape_match: Optional[StrictStr] = Field(default=None, description="Three snapping modes provide some control over how the map matching occurs. `edge_walk` is fast, but requires extremely precise data that matches the route graph almost perfectly. `map_snap` can handle significantly noisier data, but is very expensive. `walk_or_snap`, the default, tries to use edge walking first and falls back to map matching if edge walking fails. In general, you should not need to change this parameter unless you want to trace a multi-leg route with multiple `break` locations in the `shape`.")

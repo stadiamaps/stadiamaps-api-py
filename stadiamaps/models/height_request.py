@@ -33,7 +33,7 @@ class HeightRequest(BaseModel):
     shape: Optional[List[Coordinate]] = Field(default=None, description="REQUIRED if `encoded_polyline` is not present.")
     encoded_polyline: Optional[StrictStr] = Field(default=None, description="REQUIRED if `shape` is not present. An encoded polyline (https://developers.google.com/maps/documentation/utilities/polylinealgorithm).")
     shape_format: Optional[StrictStr] = Field(default='polyline6', description="Specifies whether the polyline is encoded with 6 digit precision (polyline6) or 5 digit precision (polyline5).")
-    range: Optional[StrictBool] = Field(default=False, description="Controls whether or not the returned array is one-dimensional (height only) or two-dimensional (with a range and height). The range dimension can be used to generate a graph or steepness gradient along a route.")
+    range: Optional[StrictBool] = Field(default=False, description="Controls whether the returned array is one-dimensional (height only) or two-dimensional (with a range and height). The range dimension can be used to generate a graph or steepness gradient along a route.")
     height_precision: Optional[Annotated[int, Field(le=2, strict=True, ge=0)]] = Field(default=0, description="The decimal precision (number of digits after the point) of the output. When 0, integer values are returned. Valid values are 0, 1, and 2.")
     resample_distance: Optional[Annotated[int, Field(strict=True, ge=10)]] = Field(default=None, description="The distance at which the input polyline should be sampled to provide uniform distances between points. If not set, the input shape will be used as-is.")
     additional_properties: Dict[str, Any] = {}

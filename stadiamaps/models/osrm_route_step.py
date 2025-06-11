@@ -33,7 +33,7 @@ class OsrmRouteStep(BaseModel):
     """ # noqa: E501
     distance: Union[StrictFloat, StrictInt] = Field(description="The distance traveled by the route, in meters.")
     duration: Union[StrictFloat, StrictInt] = Field(description="The estimated travel time, in number of seconds.")
-    geometry: StrictStr = Field(description="An encoded polyline (https://developers.google.com/maps/documentation/utilities/polylinealgorithm) with 6 digits of decimal precision.")
+    geometry: StrictStr = Field(description="An encoded polyline (https://developers.google.com/maps/documentation/utilities/polylinealgorithm) with 6 digits of decimal precision (NOTE: most implementations default to 5).")
     weight: Optional[Union[StrictFloat, StrictInt]] = None
     name: Optional[StrictStr] = Field(default=None, description="The name of the segment (ex: road) being traversed")
     ref: Optional[StrictStr] = Field(default=None, description="A reference number of code for the segment being traversed.")

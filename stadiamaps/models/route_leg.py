@@ -31,7 +31,7 @@ class RouteLeg(BaseModel):
     RouteLeg
     """ # noqa: E501
     maneuvers: Optional[Annotated[List[RouteManeuver], Field(min_length=1)]] = None
-    shape: StrictStr = Field(description="An encoded polyline (https://developers.google.com/maps/documentation/utilities/polylinealgorithm) with 6 digits of decimal precision.")
+    shape: StrictStr = Field(description="An encoded polyline (https://developers.google.com/maps/documentation/utilities/polylinealgorithm) with 6 digits of decimal precision (NOTE: Most implementations default to 5!).")
     summary: RouteSummary
     elevation_interval: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="The sampling distance between elevation values along the route. This echoes the request parameter having the same name (converted to `units` if necessary).")
     elevation: Optional[List[Union[StrictFloat, StrictInt]]] = Field(default=None, description="An array of elevation values sampled every `elevation_interval`. Units are either metric or imperial depending on the value of `units`.")

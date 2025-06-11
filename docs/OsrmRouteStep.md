@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **distance** | **float** | The distance traveled by the route, in meters. | 
 **duration** | **float** | The estimated travel time, in number of seconds. | 
-**geometry** | **str** | An encoded polyline (https://developers.google.com/maps/documentation/utilities/polylinealgorithm) with 6 digits of decimal precision. | 
+**geometry** | **str** | An encoded polyline (https://developers.google.com/maps/documentation/utilities/polylinealgorithm) with 6 digits of decimal precision (NOTE: most implementations default to 5). | 
 **weight** | **float** |  | [optional] 
 **name** | **str** | The name of the segment (ex: road) being traversed | [optional] 
 **ref** | **str** | A reference number of code for the segment being traversed. | [optional] 

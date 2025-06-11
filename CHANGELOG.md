@@ -21,7 +21,7 @@ refer to the [migration guide](https://docs.stadiamaps.com/geocoding-search-auto
 
 ### Fixed
 
-- **Potentially breaking change:** The `maneuvers` property on route responses was previously marked as required.
+- The `maneuvers` property on route responses was previously marked as required.
   However, it is possible to explicitly request routes with this field removed.
   These would fail validation and the whole request would end with an exception
   in the API client.

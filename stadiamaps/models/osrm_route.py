@@ -30,7 +30,7 @@ class OsrmRoute(BaseModel):
     """ # noqa: E501
     distance: Union[StrictFloat, StrictInt] = Field(description="The distance traveled by the route, in meters.")
     duration: Union[StrictFloat, StrictInt] = Field(description="The estimated travel time, in number of seconds.")
-    geometry: StrictStr = Field(description="An encoded polyline (https://developers.google.com/maps/documentation/utilities/polylinealgorithm).")
+    geometry: StrictStr = Field(description="An encoded polyline (https://developers.google.com/maps/documentation/utilities/polylinealgorithm). Note that the polyline is encoded with 6 digits of precision rather than the default 5!")
     weight: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="The total cost of the route computed by the routing engine.")
     weight_name: Optional[StrictStr] = Field(default=None, description="The costing model used for the route.")
     legs: List[OsrmRouteLeg]
