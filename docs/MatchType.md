@@ -3,7 +3,7 @@
 
 ## Enum
 
-* `EXACT` (value: `'exact'`)
+* `MATCH` (value: `'match'`)
 
 * `INTERPOLATED` (value: `'interpolated'`)
 

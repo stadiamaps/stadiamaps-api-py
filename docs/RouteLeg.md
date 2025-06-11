@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**maneuvers** | [**List[RouteManeuver]**](RouteManeuver.md) |  | 
+**maneuvers** | [**List[RouteManeuver]**](RouteManeuver.md) |  | [optional] 
 **shape** | **str** | An encoded polyline (https://developers.google.com/maps/documentation/utilities/polylinealgorithm) with 6 digits of decimal precision. | 
 **summary** | [**RouteSummary**](RouteSummary.md) |  | 
 **elevation_interval** | **float** | The sampling distance between elevation values along the route. This echoes the request parameter having the same name (converted to &#x60;units&#x60; if necessary). | [optional] 
