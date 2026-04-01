@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **duration** | **float** | The estimated travel time, in number of seconds. | 
 **geometry** | **str** | An encoded polyline (https://developers.google.com/maps/documentation/utilities/polylinealgorithm). Note that the polyline is encoded with 6 digits of precision rather than the default 5! | 
 **weight** | **float** | The total cost of the route computed by the routing engine. | [optional] 
-**weight_name** | **str** | The costing model used for the route. | [optional] 
+**weight_name** | **str** | The routing profile (costing) used for the route. | [optional] 
 **legs** | [**List[OsrmRouteLeg]**](OsrmRouteLeg.md) |  | 
 
 ## Example

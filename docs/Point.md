@@ -1,6 +1,6 @@
 # Point
 
-A point geometry.
+A point geometry in GeoJSON format.
 
 ## Properties
 

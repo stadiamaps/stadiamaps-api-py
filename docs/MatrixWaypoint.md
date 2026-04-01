@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **lat** | **float** | The latitude of a point in the shape. | 
 **lon** | **float** | The longitude of a point in the shape. | 
 **search_cutoff** | **int** | The cutoff (in meters) at which we will assume the input is too far away from civilisation to be worth correlating to the nearest graph elements. The default is 35 km. | [optional] 
+**date_time** | **str** | Optional departure time for this specific waypoint in &#x60;YYYY-MM-DDTHH:MM&#x60; format. On matrix requests, per-waypoint date_time drives time-dependent routing behavior (e.g., accounting for traffic conditions at different times for different origins). Cannot be combined with a root-level &#x60;date_time&#x60;. | [optional] 
 
 ## Example
 

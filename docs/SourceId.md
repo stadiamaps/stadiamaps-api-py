@@ -1,6 +1,6 @@
 # SourceId
 
-Canonical geocoding source IDs.
+Canonical data source identifiers.
 
 ## Enum
 

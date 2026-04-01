@@ -5,9 +5,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**units** | [**DistanceUnit**](DistanceUnit.md) |  | [optional] [default to DistanceUnit.KM]
-**language** | [**RoutingLanguages**](RoutingLanguages.md) |  | [optional] [default to RoutingLanguages.EN_MINUS_US]
-**directions_type** | **str** | The level of directional narrative to include. Locations and times will always be returned, but narrative generation verbosity can be controlled with this parameter. | [optional] [default to 'instructions']
 **locations** | [**List[Coordinate]**](Coordinate.md) |  | 
 **costing** | [**CostingModel**](CostingModel.md) |  | [optional] 
 **costing_options** | [**CostingOptions**](CostingOptions.md) |  | [optional] 

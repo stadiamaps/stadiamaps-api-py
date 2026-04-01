@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **encoded_polyline** | **str** | REQUIRED if &#x60;shape&#x60; is not present. An encoded polyline (https://developers.google.com/maps/documentation/utilities/polylinealgorithm). Note that the polyline must be encoded with 6 digits of precision rather than the default 5! | [optional] 
 **costing** | [**MapMatchCostingModel**](MapMatchCostingModel.md) |  | 
 **costing_options** | [**CostingOptions**](CostingOptions.md) |  | [optional] 
+**date_time** | [**TimeConstraintV1**](TimeConstraintV1.md) |  | [optional] 
 **shape_match** | **str** | Three snapping modes provide some control over how the map matching occurs. &#x60;edge_walk&#x60; is fast, but requires extremely precise data that matches the route graph almost perfectly. &#x60;map_snap&#x60; can handle significantly noisier data, but is very expensive. &#x60;walk_or_snap&#x60;, the default, tries to use edge walking first and falls back to map matching if edge walking fails. In general, you should not need to change this parameter unless you want to trace a multi-leg route with multiple &#x60;break&#x60; locations in the &#x60;shape&#x60;. | [optional] 
 
 ## Example

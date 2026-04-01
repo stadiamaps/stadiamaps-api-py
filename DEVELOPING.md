@@ -17,7 +17,7 @@ The OpenAPI generator adds some unit tests, but these appear to be more or less 
 We add our own integration tests in `test/integration`.  You can run these via the following command line:
 
 ```shell
-STADIA_API_KEY="YOUR-API-KEY" pytest
+STADIA_API_KEY="YOUR-API-KEY" poetry run pytest
 ```
 
 ## Caveats

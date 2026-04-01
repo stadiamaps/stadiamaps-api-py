@@ -16,6 +16,7 @@ Name | Type | Description | Notes
 **locations** | [**List[Coordinate]**](Coordinate.md) | The list of locations. The first and last are assumed to be the start and end points, and all intermediate points are locations that you want to visit along the way. | 
 **costing** | [**MatrixCostingModel**](MatrixCostingModel.md) |  | 
 **costing_options** | [**CostingOptions**](CostingOptions.md) |  | [optional] 
+**date_time** | [**TimeConstraintV1**](TimeConstraintV1.md) |  | [optional] 
 **elevation_interval** | **float** | If greater than zero, attempts to include elevation along the route at regular intervals. The \&quot;native\&quot; internal resolution is 30m, so we recommend you use this when possible. This number is interpreted as either meters or feet depending on the unit parameter. Elevation for route sections containing a bridge or tunnel is interpolated linearly. This doesn&#39;t always match the true elevation of the bridge/tunnel, but it prevents sharp artifacts from the surrounding terrain. This functionality is unique to the routing endpoints and is not available via the elevation API. NOTE: This has no effect on the OSRM response format. | [optional] [default to 0.0]
 
 ## Example

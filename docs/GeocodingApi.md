@@ -5,15 +5,15 @@ All URIs are relative to *https://api.stadiamaps.com*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**autocomplete**](GeocodingApi.md#autocomplete) | **GET** /geocoding/v1/autocomplete | Search and geocode quickly based on partial input.
-[**autocomplete_v2**](GeocodingApi.md#autocomplete_v2) | **GET** /geocoding/v2/autocomplete | 
+[**autocomplete_v2**](GeocodingApi.md#autocomplete_v2) | **GET** /geocoding/v2/autocomplete | Search and geocode quickly based on partial input.
 [**place_details**](GeocodingApi.md#place_details) | **GET** /geocoding/v1/place | Retrieve details of a place using its GID.
-[**place_details_v2**](GeocodingApi.md#place_details_v2) | **GET** /geocoding/v2/place_details | 
+[**place_details_v2**](GeocodingApi.md#place_details_v2) | **GET** /geocoding/v2/place_details | Retrieve detailed information about a place by its GID.
 [**reverse**](GeocodingApi.md#reverse) | **GET** /geocoding/v1/reverse | Find places and addresses near geographic coordinates (reverse geocoding).
-[**reverse_v2**](GeocodingApi.md#reverse_v2) | **GET** /geocoding/v2/reverse | 
+[**reverse_v2**](GeocodingApi.md#reverse_v2) | **GET** /geocoding/v2/reverse | Find places and addresses near a location point (reverse geocoding).
 [**search**](GeocodingApi.md#search) | **GET** /geocoding/v1/search | Search for location and other info using a place name or address (forward geocoding).
-[**search_bulk**](GeocodingApi.md#search_bulk) | **POST** /geocoding/v1/search/bulk | Quickly run a batch of geocoding queries against the search or structured search endpoints.
+[**search_bulk**](GeocodingApi.md#search_bulk) | **POST** /geocoding/v1/search/bulk | Quickly run a batch of geocoding queries against the search, structured search, or reverse endpoints.
 [**search_structured**](GeocodingApi.md#search_structured) | **GET** /geocoding/v1/search/structured | Find locations matching components (structured forward geocoding).
-[**search_v2**](GeocodingApi.md#search_v2) | **GET** /geocoding/v2/search | 
+[**search_v2**](GeocodingApi.md#search_v2) | **GET** /geocoding/v2/search | Search for location and other info using a place name or address (forward geocoding).
 
 
 # **autocomplete**
@@ -56,7 +56,7 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 with stadiamaps.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = stadiamaps.GeocodingApi(api_client)
-    text = 'text_example' # str | The place name (address, venue name, etc.) to search for.
+    text = '1600 Pennsylvania Ave NW' # str | The place name (address, venue name, etc.) to search for.
     focus_point_lat = 3.4 # float | The latitude of the point to focus the search on. This will bias results toward the focus point. Requires `focus.point.lon`. (optional)
     focus_point_lon = 3.4 # float | The longitude of the point to focus the search on. This will bias results toward the focus point. Requires `focus.point.lat`. (optional)
     boundary_rect_min_lat = 3.4 # float | Defines the min latitude component of a bounding box to limit the search to. Requires all other `boundary.rect` parameters to be specified. (optional)
@@ -131,6 +131,10 @@ Name | Type | Description  | Notes
 # **autocomplete_v2**
 > GeocodeResponseEnvelopePropertiesV2 autocomplete_v2(text, focus_point_lat=focus_point_lat, focus_point_lon=focus_point_lon, layers=layers, sources=sources, boundary_gid=boundary_gid, boundary_country=boundary_country, boundary_rect_min_lat=boundary_rect_min_lat, boundary_rect_min_lon=boundary_rect_min_lon, boundary_rect_max_lat=boundary_rect_max_lat, boundary_rect_max_lon=boundary_rect_max_lon, boundary_circle_lat=boundary_circle_lat, boundary_circle_lon=boundary_circle_lon, boundary_circle_radius=boundary_circle_radius, size=size, lang=lang)
 
+Search and geocode quickly based on partial input.
+
+Autocomplete enables interactive search-as-you-type user experiences, suggesting places as you type, along with information that will help your users find the correct place quickly.
+
 ### Example
 
 * Api Key Authentication (ApiKeyAuth):
@@ -182,6 +186,7 @@ with stadiamaps.ApiClient(configuration) as api_client:
     lang = 'lang_example' # str | A BCP47 language tag which specifies a preference for localization of results. There is no default value, so place names will be returned as-is, which is usually in the local language. NOTE: The Accept-Language header is also respected, and many user agents will set it automatically. (optional)
 
     try:
+        # Search and geocode quickly based on partial input.
         api_response = api_instance.autocomplete_v2(text, focus_point_lat=focus_point_lat, focus_point_lon=focus_point_lon, layers=layers, sources=sources, boundary_gid=boundary_gid, boundary_country=boundary_country, boundary_rect_min_lat=boundary_rect_min_lat, boundary_rect_min_lon=boundary_rect_min_lon, boundary_rect_max_lat=boundary_rect_max_lat, boundary_rect_max_lon=boundary_rect_max_lon, boundary_circle_lat=boundary_circle_lat, boundary_circle_lon=boundary_circle_lon, boundary_circle_radius=boundary_circle_radius, size=size, lang=lang)
         print("The response of GeocodingApi->autocomplete_v2:\n")
         pprint(api_response)
@@ -321,6 +326,10 @@ Name | Type | Description  | Notes
 # **place_details_v2**
 > GeocodeResponseEnvelopePropertiesV2 place_details_v2(ids, lang=lang)
 
+Retrieve detailed information about a place by its GID.
+
+Many search result components include an associated GID field (for example, an address may have a `localadmin_gid`). The place endpoint lets you look up these places directly by ID. Note that GIDs are not stable for all sources. See the [online documentation](https://docs.stadiamaps.com/geocoding-search-autocomplete/place-lookup/) for details.
+
 ### Example
 
 * Api Key Authentication (ApiKeyAuth):
@@ -356,6 +365,7 @@ with stadiamaps.ApiClient(configuration) as api_client:
     lang = 'lang_example' # str | A BCP47 language tag which specifies a preference for localization of results. There is no default value, so place names will be returned as-is, which is usually in the local language. NOTE: The Accept-Language header is also respected, and many user agents will set it automatically. (optional)
 
     try:
+        # Retrieve detailed information about a place by its GID.
         api_response = api_instance.place_details_v2(ids, lang=lang)
         print("The response of GeocodingApi->place_details_v2:\n")
         pprint(api_response)
@@ -436,8 +446,8 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 with stadiamaps.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = stadiamaps.GeocodingApi(api_client)
-    point_lat = 3.4 # float | The latitude of the point at which to perform the search.
-    point_lon = 3.4 # float | The longitude of the point at which to perform the search.
+    point_lat = 48.848268 # float | The latitude of the point at which to perform the search.
+    point_lon = 2.294471 # float | The longitude of the point at which to perform the search.
     boundary_circle_radius = 3.4 # float | The radius of the circle (in kilometers) to limit the search to. Defaults to 50km (search) or 1km (reverse) if unspecified. (optional)
     layers = [stadiamaps.GeocodingLayer()] # List[GeocodingLayer] | A list of layers to limit the search to. (optional)
     sources = [stadiamaps.GeocodingSource()] # List[GeocodingSource] | A list of sources to limit the search to. (optional)
@@ -497,6 +507,10 @@ Name | Type | Description  | Notes
 # **reverse_v2**
 > GeocodeResponseEnvelopePropertiesV2 reverse_v2(point_lat, point_lon, layers=layers, sources=sources, boundary_gid=boundary_gid, boundary_country=boundary_country, boundary_circle_radius=boundary_circle_radius, size=size, lang=lang)
 
+Find places and addresses near a location point (reverse geocoding).
+
+Reverse geocoding and search finds places and addresses near any geographic coordinates.
+
 ### Example
 
 * Api Key Authentication (ApiKeyAuth):
@@ -541,6 +555,7 @@ with stadiamaps.ApiClient(configuration) as api_client:
     lang = 'lang_example' # str | A BCP47 language tag which specifies a preference for localization of results. There is no default value, so place names will be returned as-is, which is usually in the local language. NOTE: The Accept-Language header is also respected, and many user agents will set it automatically. (optional)
 
     try:
+        # Find places and addresses near a location point (reverse geocoding).
         api_response = api_instance.reverse_v2(point_lat, point_lon, layers=layers, sources=sources, boundary_gid=boundary_gid, boundary_country=boundary_country, boundary_circle_radius=boundary_circle_radius, size=size, lang=lang)
         print("The response of GeocodingApi->reverse_v2:\n")
         pprint(api_response)
@@ -628,7 +643,7 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 with stadiamaps.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = stadiamaps.GeocodingApi(api_client)
-    text = 'text_example' # str | The place name (address, venue name, etc.) to search for.
+    text = '1600 Pennsylvania Ave NW' # str | The place name (address, venue name, etc.) to search for.
     focus_point_lat = 3.4 # float | The latitude of the point to focus the search on. This will bias results toward the focus point. Requires `focus.point.lon`. (optional)
     focus_point_lon = 3.4 # float | The longitude of the point to focus the search on. This will bias results toward the focus point. Requires `focus.point.lat`. (optional)
     boundary_rect_min_lat = 3.4 # float | Defines the min latitude component of a bounding box to limit the search to. Requires all other `boundary.rect` parameters to be specified. (optional)
@@ -703,9 +718,9 @@ Name | Type | Description  | Notes
 # **search_bulk**
 > List[BulkSearchResponse] search_bulk(bulk_request=bulk_request)
 
-Quickly run a batch of geocoding queries against the search or structured search endpoints.
+Quickly run a batch of geocoding queries against the search, structured search, or reverse endpoints.
 
-The batch endpoint lets you specify many search or structured search requests at once. Once received, all requests will be processed internally on our infrastructure, improving throughput when you need to do a lot of queries.
+The batch endpoint lets you specify many search, structured search, or reverse requests at once. Once received, all requests will be processed internally on our infrastructure, improving throughput when you need to do a lot of queries.
 
 ### Example
 
@@ -742,7 +757,7 @@ with stadiamaps.ApiClient(configuration) as api_client:
     bulk_request = [stadiamaps.BulkRequest()] # List[BulkRequest] |  (optional)
 
     try:
-        # Quickly run a batch of geocoding queries against the search or structured search endpoints.
+        # Quickly run a batch of geocoding queries against the search, structured search, or reverse endpoints.
         api_response = api_instance.search_bulk(bulk_request=bulk_request)
         print("The response of GeocodingApi->search_bulk:\n")
         pprint(api_response)
@@ -821,14 +836,14 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 with stadiamaps.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = stadiamaps.GeocodingApi(api_client)
-    address = 'address_example' # str | A street name, optionally with a house number. (optional)
-    neighbourhood = 'neighbourhood_example' # str | Varies by area, but has a locally specific meaning (NOT always an official administrative unit). (optional)
-    borough = 'borough_example' # str | A unit within a city (not widely used, but present in places like NYC and Mexico City). (optional)
-    locality = 'locality_example' # str | The city, village, town, etc. that the place/address is part of. (optional)
-    county = 'county_example' # str | Administrative divisions between localities and regions. Not commonly used as input to structured geocoding. (optional)
-    region = 'region_example' # str | Typically the first administrative division within a country. For example, a US state or a Canadian province. (optional)
-    postalcode = 'postalcode_example' # str | A mail sorting code. (optional)
-    country = 'country_example' # str | A list of country codes in ISO 3116-1 alpha-2 or alpha-3 format. (optional)
+    address = '11 Wall Street' # str | A street name, optionally with a house number. (optional)
+    neighbourhood = 'Financial District' # str | Varies by area, but has a locally specific meaning (NOT always an official administrative unit). (optional)
+    borough = 'Manhattan' # str | A unit within a city (not widely used, but present in places like NYC and Mexico City). (optional)
+    locality = 'New York' # str | The city, village, town, etc. that the place/address is part of. (optional)
+    county = 'New York County' # str | Administrative divisions between localities and regions. Not commonly used as input to structured geocoding. (optional)
+    region = 'New York' # str | Typically the first administrative division within a country. For example, a US state or a Canadian province. (optional)
+    postalcode = '10005' # str | A mail sorting code. (optional)
+    country = 'USA' # str | A country code in ISO 3116-1 alpha-2 or alpha-3 format. (optional)
     focus_point_lat = 3.4 # float | The latitude of the point to focus the search on. This will bias results toward the focus point. Requires `focus.point.lon`. (optional)
     focus_point_lon = 3.4 # float | The longitude of the point to focus the search on. This will bias results toward the focus point. Requires `focus.point.lat`. (optional)
     boundary_rect_min_lat = 3.4 # float | Defines the min latitude component of a bounding box to limit the search to. Requires all other `boundary.rect` parameters to be specified. (optional)
@@ -868,7 +883,7 @@ Name | Type | Description  | Notes
  **county** | **str**| Administrative divisions between localities and regions. Not commonly used as input to structured geocoding. | [optional] 
  **region** | **str**| Typically the first administrative division within a country. For example, a US state or a Canadian province. | [optional] 
  **postalcode** | **str**| A mail sorting code. | [optional] 
- **country** | **str**| A list of country codes in ISO 3116-1 alpha-2 or alpha-3 format. | [optional] 
+ **country** | **str**| A country code in ISO 3116-1 alpha-2 or alpha-3 format. | [optional] 
  **focus_point_lat** | **float**| The latitude of the point to focus the search on. This will bias results toward the focus point. Requires &#x60;focus.point.lon&#x60;. | [optional] 
  **focus_point_lon** | **float**| The longitude of the point to focus the search on. This will bias results toward the focus point. Requires &#x60;focus.point.lat&#x60;. | [optional] 
  **boundary_rect_min_lat** | **float**| Defines the min latitude component of a bounding box to limit the search to. Requires all other &#x60;boundary.rect&#x60; parameters to be specified. | [optional] 
@@ -909,6 +924,8 @@ Name | Type | Description  | Notes
 
 # **search_v2**
 > GeocodeResponseEnvelopePropertiesV2 search_v2(text, focus_point_lat=focus_point_lat, focus_point_lon=focus_point_lon, layers=layers, sources=sources, boundary_gid=boundary_gid, boundary_country=boundary_country, boundary_rect_min_lat=boundary_rect_min_lat, boundary_rect_min_lon=boundary_rect_min_lon, boundary_rect_max_lat=boundary_rect_max_lat, boundary_rect_max_lon=boundary_rect_max_lon, boundary_circle_lat=boundary_circle_lat, boundary_circle_lon=boundary_circle_lon, boundary_circle_radius=boundary_circle_radius, size=size, lang=lang)
+
+Search for location and other info using a place name or address (forward geocoding).
 
 ### Example
 
@@ -961,6 +978,7 @@ with stadiamaps.ApiClient(configuration) as api_client:
     lang = 'lang_example' # str | A BCP47 language tag which specifies a preference for localization of results. There is no default value, so place names will be returned as-is, which is usually in the local language. NOTE: The Accept-Language header is also respected, and many user agents will set it automatically. (optional)
 
     try:
+        # Search for location and other info using a place name or address (forward geocoding).
         api_response = api_instance.search_v2(text, focus_point_lat=focus_point_lat, focus_point_lon=focus_point_lon, layers=layers, sources=sources, boundary_gid=boundary_gid, boundary_country=boundary_country, boundary_rect_min_lat=boundary_rect_min_lat, boundary_rect_min_lon=boundary_rect_min_lon, boundary_rect_max_lat=boundary_rect_max_lat, boundary_rect_max_lon=boundary_rect_max_lon, boundary_circle_lat=boundary_circle_lat, boundary_circle_lon=boundary_circle_lon, boundary_circle_radius=boundary_circle_radius, size=size, lang=lang)
         print("The response of GeocodingApi->search_v2:\n")
         pprint(api_response)

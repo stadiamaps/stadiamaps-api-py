@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **iata** | **str** | IATA airport code. | [optional] 
 **icao** | **str** | ICAO airport code. | [optional] 
 **opening_hours** | **str** | The opening hours of the place, in the OSM Opening Hours specification.  See https://wiki.openstreetmap.org/wiki/Key:opening_hours/specification for details. | [optional] 
-**operator** | **str** | THe company, corp, person, or other entity directly in charge of operating something.  This is often used for public transport, hotels, restaurants, and postal services. See https://wiki.openstreetmap.org/wiki/Key:operator for details | [optional] 
+**operator** | **str** | The company, corp, person, or other entity directly in charge of operating something.  This is often used for public transport, hotels, restaurants, and postal services. See https://wiki.openstreetmap.org/wiki/Key:operator for details | [optional] 
 **phone** | **str** |  | [optional] 
 **website** | **str** |  | [optional] 
 **wheelchair** | **str** | Is this place wheelchair accessible? | [optional] 

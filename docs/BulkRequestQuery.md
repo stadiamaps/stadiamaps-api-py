@@ -29,6 +29,8 @@ Name | Type | Description | Notes
 **region** | **str** | Typically the first administrative division within a country. For example, a US state or a Canadian province. | [optional] 
 **postalcode** | **str** | A mail sorting code. | [optional] 
 **country** | **str** | A country code in ISO 3116-1 alpha-2 or alpha-3 format. | [optional] 
+**point_lat** | **float** | The latitude of the point at which to perform the search. | [optional] 
+**point_lon** | **float** | The longitude of the point at which to perform the search. | [optional] 
 
 ## Example
 

@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**endpoint** | **str** |  | [optional] 
-**query** | [**BulkRequestQuery**](BulkRequestQuery.md) |  | [optional] 
+**endpoint** | **str** |  | 
+**query** | [**BulkRequestQuery**](BulkRequestQuery.md) |  | 
 
 ## Example
 

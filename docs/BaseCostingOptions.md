@@ -17,6 +17,12 @@ Name | Type | Description | Notes
 **ignore_restrictions** | **bool** | If set to true, ignores any restrictions (eg: turn and conditional restrictions). Useful for matching GPS traces to the road network regardless of restrictions. | [optional] 
 **ignore_non_vehicular_restrictions** | **bool** | If set to true, ignores most restrictions (eg: turn and conditional restrictions), but still respects restrictions that impact vehicle safety such as weight and size. | [optional] 
 **ignore_oneways** | **bool** | If set to true, ignores directional restrictions on roads. Useful for matching GPS traces to the road network regardless of restrictions. | [optional] 
+**private_access_penalty** | **float** | A penalty (in seconds) for accessing private roads. | [optional] [default to 450]
+**alley_penalty** | **float** | A penalty (in seconds) for using alleys. | [optional] 
+**rail_ferry_cost** | **int** | The estimated cost (in seconds) when a rail ferry is encountered. Only applies to costing models that support rail ferries (auto, truck, motorcycle). | [optional] [default to 300]
+**use_rail_ferry** | **float** | A measure of willingness to take rail ferries. Values near 0 attempt to avoid rail ferries, and values near 1 will favor them. Note that as some routes may be impossible without rail ferries, 0 does not guarantee avoidance of them. Only applies to auto, truck, and motorcycle costing. | [optional] [default to 0.4]
+**ignore_access** | **bool** | If set to true, ignores access restrictions for the route. | [optional] [default to False]
+**ferry_cost** | **int** | The estimated cost (in seconds) when a ferry is encountered. | [optional] [default to 300]
 
 ## Example
 

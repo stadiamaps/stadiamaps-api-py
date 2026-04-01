@@ -22,6 +22,10 @@ Name | Type | Description | Notes
 **bss_rent_cost** | **int** | The estimated cost (in seconds) to rent a bicycle from a sharing station in &#x60;bikeshare&#x60; mode. | [optional] [default to 120]
 **bss_rent_penalty** | **int** | A penalty (in seconds) to rent a bicycle in &#x60;bikeshare&#x60; mode. | [optional] [default to 0]
 **type** | [**PedestrianType**](PedestrianType.md) |  | [optional] 
+**max_distance** | **int** | Maximum total walking distance (in meters). Defaults to 100,000 for foot, 10,000 for wheelchair. | [optional] 
+**max_grade** | **int** | Maximum grade (steepness) as a percentage. Defaults to 90 for foot, 12 for wheelchair. | [optional] 
+**mode_factor** | **float** | A factor that modifies the cost when transitioning between travel modes. Setting this value higher than 1 will avoid walking, while setting it lower than 1 will prefer walking. | [optional] [default to 1.5]
+**elevator_penalty** | **int** | A penalty (in seconds) for using an elevator. | [optional] [default to 5]
 
 ## Example
 

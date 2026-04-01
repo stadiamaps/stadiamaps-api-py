@@ -6,10 +6,11 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**elevation**](GeospatialApi.md#elevation) | **POST** /elevation/v1 | Get the elevation profile along a polyline or at a point.
 [**tz_lookup**](GeospatialApi.md#tz_lookup) | **GET** /tz/lookup/v1 | Get time zone information for any point on earth.
+[**tz_lookup_v2**](GeospatialApi.md#tz_lookup_v2) | **GET** /tz/lookup/v2 | Get time zone information for any point on earth.
 
 
 # **elevation**
-> HeightResponse elevation(height_request=height_request)
+> HeightResponse elevation(height_request)
 
 Get the elevation profile along a polyline or at a point.
 
@@ -47,11 +48,11 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 with stadiamaps.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = stadiamaps.GeospatialApi(api_client)
-    height_request = stadiamaps.HeightRequest() # HeightRequest |  (optional)
+    height_request = stadiamaps.HeightRequest() # HeightRequest | 
 
     try:
         # Get the elevation profile along a polyline or at a point.
-        api_response = api_instance.elevation(height_request=height_request)
+        api_response = api_instance.elevation(height_request)
         print("The response of GeospatialApi->elevation:\n")
         pprint(api_response)
     except Exception as e:
@@ -65,7 +66,7 @@ with stadiamaps.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **height_request** | [**HeightRequest**](HeightRequest.md)|  | [optional] 
+ **height_request** | [**HeightRequest**](HeightRequest.md)|  | 
 
 ### Return type
 
@@ -127,8 +128,8 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 with stadiamaps.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = stadiamaps.GeospatialApi(api_client)
-    lat = 3.4 # float | The latitude of the point you are interested in.
-    lng = 3.4 # float | The longitude of the point you are interested in.
+    lat = 58.5953 # float | The latitude of the point you are interested in.
+    lng = 25.0136 # float | The longitude of the point you are interested in.
     timestamp = 56 # int | The UNIX timestamp at which the UTC and DST offsets will be calculated. This defaults to the present time. This endpoint is not necessarily guaranteed to be accurate for timestamps that occurred in the past. Time zone geographic boundaries change over time, so if the point you are querying for was previously in a different time zone, historical results will not be accurate. If, however, the point has been in the same geographic time zone for a very long time (ex: `America/New_York`), the historical data may be accurate for 100+ years in the past (depending on how far back the IANA TZDB rules have been specified). (optional)
 
     try:
@@ -169,6 +170,92 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | The time zone information and local time. |  -  |
+**400** | Bad request |  -  |
+**404** | Time zone not found |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **tz_lookup_v2**
+> TzResponseV2 tz_lookup_v2(lat, lng, timestamp=timestamp)
+
+Get time zone information for any point on earth.
+
+Retrieve the time zone identifier, total UTC offset, whether DST is in effect, and the localized time in several common formats.
+
+### Example
+
+* Api Key Authentication (ApiKeyAuth):
+
+```python
+import stadiamaps
+from stadiamaps.models.tz_response_v2 import TzResponseV2
+from stadiamaps.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.stadiamaps.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = stadiamaps.Configuration(
+    host = "https://api.stadiamaps.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKeyAuth
+configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with stadiamaps.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = stadiamaps.GeospatialApi(api_client)
+    lat = 58.5953 # float | The latitude of the point you are interested in.
+    lng = 25.0136 # float | The longitude of the point you are interested in.
+    timestamp = 56 # int | The UNIX timestamp at which the UTC and DST offsets will be calculated. This defaults to the present time. This endpoint is not necessarily guaranteed to be accurate for timestamps that occurred in the past. Time zone geographic boundaries change over time, so if the point you are querying for was previously in a different time zone, historical results will not be accurate. If, however, the point has been in the same geographic time zone for a very long time (ex: `America/New_York`), the historical data may be accurate for 100+ years in the past (depending on how far back the IANA TZDB rules have been specified). (optional)
+
+    try:
+        # Get time zone information for any point on earth.
+        api_response = api_instance.tz_lookup_v2(lat, lng, timestamp=timestamp)
+        print("The response of GeospatialApi->tz_lookup_v2:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling GeospatialApi->tz_lookup_v2: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **lat** | **float**| The latitude of the point you are interested in. | 
+ **lng** | **float**| The longitude of the point you are interested in. | 
+ **timestamp** | **int**| The UNIX timestamp at which the UTC and DST offsets will be calculated. This defaults to the present time. This endpoint is not necessarily guaranteed to be accurate for timestamps that occurred in the past. Time zone geographic boundaries change over time, so if the point you are querying for was previously in a different time zone, historical results will not be accurate. If, however, the point has been in the same geographic time zone for a very long time (ex: &#x60;America/New_York&#x60;), the historical data may be accurate for 100+ years in the past (depending on how far back the IANA TZDB rules have been specified). | [optional] 
+
+### Return type
+
+[**TzResponseV2**](TzResponseV2.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The time zone information and local time. |  -  |
+**400** | Bad request |  -  |
 **404** | Time zone not found |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

@@ -5,11 +5,27 @@
 
 * `AUTO` (value: `'auto'`)
 
+* `AUTO_TRAFFIC` (value: `'auto_traffic'`)
+
+* `AUTO_TRAFFIC_PREMIUM` (value: `'auto_traffic_premium'`)
+
 * `BUS` (value: `'bus'`)
+
+* `BUS_TRAFFIC` (value: `'bus_traffic'`)
+
+* `BUS_TRAFFIC_PREMIUM` (value: `'bus_traffic_premium'`)
 
 * `TAXI` (value: `'taxi'`)
 
+* `TAXI_TRAFFIC` (value: `'taxi_traffic'`)
+
+* `TAXI_TRAFFIC_PREMIUM` (value: `'taxi_traffic_premium'`)
+
 * `TRUCK` (value: `'truck'`)
+
+* `TRUCK_TRAFFIC` (value: `'truck_traffic'`)
+
+* `TRUCK_TRAFFIC_PREMIUM` (value: `'truck_traffic_premium'`)
 
 * `BICYCLE` (value: `'bicycle'`)
 

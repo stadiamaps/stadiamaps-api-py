@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 **formatted_address_lines** | **List[str]** | Address components split up into lines, following local postal conventions for ordering and separators. | [optional] 
 **gid** | **str** | The globally unique identifier for this result.  You can use this to uniquely identify a place, and to get the full details from the place details endpoint.  NOTE: While GIDs are unique, they may not necessarily be stable in all datasets. | 
 **layer** | **str** | The data layer containing the place (e.g. \&quot;address\&quot; or \&quot;poi\&quot;). | 
-**match_type** | [**MatchType**](MatchType.md) | The type of match (forward geocoding endpoints only). | [optional] 
+**match_type** | [**MatchType**](MatchType.md) | The type of match (search and structured search only). | [optional] 
 **name** | **str** | The best name for the place, accounting for request language preferences.  When building an autocomplete search experience, this is the primary display string. | 
 **precision** | [**Precision**](Precision.md) |  | 
 **sources** | [**List[SourceAttribution]**](SourceAttribution.md) | A list of sources from which the result is derived. | [optional] 

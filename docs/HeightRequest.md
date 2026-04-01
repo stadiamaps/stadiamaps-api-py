@@ -1,16 +1,17 @@
 # HeightRequest
 
+Request body for the elevation endpoint.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** | An identifier to disambiguate requests (echoed by the server). | [optional] 
-**shape** | [**List[Coordinate]**](Coordinate.md) | REQUIRED if &#x60;encoded_polyline&#x60; is not present. | [optional] 
-**encoded_polyline** | **str** | REQUIRED if &#x60;shape&#x60; is not present. An encoded polyline (https://developers.google.com/maps/documentation/utilities/polylinealgorithm). | [optional] 
-**shape_format** | **str** | Specifies whether the polyline is encoded with 6 digit precision (polyline6) or 5 digit precision (polyline5). | [optional] [default to 'polyline6']
-**range** | **bool** | Controls whether the returned array is one-dimensional (height only) or two-dimensional (with a range and height). The range dimension can be used to generate a graph or steepness gradient along a route. | [optional] [default to False]
-**height_precision** | **int** | The decimal precision (number of digits after the point) of the output. When 0, integer values are returned. Valid values are 0, 1, and 2. | [optional] [default to 0]
+**shape** | [**List[Coordinate]**](Coordinate.md) | The path to get the height along, expressed as a sequence of coordinates.  REQUIRED if &#x60;encoded_polyline&#x60; is not present. | [optional] 
+**encoded_polyline** | **str** | An [encoded polyline string](https://developers.google.com/maps/documentation/utilities/polylinealgorithm).  REQUIRED if &#x60;shape&#x60; is not present. | [optional] 
+**shape_format** | [**ShapeFormat**](ShapeFormat.md) | Specifies whether the polyline is encoded with 6 digit precision (polyline6) or 5 digit precision (polyline5). | [optional] 
+**range** | **bool** | Controls whether the returned array is one-dimensional (height only) or two-dimensional (with a range and height). The range dimension can be used to generate a graph or steepness gradient along a route. | [optional] 
+**height_precision** | **int** | The decimal precision (number of digits after the point) of the output. | [optional] 
 **resample_distance** | **int** | The distance at which the input polyline should be sampled to provide uniform distances between points. If not set, the input shape will be used as-is. | [optional] 
 
 ## Example

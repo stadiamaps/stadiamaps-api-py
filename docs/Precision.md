@@ -1,6 +1,6 @@
 # Precision
 
-The level of precision for the geometry.
+The level of detail for the geometry.
 
 ## Enum
 

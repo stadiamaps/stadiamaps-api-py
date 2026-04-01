@@ -1,18 +1,19 @@
 [project]
 name = "stadiamaps"
-version = "7.0.1"
+version = "8.0.0"
 description = "Stadia Maps Geospatial APIs"
 authors = [
     { name = "Stadia Maps Support", email = "support@stadiamaps.com" }
 ]
 license = "BSD-3-Clause"
 readme = "README.md"
-requires-python = ">=3.8"
+requires-python = ">=3.9"
+
 dependencies = [
-    "urllib3>=1.25.3,<3.0.0",
-    "python-dateutil>=2.8.2",
-    "pydantic>=2",
-    "typing-extensions>=4.7.1"
+    "urllib3 (>=2.1.0,<3.0.0)",
+    "python-dateutil (>=2.8.2)",
+    "pydantic (>=2)",
+    "typing-extensions (>=4.7.1)",
 ]
 
 [project.urls]
@@ -20,15 +21,10 @@ homepage = "https://stadiamaps.com"
 documentation = "https://docs.stadiamaps.com/sdks/python/"
 source = "https://github.com/stadiamaps/stadiamaps-api-py"
 
-[tool.poetry.dependencies]
-python = "^3.9"
+[tool.poetry]
+requires-poetry = ">=2.0"
 
-urllib3 = ">= 2.1.0, < 3.0.0"
-python-dateutil = ">= 2.8.2"
-pydantic = ">= 2"
-typing-extensions = ">= 4.7.1"
-
-[tool.poetry.dev-dependencies]
+[tool.poetry.group.dev.dependencies]
 pytest = ">= 7.2.1"
 pytest-cov = ">= 2.8.1"
 tox = ">= 3.9.0"

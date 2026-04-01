@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **locations** | [**List[Coordinate]**](Coordinate.md) |  | 
 **costing** | [**IsochroneCostingModel**](IsochroneCostingModel.md) |  | 
 **costing_options** | [**CostingOptions**](CostingOptions.md) |  | [optional] 
+**date_time** | [**TimeConstraintV1**](TimeConstraintV1.md) |  | [optional] 
 **contours** | [**List[Contour]**](Contour.md) |  | 
 **polygons** | **bool** | If true, the generated GeoJSON will use polygons. The default is to use LineStrings. Polygon output makes it easier to render overlapping areas in some visualization tools (such as MapLibre renderers). | [optional] [default to False]
 **denoise** | **float** | A value in the range [0, 1] which will be used to smooth out or remove smaller contours. A value of 1 will only return the largest contour for a given time value. A value of 0.5 drops any contours that are less than half the area of the largest contour in the set of contours for that same time value. | [optional] [default to 1]

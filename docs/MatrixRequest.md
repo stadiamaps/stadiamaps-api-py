@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **targets** | [**List[MatrixWaypoint]**](MatrixWaypoint.md) | The list of ending locations | 
 **costing** | [**MatrixCostingModel**](MatrixCostingModel.md) |  | 
 **costing_options** | [**CostingOptions**](CostingOptions.md) |  | [optional] 
+**date_time** | [**TimeConstraintV1**](TimeConstraintV1.md) | Time-dependent routing constraint applied globally. Cannot be combined with per-waypoint &#x60;date_time&#x60; on sources/targets. | [optional] 
 **matrix_locations** | **int** | Only applicable to one-to-many or many-to-one requests. This defaults to all locations. When specified explicitly, this option allows a partial result to be returned. This is basically equivalent to \&quot;find the closest/best locations out of the full set.\&quot; This can have a dramatic improvement for large requests. | [optional] 
 
 ## Example

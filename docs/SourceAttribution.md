@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**fixit_url** | **str** |  | [optional] 
-**source** | **str** |  | 
+**fixit_url** | **str** | A URL where you can submit changes to the source data for a place (e.g. edit on OpenStreetMap, Foursquare Placemaker, etc.). | [optional] 
+**source** | **str** | The source identifier. The ID of the record as it appears in the original source. | 
 **source_id** | **str** |  | 
 
 ## Example
