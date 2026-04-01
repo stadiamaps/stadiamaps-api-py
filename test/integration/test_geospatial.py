@@ -19,6 +19,14 @@ class TestGeospatial(unittest.TestCase):
             res = api_instance.tz_lookup(37.56, 126.99)
             self.assertEqual("Asia/Seoul", res.tz_id)
 
+    def testTZLookupV2(self):
+        with stadiamaps.ApiClient(self.configuration) as api_client:
+            api_instance = stadiamaps.GeospatialApi(api_client)
+
+            res = api_instance.tz_lookup_v2(37.56, 126.99)
+            self.assertEqual("Asia/Seoul", res.tz_id)
+            self.assertIsInstance(res.utc_offset, int)
+
     def testElevation(self):
         with stadiamaps.ApiClient(self.configuration) as api_client:
             api_instance = stadiamaps.GeospatialApi(api_client)
