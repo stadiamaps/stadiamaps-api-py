@@ -22,6 +22,7 @@ from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class WhosOnFirstConcordances(BaseModel):
     """
@@ -52,7 +53,8 @@ class WhosOnFirstConcordances(BaseModel):
     __properties: ClassVar[List[str]] = ["eurographics_gisco_id", "faa_code", "factual_id", "fifa_id", "fips_code", "fr_gov_epci_code", "fra_insee_code", "geonames_id", "geoplanet_id", "hasc_id", "iata_code", "icao_code", "itu_id", "karmashapes_id", "natural_earth_id", "nuts_2021_id", "quattroshapes_id", "quattroshapes_pg_id", "us_census_geo_id", "wikidata_id", "wikipedia_page"]
 
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -64,8 +66,7 @@ class WhosOnFirstConcordances(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

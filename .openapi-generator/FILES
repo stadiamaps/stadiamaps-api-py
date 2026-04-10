@@ -77,6 +77,7 @@ docs/MatrixResponse.md
 docs/MatrixWaypoint.md
 docs/MotorScooterCostingOptions.md
 docs/MotorcycleCostingOptions.md
+docs/NearestRoadsCostingModel.md
 docs/NearestRoadsRequest.md
 docs/NodeId.md
 docs/NodeType.md
@@ -234,6 +235,7 @@ stadiamaps/models/matrix_response.py
 stadiamaps/models/matrix_waypoint.py
 stadiamaps/models/motor_scooter_costing_options.py
 stadiamaps/models/motorcycle_costing_options.py
+stadiamaps/models/nearest_roads_costing_model.py
 stadiamaps/models/nearest_roads_request.py
 stadiamaps/models/node_id.py
 stadiamaps/models/node_type.py
@@ -305,8 +307,4 @@ stadiamaps/py.typed
 stadiamaps/rest.py
 test-requirements.txt
 test/__init__.py
-test/test_reverse_query.py
-test/test_shape_format.py
-test/test_time_constraint_v1.py
-test/test_tz_response_v2.py
 tox.ini

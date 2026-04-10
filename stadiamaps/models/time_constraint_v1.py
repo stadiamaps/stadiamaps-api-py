@@ -18,29 +18,31 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr, field_validator
+from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class TimeConstraintV1(BaseModel):
     """
-    Specifies the time context for time-dependent routing (e.g., to account for traffic patterns or time-based access restrictions). Defaults \"now\" for traffic-influenced routing profiles like `auto_traffic`.
+    Specifies the time context for time-dependent routing (e.g., to account for traffic patterns or time-based access restrictions). Defaults to depart_now for traffic-influenced routing profiles like `auto_traffic`.
     """ # noqa: E501
-    type: StrictInt = Field(description="The type of time constraint: 0 = current time (depart now), 1 = depart at the specified time, 2 = arrive by the specified time.")
-    value: Optional[StrictStr] = Field(default=None, description="The date and time in `YYYY-MM-DDTHH:MM` format (seconds are accepted, but will be ignored). The date and time are local (civil) time as observed at the location. Required for types 1 and 2. Must not be provided for type 0.")
+    type: StrictStr = Field(description="The type of time constraint: `depart_now` = depart now (current time), `depart_at` = depart at the specified time, `arrive_at` = arrive by the specified time.")
+    value: Optional[StrictStr] = Field(default=None, description="The date and time in `YYYY-MM-DDTHH:MM` format (seconds are accepted, but will be ignored). The date and time are local (civil) time as observed at the location. Required when type is depart_at or arrive_at. Must not be provided for depart_now.")
     additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["type", "value"]
 
     @field_validator('type')
     def type_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in set([0, 1, 2]):
-            raise ValueError("must be one of enum values (0, 1, 2)")
+        if value not in set(['depart_now', 'depart_at', 'arrive_at']):
+            raise ValueError("must be one of enum values ('depart_now', 'depart_at', 'arrive_at')")
         return value
 
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -52,8 +54,7 @@ class TimeConstraintV1(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

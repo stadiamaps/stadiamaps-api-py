@@ -26,6 +26,7 @@ from stadiamaps.models.osrm_step_maneuver import OsrmStepManeuver
 from stadiamaps.models.osrm_voice_instruction import OsrmVoiceInstruction
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class OsrmRouteStep(BaseModel):
     """
@@ -74,7 +75,8 @@ class OsrmRouteStep(BaseModel):
         return value
 
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -86,8 +88,7 @@ class OsrmRouteStep(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

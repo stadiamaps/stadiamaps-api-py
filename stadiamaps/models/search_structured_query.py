@@ -25,6 +25,7 @@ from stadiamaps.models.geocoding_layer import GeocodingLayer
 from stadiamaps.models.geocoding_source import GeocodingSource
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class SearchStructuredQuery(BaseModel):
     """
@@ -57,7 +58,8 @@ class SearchStructuredQuery(BaseModel):
     __properties: ClassVar[List[str]] = ["address", "neighbourhood", "borough", "locality", "county", "region", "postalcode", "country", "focus.point.lat", "focus.point.lon", "boundary.rect.min_lat", "boundary.rect.max_lat", "boundary.rect.min_lon", "boundary.rect.max_lon", "boundary.circle.lat", "boundary.circle.lon", "boundary.circle.radius", "boundary.country", "boundary.gid", "layers", "sources", "size", "lang"]
 
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -69,8 +71,7 @@ class SearchStructuredQuery(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

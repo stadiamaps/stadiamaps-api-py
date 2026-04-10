@@ -21,21 +21,17 @@ import json
 from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
 from stadiamaps.models.costing_options import CostingOptions
-from stadiamaps.models.distance_unit import DistanceUnit
 from stadiamaps.models.map_match_costing_model import MapMatchCostingModel
 from stadiamaps.models.map_match_waypoint import MapMatchWaypoint
-from stadiamaps.models.routing_languages import RoutingLanguages
 from stadiamaps.models.time_constraint_v1 import TimeConstraintV1
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class BaseTraceRequest(BaseModel):
     """
     BaseTraceRequest
     """ # noqa: E501
-    units: Optional[DistanceUnit] = DistanceUnit.KM
-    language: Optional[RoutingLanguages] = RoutingLanguages.EN_MINUS_US
-    directions_type: Optional[StrictStr] = Field(default='instructions', description="The level of directional narrative to include. Locations and times will always be returned, but narrative generation verbosity can be controlled with this parameter.")
     id: Optional[StrictStr] = Field(default=None, description="An identifier to disambiguate requests (echoed by the server).")
     shape: Optional[List[MapMatchWaypoint]] = Field(default=None, description="REQUIRED if `encoded_polyline` is not present. Note that `break` type locations are only supported when `shape_match` is set to `map_match`.")
     encoded_polyline: Optional[StrictStr] = Field(default=None, description="REQUIRED if `shape` is not present. An encoded polyline (https://developers.google.com/maps/documentation/utilities/polylinealgorithm). Note that the polyline must be encoded with 6 digits of precision rather than the default 5!")
@@ -44,17 +40,7 @@ class BaseTraceRequest(BaseModel):
     date_time: Optional[TimeConstraintV1] = None
     shape_match: Optional[StrictStr] = Field(default=None, description="Three snapping modes provide some control over how the map matching occurs. `edge_walk` is fast, but requires extremely precise data that matches the route graph almost perfectly. `map_snap` can handle significantly noisier data, but is very expensive. `walk_or_snap`, the default, tries to use edge walking first and falls back to map matching if edge walking fails. In general, you should not need to change this parameter unless you want to trace a multi-leg route with multiple `break` locations in the `shape`.")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["units", "language", "directions_type", "id", "shape", "encoded_polyline", "costing", "costing_options", "date_time", "shape_match"]
-
-    @field_validator('directions_type')
-    def directions_type_validate_enum(cls, value):
-        """Validates the enum"""
-        if value is None:
-            return value
-
-        if value not in set(['none', 'maneuvers', 'instructions']):
-            raise ValueError("must be one of enum values ('none', 'maneuvers', 'instructions')")
-        return value
+    __properties: ClassVar[List[str]] = ["id", "shape", "encoded_polyline", "costing", "costing_options", "date_time", "shape_match"]
 
     @field_validator('shape_match')
     def shape_match_validate_enum(cls, value):
@@ -67,7 +53,8 @@ class BaseTraceRequest(BaseModel):
         return value
 
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -79,8 +66,7 @@ class BaseTraceRequest(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
@@ -137,9 +123,6 @@ class BaseTraceRequest(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "units": obj.get("units") if obj.get("units") is not None else DistanceUnit.KM,
-            "language": obj.get("language") if obj.get("language") is not None else RoutingLanguages.EN_MINUS_US,
-            "directions_type": obj.get("directions_type") if obj.get("directions_type") is not None else 'instructions',
             "id": obj.get("id"),
             "shape": [MapMatchWaypoint.from_dict(_item) for _item in obj["shape"]] if obj.get("shape") is not None else None,
             "encoded_polyline": obj.get("encoded_polyline"),

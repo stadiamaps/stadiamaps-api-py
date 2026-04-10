@@ -22,24 +22,26 @@ from pydantic import BaseModel, ConfigDict, Field, StrictBool
 from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
 from stadiamaps.models.coordinate import Coordinate
-from stadiamaps.models.costing_model import CostingModel
 from stadiamaps.models.costing_options import CostingOptions
+from stadiamaps.models.nearest_roads_costing_model import NearestRoadsCostingModel
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class NearestRoadsRequest(BaseModel):
     """
     NearestRoadsRequest
     """ # noqa: E501
     locations: Annotated[List[Coordinate], Field(min_length=1)]
-    costing: Optional[CostingModel] = None
+    costing: Optional[NearestRoadsCostingModel] = None
     costing_options: Optional[CostingOptions] = None
     verbose: Optional[StrictBool] = False
     additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["locations", "costing", "costing_options", "verbose"]
 
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -51,8 +53,7 @@ class NearestRoadsRequest(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

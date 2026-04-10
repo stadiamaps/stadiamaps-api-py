@@ -24,11 +24,11 @@ from stadiamaps.models.costing_options import CostingOptions
 from stadiamaps.models.distance_unit import DistanceUnit
 from stadiamaps.models.map_match_costing_model import MapMatchCostingModel
 from stadiamaps.models.map_match_waypoint import MapMatchWaypoint
-from stadiamaps.models.routing_languages import RoutingLanguages
 from stadiamaps.models.time_constraint_v1 import TimeConstraintV1
 from stadiamaps.models.trace_attribute_filter_options import TraceAttributeFilterOptions
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class TraceAttributesRequest(BaseModel):
     """
@@ -41,13 +41,11 @@ class TraceAttributesRequest(BaseModel):
     costing_options: Optional[CostingOptions] = None
     date_time: Optional[TimeConstraintV1] = None
     shape_match: Optional[StrictStr] = Field(default=None, description="Three snapping modes provide some control over how the map matching occurs. `edge_walk` is fast, but requires extremely precise data that matches the route graph almost perfectly. `map_snap` can handle significantly noisier data, but is very expensive. `walk_or_snap`, the default, tries to use edge walking first and falls back to map matching if edge walking fails. In general, you should not need to change this parameter unless you want to trace a multi-leg route with multiple `break` locations in the `shape`.")
-    units: Optional[DistanceUnit] = DistanceUnit.KM
-    language: Optional[RoutingLanguages] = RoutingLanguages.EN_MINUS_US
-    directions_type: Optional[StrictStr] = Field(default='instructions', description="The level of directional narrative to include. Locations and times will always be returned, but narrative generation verbosity can be controlled with this parameter.")
     filters: Optional[TraceAttributeFilterOptions] = Field(default=None, description="If present, provides either a whitelist or a blacklist of keys to include/exclude in the response. This key is optional, and if omitted from the request, all available info will be returned.")
     elevation_interval: Optional[Union[StrictFloat, StrictInt]] = Field(default=0.0, description="If greater than zero, attempts to include elevation along the route at regular intervals. The \"native\" internal resolution is 30m, so we recommend you use this when possible. This number is interpreted as either meters or feet depending on the unit parameter. Elevation for route sections containing a bridge or tunnel is interpolated linearly. This doesn't always match the true elevation of the bridge/tunnel, but it prevents sharp artifacts from the surrounding terrain. This functionality is unique to the routing endpoints and is not available via the elevation API. NOTE: This has no effect on the OSRM response format.")
+    units: Optional[DistanceUnit] = DistanceUnit.KM
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["id", "shape", "encoded_polyline", "costing", "costing_options", "date_time", "shape_match", "units", "language", "directions_type", "filters", "elevation_interval"]
+    __properties: ClassVar[List[str]] = ["id", "shape", "encoded_polyline", "costing", "costing_options", "date_time", "shape_match", "filters", "elevation_interval", "units"]
 
     @field_validator('shape_match')
     def shape_match_validate_enum(cls, value):
@@ -59,18 +57,9 @@ class TraceAttributesRequest(BaseModel):
             raise ValueError("must be one of enum values ('edge_walk', 'map_snap', 'walk_or_snap')")
         return value
 
-    @field_validator('directions_type')
-    def directions_type_validate_enum(cls, value):
-        """Validates the enum"""
-        if value is None:
-            return value
-
-        if value not in set(['none', 'maneuvers', 'instructions']):
-            raise ValueError("must be one of enum values ('none', 'maneuvers', 'instructions')")
-        return value
-
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -82,8 +71,7 @@ class TraceAttributesRequest(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
@@ -150,11 +138,9 @@ class TraceAttributesRequest(BaseModel):
             "costing_options": CostingOptions.from_dict(obj["costing_options"]) if obj.get("costing_options") is not None else None,
             "date_time": TimeConstraintV1.from_dict(obj["date_time"]) if obj.get("date_time") is not None else None,
             "shape_match": obj.get("shape_match"),
-            "units": obj.get("units") if obj.get("units") is not None else DistanceUnit.KM,
-            "language": obj.get("language") if obj.get("language") is not None else RoutingLanguages.EN_MINUS_US,
-            "directions_type": obj.get("directions_type") if obj.get("directions_type") is not None else 'instructions',
             "filters": TraceAttributeFilterOptions.from_dict(obj["filters"]) if obj.get("filters") is not None else None,
-            "elevation_interval": obj.get("elevation_interval") if obj.get("elevation_interval") is not None else 0.0
+            "elevation_interval": obj.get("elevation_interval") if obj.get("elevation_interval") is not None else 0.0,
+            "units": obj.get("units") if obj.get("units") is not None else DistanceUnit.KM
         })
         # store additional fields in additional_properties
         for _key in obj.keys():

@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **locations** | [**List[Coordinate]**](Coordinate.md) |  | 
-**costing** | [**CostingModel**](CostingModel.md) |  | [optional] 
+**costing** | [**NearestRoadsCostingModel**](NearestRoadsCostingModel.md) |  | [optional] 
 **costing_options** | [**CostingOptions**](CostingOptions.md) |  | [optional] 
 **verbose** | **bool** |  | [optional] [default to False]
 

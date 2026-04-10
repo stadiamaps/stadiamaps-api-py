@@ -24,6 +24,7 @@ from typing_extensions import Annotated
 from stadiamaps.models.pedestrian_type import PedestrianType
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class PedestrianCostingOptions(BaseModel):
     """
@@ -54,7 +55,8 @@ class PedestrianCostingOptions(BaseModel):
     __properties: ClassVar[List[str]] = ["walking_speed", "walkway_factor", "sidewalk_factor", "alley_factor", "driveway_factor", "step_penalty", "use_ferry", "use_living_streets", "use_tracks", "use_hills", "use_lit", "service_penalty", "service_factor", "max_hiking_difficulty", "bss_rent_cost", "bss_rent_penalty", "type", "max_distance", "max_grade", "mode_factor", "elevator_penalty"]
 
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -66,8 +68,7 @@ class PedestrianCostingOptions(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

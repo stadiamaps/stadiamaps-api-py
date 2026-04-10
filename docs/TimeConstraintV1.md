@@ -1,13 +1,13 @@
 # TimeConstraintV1
 
-Specifies the time context for time-dependent routing (e.g., to account for traffic patterns or time-based access restrictions). Defaults \"now\" for traffic-influenced routing profiles like `auto_traffic`.
+Specifies the time context for time-dependent routing (e.g., to account for traffic patterns or time-based access restrictions). Defaults to depart_now for traffic-influenced routing profiles like `auto_traffic`.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | **int** | The type of time constraint: 0 &#x3D; current time (depart now), 1 &#x3D; depart at the specified time, 2 &#x3D; arrive by the specified time. | 
-**value** | **str** | The date and time in &#x60;YYYY-MM-DDTHH:MM&#x60; format (seconds are accepted, but will be ignored). The date and time are local (civil) time as observed at the location. Required for types 1 and 2. Must not be provided for type 0. | [optional] 
+**type** | **str** | The type of time constraint: &#x60;depart_now&#x60; &#x3D; depart now (current time), &#x60;depart_at&#x60; &#x3D; depart at the specified time, &#x60;arrive_at&#x60; &#x3D; arrive by the specified time. | 
+**value** | **str** | The date and time in &#x60;YYYY-MM-DDTHH:MM&#x60; format (seconds are accepted, but will be ignored). The date and time are local (civil) time as observed at the location. Required when type is depart_at or arrive_at. Must not be provided for depart_now. | [optional] 
 
 ## Example
 

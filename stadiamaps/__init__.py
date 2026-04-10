@@ -105,6 +105,7 @@ __all__ = [
     "MatrixWaypoint",
     "MotorScooterCostingOptions",
     "MotorcycleCostingOptions",
+    "NearestRoadsCostingModel",
     "NearestRoadsRequest",
     "NodeId",
     "NodeType",
@@ -265,6 +266,7 @@ from stadiamaps.models.matrix_response import MatrixResponse as MatrixResponse
 from stadiamaps.models.matrix_waypoint import MatrixWaypoint as MatrixWaypoint
 from stadiamaps.models.motor_scooter_costing_options import MotorScooterCostingOptions as MotorScooterCostingOptions
 from stadiamaps.models.motorcycle_costing_options import MotorcycleCostingOptions as MotorcycleCostingOptions
+from stadiamaps.models.nearest_roads_costing_model import NearestRoadsCostingModel as NearestRoadsCostingModel
 from stadiamaps.models.nearest_roads_request import NearestRoadsRequest as NearestRoadsRequest
 from stadiamaps.models.node_id import NodeId as NodeId
 from stadiamaps.models.node_type import NodeType as NodeType

@@ -88,6 +88,7 @@ from stadiamaps.models.matrix_response import MatrixResponse
 from stadiamaps.models.matrix_waypoint import MatrixWaypoint
 from stadiamaps.models.motor_scooter_costing_options import MotorScooterCostingOptions
 from stadiamaps.models.motorcycle_costing_options import MotorcycleCostingOptions
+from stadiamaps.models.nearest_roads_costing_model import NearestRoadsCostingModel
 from stadiamaps.models.nearest_roads_request import NearestRoadsRequest
 from stadiamaps.models.node_id import NodeId
 from stadiamaps.models.node_type import NodeType

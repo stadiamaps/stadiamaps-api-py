@@ -151,7 +151,7 @@ class TestRouting(unittest.TestCase):
                 costing=stadiamaps.MatrixCostingModel.AUTO_TRAFFIC,
                 costing_options=stadiamaps.CostingOptions(auto=stadiamaps.AutoCostingOptions(use_tolls=0.7)),
                 units=stadiamaps.DistanceUnit.MI,
-                date_time=stadiamaps.TimeConstraintV1(type=0),
+                date_time=stadiamaps.TimeConstraintV1(type="depart_now"),
             )
 
             res = api_instance.optimized_route(req).actual_instance

@@ -23,6 +23,7 @@ from typing import Any, ClassVar, Dict, List, Optional, Union
 from typing_extensions import Annotated
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class AutoCostingOptions(BaseModel):
     """
@@ -68,7 +69,8 @@ class AutoCostingOptions(BaseModel):
     __properties: ClassVar[List[str]] = ["maneuver_penalty", "gate_cost", "gate_penalty", "country_crossing_cost", "country_crossing_penalty", "service_penalty", "service_factor", "use_living_streets", "use_ferry", "ignore_restrictions", "ignore_non_vehicular_restrictions", "ignore_oneways", "private_access_penalty", "alley_penalty", "rail_ferry_cost", "use_rail_ferry", "ignore_access", "ferry_cost", "height", "width", "toll_booth_cost", "toll_booth_penalty", "exclude_cash_only_tolls", "exclude_unpaved", "use_highways", "use_tolls", "use_tracks", "top_speed", "shortest", "ignore_closures", "include_hov2", "include_hov3", "include_hot", "alley_factor", "use_distance", "closure_factor"]
 
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -80,8 +82,7 @@ class AutoCostingOptions(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
