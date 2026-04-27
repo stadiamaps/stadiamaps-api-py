@@ -797,7 +797,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **search_structured**
-> GeocodeResponse search_structured(address=address, neighbourhood=neighbourhood, borough=borough, locality=locality, county=county, region=region, postalcode=postalcode, country=country, focus_point_lat=focus_point_lat, focus_point_lon=focus_point_lon, boundary_rect_min_lat=boundary_rect_min_lat, boundary_rect_max_lat=boundary_rect_max_lat, boundary_rect_min_lon=boundary_rect_min_lon, boundary_rect_max_lon=boundary_rect_max_lon, boundary_circle_lat=boundary_circle_lat, boundary_circle_lon=boundary_circle_lon, boundary_circle_radius=boundary_circle_radius, boundary_country=boundary_country, boundary_gid=boundary_gid, layers=layers, sources=sources, size=size, lang=lang)
+> GeocodeResponse search_structured(address=address, house_number=house_number, street=street, unit=unit, neighbourhood=neighbourhood, borough=borough, locality=locality, county=county, region=region, postalcode=postalcode, country=country, focus_point_lat=focus_point_lat, focus_point_lon=focus_point_lon, boundary_rect_min_lat=boundary_rect_min_lat, boundary_rect_max_lat=boundary_rect_max_lat, boundary_rect_min_lon=boundary_rect_min_lon, boundary_rect_max_lon=boundary_rect_max_lon, boundary_circle_lat=boundary_circle_lat, boundary_circle_lon=boundary_circle_lon, boundary_circle_radius=boundary_circle_radius, boundary_country=boundary_country, boundary_gid=boundary_gid, layers=layers, sources=sources, size=size, lang=lang)
 
 Find locations matching components (structured forward geocoding).
 
@@ -836,13 +836,16 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 with stadiamaps.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = stadiamaps.GeocodingApi(api_client)
-    address = '11 Wall Street' # str | A street name, optionally with a house number. (optional)
-    neighbourhood = 'Financial District' # str | Varies by area, but has a locally specific meaning (NOT always an official administrative unit). (optional)
-    borough = 'Manhattan' # str | A unit within a city (not widely used, but present in places like NYC and Mexico City). (optional)
+    address = 'address_example' # str | A street name and optional house number together, e.g. `11 Wall St`. If you have the data available separately, you should provide the house number and street separately. (optional)
+    house_number = '11' # str | A house or building number. Mutually exclusive with the `address` field. Requires `street` to also be specified. (optional)
+    street = 'Wall St' # str | A street name. Mutually exclusive with the `address` field. (optional)
+    unit = 'unit_example' # str | The apartment, suite, or unit number. Requires both `house_number` and `street` to be specified. Mutually exclusive with the `address` field. (optional)
+    neighbourhood = 'neighbourhood_example' # str | A smaller area within a locality, e.g. `Financial District`. Practices vary by area, but these are typically not distinct administrative units. (optional)
+    borough = 'borough_example' # str | A unit within a city, e.g. `Manhattan` (not widely used outside mega cities like NYC and Mexico City). (optional)
     locality = 'New York' # str | The city, village, town, etc. that the place/address is part of. (optional)
-    county = 'New York County' # str | Administrative divisions between localities and regions. Not commonly used as input to structured geocoding. (optional)
+    county = 'county_example' # str | Administrative divisions between localities and regions. Not commonly used as input to structured geocoding. (optional)
     region = 'New York' # str | Typically the first administrative division within a country. For example, a US state or a Canadian province. (optional)
-    postalcode = '10005' # str | A mail sorting code. (optional)
+    postalcode = '10005' # str | A mail sorting code (e.g. a US ZIP code). (optional)
     country = 'USA' # str | A country code in ISO 3116-1 alpha-2 or alpha-3 format. (optional)
     focus_point_lat = 3.4 # float | The latitude of the point to focus the search on. This will bias results toward the focus point. Requires `focus.point.lon`. (optional)
     focus_point_lon = 3.4 # float | The longitude of the point to focus the search on. This will bias results toward the focus point. Requires `focus.point.lat`. (optional)
@@ -862,7 +865,7 @@ with stadiamaps.ApiClient(configuration) as api_client:
 
     try:
         # Find locations matching components (structured forward geocoding).
-        api_response = api_instance.search_structured(address=address, neighbourhood=neighbourhood, borough=borough, locality=locality, county=county, region=region, postalcode=postalcode, country=country, focus_point_lat=focus_point_lat, focus_point_lon=focus_point_lon, boundary_rect_min_lat=boundary_rect_min_lat, boundary_rect_max_lat=boundary_rect_max_lat, boundary_rect_min_lon=boundary_rect_min_lon, boundary_rect_max_lon=boundary_rect_max_lon, boundary_circle_lat=boundary_circle_lat, boundary_circle_lon=boundary_circle_lon, boundary_circle_radius=boundary_circle_radius, boundary_country=boundary_country, boundary_gid=boundary_gid, layers=layers, sources=sources, size=size, lang=lang)
+        api_response = api_instance.search_structured(address=address, house_number=house_number, street=street, unit=unit, neighbourhood=neighbourhood, borough=borough, locality=locality, county=county, region=region, postalcode=postalcode, country=country, focus_point_lat=focus_point_lat, focus_point_lon=focus_point_lon, boundary_rect_min_lat=boundary_rect_min_lat, boundary_rect_max_lat=boundary_rect_max_lat, boundary_rect_min_lon=boundary_rect_min_lon, boundary_rect_max_lon=boundary_rect_max_lon, boundary_circle_lat=boundary_circle_lat, boundary_circle_lon=boundary_circle_lon, boundary_circle_radius=boundary_circle_radius, boundary_country=boundary_country, boundary_gid=boundary_gid, layers=layers, sources=sources, size=size, lang=lang)
         print("The response of GeocodingApi->search_structured:\n")
         pprint(api_response)
     except Exception as e:
@@ -876,13 +879,16 @@ with stadiamaps.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **address** | **str**| A street name, optionally with a house number. | [optional] 
- **neighbourhood** | **str**| Varies by area, but has a locally specific meaning (NOT always an official administrative unit). | [optional] 
- **borough** | **str**| A unit within a city (not widely used, but present in places like NYC and Mexico City). | [optional] 
+ **address** | **str**| A street name and optional house number together, e.g. &#x60;11 Wall St&#x60;. If you have the data available separately, you should provide the house number and street separately. | [optional] 
+ **house_number** | **str**| A house or building number. Mutually exclusive with the &#x60;address&#x60; field. Requires &#x60;street&#x60; to also be specified. | [optional] 
+ **street** | **str**| A street name. Mutually exclusive with the &#x60;address&#x60; field. | [optional] 
+ **unit** | **str**| The apartment, suite, or unit number. Requires both &#x60;house_number&#x60; and &#x60;street&#x60; to be specified. Mutually exclusive with the &#x60;address&#x60; field. | [optional] 
+ **neighbourhood** | **str**| A smaller area within a locality, e.g. &#x60;Financial District&#x60;. Practices vary by area, but these are typically not distinct administrative units. | [optional] 
+ **borough** | **str**| A unit within a city, e.g. &#x60;Manhattan&#x60; (not widely used outside mega cities like NYC and Mexico City). | [optional] 
  **locality** | **str**| The city, village, town, etc. that the place/address is part of. | [optional] 
  **county** | **str**| Administrative divisions between localities and regions. Not commonly used as input to structured geocoding. | [optional] 
  **region** | **str**| Typically the first administrative division within a country. For example, a US state or a Canadian province. | [optional] 
- **postalcode** | **str**| A mail sorting code. | [optional] 
+ **postalcode** | **str**| A mail sorting code (e.g. a US ZIP code). | [optional] 
  **country** | **str**| A country code in ISO 3116-1 alpha-2 or alpha-3 format. | [optional] 
  **focus_point_lat** | **float**| The latitude of the point to focus the search on. This will bias results toward the focus point. Requires &#x60;focus.point.lon&#x60;. | [optional] 
  **focus_point_lon** | **float**| The longitude of the point to focus the search on. This will bias results toward the focus point. Requires &#x60;focus.point.lat&#x60;. | [optional] 

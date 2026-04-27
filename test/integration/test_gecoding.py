@@ -54,6 +54,14 @@ class TestGeocoding(unittest.TestCase):
             self.assertEqual("Estonia", res.features[0].properties.country)
             self.assertEqual("address", res.features[0].properties.layer)
 
+    def testStructuredSearchGranular(self):
+        with stadiamaps.ApiClient(self.configuration) as api_client:
+            api_instance = stadiamaps.GeocodingApi(api_client)
+
+            res = api_instance.search_structured(street="Põhja pst", house_number="27", country="Estonia")
+            self.assertEqual("Estonia", res.features[0].properties.country)
+            self.assertEqual("address", res.features[0].properties.layer)
+
     def testReverse(self):
         with stadiamaps.ApiClient(self.configuration) as api_client:
             api_instance = stadiamaps.GeocodingApi(api_client)
